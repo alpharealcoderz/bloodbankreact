@@ -1,0 +1,14 @@
+.ant-pagination-item:hover {
+  border-color: #ed2d34;
+}
+.ant-pagination-item-active {
+  border-color: #ed2d34;
+}
+.ant-pagination-prev .ant-pagination-item-link:hover,
+.ant-pagination-next .ant-pagination-item-link:hover {
+  border: 1px solid #ed2d34;
+  transition: 0.1s;
+}
+svg {
+  color: black;
+}
