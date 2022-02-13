@@ -1,4 +1,4 @@
-export const api_base_url = "https://bloodbank-q7wbnpl66q-uc.a.run.app/api";
+export const api_base_url = "http://localhost:8000/api";
 export const state = [
   "Andhra Pradesh",
   "Arunachal Pradesh",
