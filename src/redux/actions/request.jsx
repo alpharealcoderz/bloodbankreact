@@ -1,40 +1,43 @@
-import { GET_ALL_FEED } from "./actionTypes";
+import { GET_ALL_REQUEST } from "./actionTypes";
 import axios from "axios";
 import { api_base_url } from "../../Constants";
 import { message } from "antd";
-export const getAllFeed = () => {
+export const getAllRequest = () => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(`${api_base_url}/getAllFeed`);
+      let { data } = await axios.post(`${api_base_url}/findRequest`);
 
       data.status == "success" &&
         dispatch({
-          type: GET_ALL_FEED,
-          payload: data.feedData,
+          type: GET_ALL_REQUEST,
+          payload: data.donorsData,
         });
     } catch (error) {
       console.log("error", error);
     }
   };
 };
-export const addFeed = (payload) => {
+export const addRequest = (payload) => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(`${api_base_url}/addFeed`, payload);
+      let { data } = await axios.post(
+        `${api_base_url}/requestDonation`,
+        payload
+      );
 
-      data.status == "success" && dispatch(getAllFeed());
+      data.status == "success" && dispatch(getAllRequest());
       data.status == "success" && message.success("Success");
     } catch (error) {
       console.log("error", error);
     }
   };
 };
-export const deleteFeed = (id) => {
+export const deleteRequest = (id) => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(`${api_base_url}/deleteFeedById`, id);
+      let { data } = await axios.post(`${api_base_url}/deleteRequest`, id);
 
-      data == "success" && dispatch(getAllFeed());
+      data == "success" && dispatch(getAllRequest());
       data == "success" && message.success("Success");
     } catch (error) {
       console.log("error", error);

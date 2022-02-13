@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getAllFeed, addFeed, deleteFeed } from "../../../redux/actions/feed";
+import {
+  getAllNotification,
+  deleteNotification,
+  addNotification,
+} from "../../../redux/actions/notification";
 import { Table, Modal, Button, Input } from "antd";
 
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-export const Feed = ({ feeds }) => {
+export const Notification = ({}) => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.feeds.feedData);
+  const data = useSelector((state) => state.notifications.notificationData);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    dispatch(getAllFeed());
+    dispatch(getAllNotification());
   }, []);
 
   const [columns, setColumns] = useState([
@@ -51,7 +55,7 @@ export const Feed = ({ feeds }) => {
   ]);
   const onDelete = (id) => {
     // console.log({ id: id });
-    dispatch(deleteFeed({ id }));
+    dispatch(deleteNotification({ id }));
   };
   const [details, setDetails] = useState({
     title: "",
@@ -65,12 +69,12 @@ export const Feed = ({ feeds }) => {
   };
   const addNew = (e) => {
     e.preventDefault();
-    dispatch(addFeed(details));
+    dispatch(addNotification(details));
   };
   return (
     <div>
       <Button type="primary" onClick={() => setVisible(true)}>
-        Add New Feed
+        Add New Notification
       </Button>
       <Modal
         title="Add New User"
@@ -104,12 +108,4 @@ export const Feed = ({ feeds }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    feeds: state.users,
-  };
-};
-
-const mapDispatchToProps = {};
-export default Feed;
-// export default connect(mapStateToProps)(Feed);
+export default Notification;

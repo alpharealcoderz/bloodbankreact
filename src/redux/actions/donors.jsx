@@ -21,7 +21,7 @@ export const deleteUser = (payload) => {
     try {
       let { data } = await axios.post(`${api_base_url}/deleteUser`, payload);
       data == "success" && message.success("Success");
-      dispatch(updateDonorsData());
+      data == "success" && dispatch(updateDonorsData());
     } catch (error) {
       console.log(error);
     }

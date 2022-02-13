@@ -11,7 +11,7 @@
 */
 
 import { useState, useEffect } from "react";
-
+import { logout } from "../../../Service/AuthService";
 import {
   Row,
   Col,
@@ -267,7 +267,9 @@ function Header({
 
   const showDrawer = () => setVisible(true);
   const hideDrawer = () => setVisible(false);
-
+  const logouts = () => {
+    logout();
+  };
   return (
     <>
       <Row gutter={[24, 0]}>
@@ -305,10 +307,10 @@ function Header({
             placement={placement}
             visible={visible}
           ></Drawer>
-          <Link to="/sign-in" className="btn-sign-in">
+          <a className="btn-sign-in">
             {profile}
-            <span>Logout</span>
-          </Link>
+            <span onClick={logouts}>Logout</span>
+          </a>
           <Input
             className="header-search"
             placeholder="Type here..."
