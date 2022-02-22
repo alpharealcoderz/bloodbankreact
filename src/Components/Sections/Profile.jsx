@@ -70,6 +70,7 @@ export default function Profile() {
   );
   const [visible, setVisible] = useState(false);
   useEffect(() => {
+    if (localStorage.getItem("token") == null) window.location.hash = "home";
     dispatch(getAllRequestByUser());
   }, []);
   const handleDetails = (e) => {
@@ -82,7 +83,7 @@ export default function Profile() {
     console.log("saransh", details);
     updateUser(details);
   };
-
+  if (localStorage.getItem("token") == null) return <></>;
   return (
     <section
       id="profile"

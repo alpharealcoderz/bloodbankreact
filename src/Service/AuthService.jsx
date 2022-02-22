@@ -24,7 +24,12 @@ export const loginHandler = (email, password) => {
 export const logout = (email, password) => {
   axios.post(`${api_base_url}/logout`).then((res) => {
     if (res.data.status == "success") {
-      window.location.pathname = "/";
+      if ((window.location.pathname = "/")) {
+        window.location.hash = "home";
+      } else {
+        window.location.pathname = "/";
+      }
+      window.location.hash = "home";
       message.success("Logged Out Successfully");
       localStorage.clear();
     } else if (res.data.status == "failure") {
