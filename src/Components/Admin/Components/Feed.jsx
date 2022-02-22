@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllFeed, addFeed, deleteFeed } from "../../../redux/actions/feed";
 import { Table, Modal, Button, Input } from "antd";
-
+import Main from "../../Admin/layout/Main";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 export const Feed = ({ feeds }) => {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ export const Feed = ({ feeds }) => {
     dispatch(addFeed(details));
   };
   return (
-    <div>
+    <Main>
       <Button type="primary" onClick={() => setVisible(true)}>
         Add New Feed
       </Button>
@@ -100,7 +100,7 @@ export const Feed = ({ feeds }) => {
         />
       </Modal>
       <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
-    </div>
+    </Main>
   );
 };
 

@@ -4,6 +4,7 @@ import { updateDonorsData, deleteUser } from "../../../redux/actions/donors";
 import { registerDonor } from "../../../Service/DonorService";
 import { Table, Modal, Button } from "antd";
 import { DeleteOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import Main from "../../Admin/layout/Main";
 export const User = ({
   updateDonorsData,
   canFetchDonors,
@@ -94,7 +95,7 @@ export const User = ({
     registerDonor(details);
   };
   return (
-    <div>
+    <Main>
       <Button type="primary" onClick={() => setVisible(true)}>
         Add New User
       </Button>
@@ -250,7 +251,7 @@ export const User = ({
         </form>
       </Modal>
       <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
-    </div>
+    </Main>
   );
 };
 

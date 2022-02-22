@@ -180,6 +180,22 @@ export default function SideNavigation() {
               <span>All Donors</span>
             </a>
           </li>
+          <li style={{ display: "none" }}>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="11"
+              href="#profile"
+            >
+              <span>All Donors</span>
+            </a>
+          </li>
         </ul>
       </div>
     </StyledNav>

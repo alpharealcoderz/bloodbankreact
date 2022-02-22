@@ -13,6 +13,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
         justifyContent: "center",
         width: "100%",
         zIndex: 1000,
+        height: "47px",
       }}
     >
       <div
@@ -56,17 +57,31 @@ export const TopNavigation = ({ updateDonorsData }) => {
           All Donors
         </a>
       </div>
-      <div>
-        <a
-          data-animation="61"
-          data-goto="6"
-          href="#login"
-          class="btn btn-large btn-green  "
-          style={{ color: "white", zIndex: "1000" }}
-        >
-          Login
-        </a>
-      </div>
+      {localStorage.getItem("token") != null ? (
+        <div>
+          <a
+            data-animation="61"
+            data-goto="6"
+            href="#login"
+            class="btn btn-large btn-green  "
+            style={{ color: "white", zIndex: "1000" }}
+          >
+            Login
+          </a>
+        </div>
+      ) : (
+        <div>
+          <a
+            data-animation="61"
+            data-goto="6"
+            href="#profile"
+            class="btn btn-large btn-green  "
+            style={{ color: "white", zIndex: "1000" }}
+          >
+            Profile
+          </a>
+        </div>
+      )}
       <div
         style={{
           backgroundColor: "#ed2d34",

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { state } from "../../Constants";
+import { message } from "antd";
 import { addRequest } from "../../redux/actions/request";
 export const Request = (props) => {
   const dispatch = useDispatch();
@@ -22,9 +23,12 @@ export const Request = (props) => {
   });
   const addRequests = (e) => {
     e.preventDefault();
-
-    dispatch(addRequest(details));
+    if (localStorage.getItem("token") == null)
+      message.success("Please Login To Post Request");
+    else dispatch(addRequest(details));
   };
+  useEffect(() => {}, []);
+
   const handleDetails = (e) => {
     let object = {};
     object[e.target.name] = e.target.value;

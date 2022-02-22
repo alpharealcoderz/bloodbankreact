@@ -11,7 +11,7 @@ export const loginHandler = (email, password) => {
       if (res.data.status == "success") {
         res.data.loginData.email !== "admin@admin.com"
           ? (window.location.hash = "#donors")
-          : (window.location.pathname = "/admin");
+          : (window.location.pathname = "/admin/feeds");
 
         message.success("Logged In Successfully");
         localStorage.setItem("userDetails", JSON.stringify(res.data.loginData));

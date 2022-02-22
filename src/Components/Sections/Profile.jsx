@@ -1,7 +1,57 @@
-import React, { useState } from "react";
-import { state } from "../../Constants";
-import { registerDonor } from "../../Service/DonorService";
-export const Donate = (props) => {
+import React, { useState, useEffect } from "react";
+import { logout } from "../../Service/AuthService";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { Input, Modal, Button, Table } from "antd";
+import { getAllRequestByUser } from "../../redux/actions/request";
+export default function Profile() {
+  const dispatch = useDispatch();
+  const [columns, setColumns] = useState([
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+      key: "phone",
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+      key: "adress",
+    },
+    {
+      title: "City",
+      dataIndex: "city",
+      key: "city",
+    },
+    {
+      title: "State",
+      dataIndex: "state",
+      key: "state",
+    },
+    {
+      title: "Hospital Name",
+      dataIndex: "hospital_name",
+      key: "hospital_name",
+    },
+    {
+      title: "Hospital City",
+      dataIndex: "hospital_city",
+      key: "hospital_city",
+    },
+    {
+      title: "Hospital State",
+      dataIndex: "hospital_state",
+      key: "hospital_state",
+    },
+  ]);
   const [details, setDetails] = useState({
     name: "",
     email: "",
@@ -10,38 +60,64 @@ export const Donate = (props) => {
     gender: "male",
     address: "",
     city: "",
-    state: state[0],
+    state: "",
     password: "",
-    blood_type: "A+",
-    is_donor_active: 1,
+    blood_type: "",
   });
+  const data = useSelector((state) => state.requests.usersRequest);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    dispatch(getAllRequestByUser());
+  }, []);
   const handleDetails = (e) => {
     let object = {};
     object[e.target.name] = e.target.value;
     setDetails({ ...details, ...object });
   };
-  const handleSubmit = (e, type) => {
+  const update = (e) => {
     e.preventDefault();
     console.log("saransh", details);
-    type == "register" && setDetails({ ...details, is_donor_active: 0 });
-    registerDonor(details);
+    //  registerDonor(details);
   };
-
   return (
-    <section id="donate" class="pt-page pt-page-6" data-id="request">
+    <section
+      id="profile"
+      class="pt-page pt-page-6 pt-5"
+      data-id="about"
+      style={{ overflowY: "scroll", display: "block", marginTop: "47px" }}
+    >
       <div class="container">
-        <div class="row align-items-lg-center">
-          <div class="col-6">
-            <div class="heading-area">
-              <h2 class="title">Donate Blood!</h2>
-              <h6 class="sub-title main-color">Please fill All Details.</h6>
+        <div class=" align-items-lg-center dot-box">
+          {/* <div class="col-6"> */}
+          <div class="heading-area">
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <h2 class="title">Your Request</h2>
+              <div>
+                <Button type="danger" onClick={() => setVisible(true)}>
+                  Edit Profile
+                </Button>
+                <Button
+                  type="danger"
+                  onClick={() => logout()}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Logout
+                </Button>
+              </div>
             </div>
-
+            <h6 class="sub-title main-color">BloodBank Name: Moto</h6>
+          </div>
+          <Modal
+            title="Edit Profile"
+            visible={visible}
+            onOk={(e) => update(e)}
+            onCancel={() => setVisible(false)}
+          >
             <form
               class="contact-form"
               id="contact-form-data"
               onSubmit={(e) => {
-                handleSubmit(e, "donate");
+                update(e);
               }}
             >
               <div class="row">
@@ -130,15 +206,13 @@ export const Donate = (props) => {
                     ></input>
                   </div>
                   <div class="col-sm-3">
-                    <select
+                    <input
                       class="form-control"
                       name="blood_type"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    >
-                      <option>A+</option>
-                    </select>
+                    />
                   </div>
                 </div>
               </div>
@@ -158,7 +232,7 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select
+                    <input
                       class="form-control"
                       type=""
                       placeholder="State"
@@ -166,16 +240,12 @@ export const Donate = (props) => {
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    >
-                      {state.map((st) => {
-                        return <option>{st}</option>;
-                      })}{" "}
-                    </select>
+                    />
                   </div>
                 </div>
               </div>
 
-              <div class="form-group">
+              {/* <div class="form-group">
                 <input
                   class="form-control"
                   type="password"
@@ -185,84 +255,13 @@ export const Donate = (props) => {
                     handleDetails(e);
                   }}
                 />
-              </div>
-
-              <button
-                type="submit"
-                id="submit_btn"
-                class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
-              >
-                <i
-                  class="fa fa-spinner fa-spin mr-2 d-none"
-                  aria-hidden="true"
-                ></i>
-                Register And Donate
-              </button>
-
-              <button
-                type="button"
-                id="submit_btn"
-                onClick={(e) => {
-                  handleSubmit(e, "register");
-                }}
-                class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
-              >
-                <i
-                  class="fa fa-spinner fa-spin mr-2 d-none"
-                  aria-hidden="true"
-                ></i>
-                Register Only
-              </button>
+              </div> */}
             </form>
-          </div>
-          <div class="col-6">
-            <ul class="address-item">
-              <li class="w-100 mb-4">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
-              </li>
-
-              <li class="w-100 mb-4">
-                <i class="lni-apartment main-color"></i>
-                <div class="content">
-                  <h6 class="main-color m-0">Address</h6>
-                  <p>Come visit us: Address</p>
-                </div>
-              </li>
-
-              <li class="pr-2">
-                <i class="lni-comment-reply main-color"></i>
-                <div class="content">
-                  <h6 class="main-color m-0">Email:</h6>
-                  <p>
-                    <a href="mailto:email@website.co">email@website.com</a>
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <i class="lni-phone-handset main-color"></i>
-                <div class="content">
-                  <h6 class="main-color m-0">Address</h6>
-                  <p>
-                    <a href="tel:002343474383">+91 1234567890</a>
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
+          </Modal>
+          <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
         </div>
       </div>
+      {/* </div> */}
     </section>
   );
-};
-
-// const mapStateToProps = (state) => ({
-
-// })
-
-// const mapDispatchToProps = {
-
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Contact)
-export default Donate;
+}

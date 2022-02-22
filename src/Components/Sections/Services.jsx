@@ -6,7 +6,7 @@ export default function Services() {
       id="services"
       class="pt-page pt-page-3"
       data-id="services"
-      style={{ overflowY: "scroll", display: "block" }}
+      style={{ overflowY: "scroll", display: "block", marginTop: "47px" }}
     >
       <div class="container mt-5">
         <div class="align-items-lg-center">

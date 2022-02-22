@@ -5,7 +5,7 @@ export default function Facts() {
       id="about"
       class="pt-page pt-page-6 pt-5"
       data-id="about"
-      style={{ overflowY: "scroll", display: "block" }}
+      style={{ overflowY: "scroll", display: "block", marginTop: "47px" }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">

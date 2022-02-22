@@ -320,6 +320,7 @@ blockquote > cite {
   background: #ed2d34;
   border-color: #ed2d34;
   color: #ffffff;
+  white-space: nowrap;
 }
 .btn.btn-green:hover,
 .btn.btn-green:focus {
@@ -653,7 +654,7 @@ blockquote > cite {
 
 .logo {
   width: 115px;
-  height: 90px;
+  height: 47px;
   display: flex;
   align-content: center;
   align-items: center;
@@ -712,7 +713,7 @@ blockquote > cite {
 .site-main-menu {
   list-style: none;
   position: absolute;
-  bottom: 50%;
+  bottom: 57%;
   transform: translateY(50%);
   width: 100%;
   margin: 0;
@@ -906,7 +907,7 @@ blockquote > cite {
 
 .shape-plus {
   position: absolute;
-  top: 5%;
+  top: 15%;
   left: 13%;
   border-radius: 1px;
   background: #ed2d34;
@@ -923,7 +924,7 @@ blockquote > cite {
   content: "";
   height: 5px;
   position: absolute;
-  top: 17px;
+  top: 7px;
   width: 40px;
   left: -17px;
 }
@@ -1448,7 +1449,8 @@ blockquote > cite {
   }
   #topNavigation {
     display: none !important;
-    margin-left: 40px;
+    padding-left: 40px;
+    height: 60px;
   }
   #topNavigation.active {
     display: flex !important;

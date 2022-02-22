@@ -14,6 +14,7 @@ import Facts from "./Components/Sections/Facts";
 import FAQ from "./Components/Sections/FAQ";
 import Donors from "./Components/Donors";
 import { getBloodType, getAllStates } from "./redux/actions/constants";
+import Profile from "./Components/Sections/Profile";
 export const Theme = ({ getBloodType, getAllStates }) => {
   useEffect(() => {
     getBloodType();
@@ -51,6 +52,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
             <Donate />
             <Facts />
             <FAQ />
+            <Profile />
             <Donors />
           </div>
         </div>

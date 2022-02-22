@@ -35,6 +35,7 @@ function Main({ children }) {
   pathname = pathname.replace("/", "");
 
   useEffect(() => {
+    if (localStorage.getItem("token") == null) window.location.pathname = "/";
     if (pathname === "rtl") {
       setPlacement("left");
     } else {

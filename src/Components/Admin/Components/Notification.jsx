@@ -6,7 +6,7 @@ import {
   addNotification,
 } from "../../../redux/actions/notification";
 import { Table, Modal, Button, Input } from "antd";
-
+import Main from ".././layout/Main";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 export const Notification = ({}) => {
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ export const Notification = ({}) => {
     dispatch(addNotification(details));
   };
   return (
-    <div>
+    <Main>
       <Button type="primary" onClick={() => setVisible(true)}>
         Add New Notification
       </Button>
@@ -104,7 +104,7 @@ export const Notification = ({}) => {
         />
       </Modal>
       <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
-    </div>
+    </Main>
   );
 };
 
