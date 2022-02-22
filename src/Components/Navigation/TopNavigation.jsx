@@ -57,7 +57,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
           All Donors
         </a>
       </div>
-      {localStorage.getItem("token") != null ? (
+      {localStorage.getItem("token") == null ? (
         <div>
           <a
             data-animation="61"

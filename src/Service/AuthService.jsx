@@ -32,3 +32,13 @@ export const logout = (email, password) => {
     }
   });
 };
+export const updateUser = (payload) => {
+  axios.post(`${api_base_url}/update`, payload).then((res) => {
+    if (res.data.status == "success") {
+      message.success("Profile Updated");
+      localStorage.setItem("userDetails", JSON.stringify(res.data.updatedData));
+    } else if (res.data.status == "failure") {
+      message.warning(res.data.error);
+    }
+  });
+};

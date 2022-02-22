@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { logout } from "../../Service/AuthService";
+import { logout, updateUser } from "../../Service/AuthService";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Input, Modal, Button, Table } from "antd";
 import { getAllRequestByUser } from "../../redux/actions/request";
@@ -52,19 +52,22 @@ export default function Profile() {
       key: "hospital_state",
     },
   ]);
-  const [details, setDetails] = useState({
-    name: "",
-    email: "",
-    phone: 0,
-    age: 0,
-    gender: "male",
-    address: "",
-    city: "",
-    state: "",
-    password: "",
-    blood_type: "",
-  });
+  // const [details, setDetails] = useState({
+  //   name: "",
+  //   email: "",
+  //   phone: 0,
+  //   age: 0,
+  //   gender: "male",
+  //   address: "",
+  //   city: "",
+  //   state: "",
+  //   password: "",
+  //   blood_type: "",
+  // });
   const data = useSelector((state) => state.requests.usersRequest);
+  const [details, setDetails] = useState(
+    JSON.parse(localStorage.getItem("userDetails"))
+  );
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     dispatch(getAllRequestByUser());
@@ -77,8 +80,9 @@ export default function Profile() {
   const update = (e) => {
     e.preventDefault();
     console.log("saransh", details);
-    //  registerDonor(details);
+    updateUser(details);
   };
+
   return (
     <section
       id="profile"
@@ -129,6 +133,7 @@ export default function Profile() {
                       type="text"
                       placeholder="Full Name"
                       name="name"
+                      value={details.name}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -142,6 +147,7 @@ export default function Profile() {
                       type="email"
                       placeholder="Email"
                       name="email"
+                      value={details.email}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -157,6 +163,7 @@ export default function Profile() {
                       type="number"
                       placeholder="Phone"
                       name="phone"
+                      value={details.phone}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -170,6 +177,7 @@ export default function Profile() {
                       class="form-control"
                       type="number"
                       placeholder="Age"
+                      value={details.age}
                       name="age"
                       onChange={(e) => {
                         handleDetails(e);
@@ -182,6 +190,7 @@ export default function Profile() {
                     <select
                       class="form-control"
                       placeholder="Gender"
+                      value={details.gender}
                       name="gender"
                       onChange={(e) => {
                         handleDetails(e);
@@ -202,6 +211,7 @@ export default function Profile() {
                       onChange={(e) => {
                         handleDetails(e);
                       }}
+                      value={details.address}
                       placeholder="address"
                     ></input>
                   </div>
@@ -209,6 +219,7 @@ export default function Profile() {
                     <input
                       class="form-control"
                       name="blood_type"
+                      value={details.blood_type}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -224,6 +235,7 @@ export default function Profile() {
                       type="text"
                       placeholder="City"
                       name="city"
+                      value={details.city}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -236,6 +248,7 @@ export default function Profile() {
                       class="form-control"
                       type=""
                       placeholder="State"
+                      value={details.state}
                       name="state"
                       onChange={(e) => {
                         handleDetails(e);

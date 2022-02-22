@@ -49,7 +49,7 @@ export const getAllRequestByUser = () => {
     try {
       let { data } = await axios.post(`${api_base_url}/getAllRequest`);
 
-      data == "success" &&
+      data.status == "success" &&
         dispatch({
           type: GET_ALL_REQUEST_By_USER,
           payload: data.requestData,
