@@ -11,6 +11,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 export const Requests = ({ feeds }) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.requests.requestData);
+  const bloodType = useSelector((state) => state.donors.bloodType);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     dispatch(getAllRequest());
@@ -229,13 +230,15 @@ export const Requests = ({ feeds }) => {
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <input
+                <select
                   class="form-control"
-                  type="text"
-                  placeholder="blood_type"
                   name="blood_type"
                   onChange={(e) => handleDetails(e)}
-                />
+                >
+                  {bloodType.map((st) => {
+                    return <option>{st}</option>;
+                  })}
+                </select>
               </div>
             </div>
           </div>
@@ -304,12 +307,12 @@ export const Requests = ({ feeds }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    feeds: state.users,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     feeds: state.users,
+//   };
+// };
 
-const mapDispatchToProps = {};
+// const mapDispatchToProps = {};
 export default Requests;
 // export default connect(mapStateToProps)(Feed);

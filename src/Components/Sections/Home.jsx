@@ -84,12 +84,9 @@ export const Home = ({
               <form class="contact-form" id="contact-form-data">
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
-                    {/* <div class="form-group"> */}
                     <label>Blood Type</label>
-                    {/* </div> */}
                   </div>
                   <div class="col-sm-6">
-                    {/* <div class="form-group"> */}
                     <select
                       class="form-control"
                       name="blood_type"
@@ -100,19 +97,15 @@ export const Home = ({
                       <option>All</option>;
                       {bloodType.map((st) => {
                         return <option>{st}</option>;
-                      })}{" "}
+                      })}
                     </select>
-                    {/* </div> */}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
-                    {/* <div class="form-group"> */}
                     <label>State</label>
-                    {/* </div> */}
                   </div>
                   <div class="col-sm-6">
-                    {/* <div class="form-group"> */}
                     <select
                       class="form-control"
                       name="state"
@@ -126,17 +119,13 @@ export const Home = ({
                         return <option>{st.name}</option>;
                       })}
                     </select>
-                    {/* </div> */}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
-                    {/* <div class="form-group"> */}
                     <label>City</label>
-                    {/* </div> */}
                   </div>
                   <div class="col-sm-6">
-                    {/* <div class="form-group"> */}
                     <select
                       class="form-control"
                       name="city"
@@ -157,7 +146,6 @@ export const Home = ({
                   onClick={() => searchDonors()}
                   data-animation="61"
                   data-goto="11"
-                  // href="#donors"
                   style={{ color: "white" }}
                   id="submit_btn"
                   class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
@@ -194,4 +182,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-// export default Home;

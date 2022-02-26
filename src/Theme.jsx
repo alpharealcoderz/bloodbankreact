@@ -15,6 +15,7 @@ import FAQ from "./Components/Sections/FAQ";
 import Donors from "./Components/Donors";
 import { getBloodType, getAllStates } from "./redux/actions/constants";
 import Profile from "./Components/Sections/Profile";
+import AllRequest from "./Components/AllRequest";
 export const Theme = ({ getBloodType, getAllStates }) => {
   useEffect(() => {
     getBloodType();
@@ -27,11 +28,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
       <header class="header-left">
         <a class="logo" href="#home">
           <h1 class="logo-text">
-            <img
-              style={{ borderRadius: "50%" }}
-              src="https://play-lh.googleusercontent.com/pgP3qUQu_ICAh33itwY0DpkNUEA1O0h_0XTUUPqkV_43KQNzeJQgYRtDhthBAy31OCQ"
-              alt="logo"
-            />
+            <img style={{ borderRadius: "50%" }} src="/logo.png" alt="logo" />
           </h1>
         </a>
 
@@ -53,7 +50,9 @@ export const Theme = ({ getBloodType, getAllStates }) => {
             <Facts />
             <FAQ />
             <Profile />
+
             <Donors />
+            <AllRequest />
           </div>
         </div>
       </div>

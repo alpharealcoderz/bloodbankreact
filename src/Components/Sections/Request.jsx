@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { state } from "../../Constants";
 import { message } from "antd";
 import { addRequest } from "../../redux/actions/request";
+import { getAllCityByStates } from "../../redux/actions/constants";
 export const Request = (props) => {
   const dispatch = useDispatch();
+  const bloodType = useSelector((state) => state.donors.bloodType);
+  const city = useSelector((state) => state.donors.city);
+  const states = useSelector((state) => state.donors.states);
   const [details, setDetails] = useState({
     name: "",
     email: "",
@@ -33,6 +37,13 @@ export const Request = (props) => {
     let object = {};
     object[e.target.name] = e.target.value;
     setDetails({ ...details, ...object });
+  };
+  const handleStateChange = (e) => {
+    let filter = states.find((name) => {
+      return name.name == e.target.value;
+    });
+    filter && dispatch(getAllCityByStates(filter.id));
+    console.log(filter);
   };
   return (
     <section id="request" class="pt-page pt-page-6" data-id="request">
@@ -125,39 +136,50 @@ export const Request = (props) => {
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <input
+                    <select
+                      onChange={(e) => {
+                        handleDetails(e);
+                        handleStateChange(e);
+                      }}
+                      name="state"
                       class="form-control"
-                      type="text"
-                      placeholder="City"
-                      name="city"
-                      onChange={(e) => handleDetails(e)}
-                    />
+                      placeholder="State"
+                    >
+                      <option>All</option>;
+                      {states.map((st) => {
+                        return <option>{st.name}</option>;
+                      })}
+                    </select>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
                     <select
                       onChange={(e) => handleDetails(e)}
-                      name="state"
+                      name="city"
                       class="form-control"
                       type=""
-                      placeholder="State"
+                      placeholder="City"
                     >
-                      {state.map((st) => {
-                        return <option>{st}</option>;
-                      })}{" "}
+                      {city.map((st) => {
+                        return <option>{st.name}</option>;
+                      })}
                     </select>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <input
+                    <select
                       class="form-control"
-                      type="text"
-                      placeholder="blood_type"
                       name="blood_type"
-                      onChange={(e) => handleDetails(e)}
-                    />
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    >
+                      {bloodType.map((st) => {
+                        return <option>{st}</option>;
+                      })}
+                    </select>
                   </div>
                 </div>
               </div>

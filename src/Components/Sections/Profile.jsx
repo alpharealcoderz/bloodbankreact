@@ -71,7 +71,7 @@ export default function Profile() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("token") == null) window.location.hash = "home";
-    dispatch(getAllRequestByUser());
+    else dispatch(getAllRequestByUser());
   }, []);
   const handleDetails = (e) => {
     let object = {};

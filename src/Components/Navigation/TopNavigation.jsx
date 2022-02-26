@@ -48,13 +48,25 @@ export const TopNavigation = ({ updateDonorsData }) => {
       <div>
         <a
           data-animation="61"
-          data-goto="11"
+          data-goto="12"
           href="#donors"
           class="btn btn-large btn-green  "
           style={{ color: "white", zIndex: "1000" }}
           onClick={() => updateDonorsData()}
         >
           All Donors
+        </a>
+      </div>
+      <div>
+        <a
+          data-animation="61"
+          data-goto="11"
+          href="#allRequest"
+          class="btn btn-large btn-green  "
+          style={{ color: "white", zIndex: "1000" }}
+          onClick={() => updateDonorsData()}
+        >
+          All Request
         </a>
       </div>
       {localStorage.getItem("token") == null ? (

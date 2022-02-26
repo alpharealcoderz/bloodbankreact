@@ -46,7 +46,7 @@ export const getAllCityByStates = (id) => {
   return async (dispatch) => {
     try {
       let { data } = await axios.post(
-        "http://127.0.0.1:8000/api/getAllCityByStates",
+        `${api_base_url}/getAllCityByStates`,
         payload
       );
       data &&

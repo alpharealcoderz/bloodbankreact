@@ -191,9 +191,25 @@ export default function SideNavigation() {
               }}
               data-animation="61"
               data-goto="11"
-              href="#profile"
+              href="#donors"
             >
               <span>All Donors</span>
+            </a>
+          </li>
+          <li style={{ display: "none" }}>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="12"
+              href="#allRequest"
+            >
+              <span>All Request</span>
             </a>
           </li>
         </ul>

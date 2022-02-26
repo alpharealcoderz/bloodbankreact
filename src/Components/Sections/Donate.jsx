@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { state } from "../../Constants";
+import { getAllCityByStates } from "../../redux/actions/constants";
 import { registerDonor } from "../../Service/DonorService";
+import { useSelector, useDispatch } from "react-redux";
 export const Donate = (props) => {
+  const dispatch = useDispatch();
+  const bloodType = useSelector((state) => state.donors.bloodType);
+  const city = useSelector((state) => state.donors.city);
+  const states = useSelector((state) => state.donors.states);
+
   const [details, setDetails] = useState({
     name: "",
     email: "",
@@ -26,7 +33,14 @@ export const Donate = (props) => {
     type == "register" && setDetails({ ...details, is_donor_active: 0 });
     registerDonor(details);
   };
+  const handleStateChange = (e) => {
+    let filter = states.find((name) => {
+      return name.name == e.target.value;
+    });
 
+    filter && dispatch(getAllCityByStates(filter.id));
+    console.log(filter);
+  };
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
       <div class="container">
@@ -137,25 +151,14 @@ export const Donate = (props) => {
                         handleDetails(e);
                       }}
                     >
-                      <option>A+</option>
+                      {bloodType.map((st) => {
+                        return <option>{st}</option>;
+                      })}
                     </select>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <input
-                      class="form-control"
-                      type="text"
-                      placeholder="City"
-                      name="city"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                    />
-                  </div>
-                </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <select
@@ -165,11 +168,30 @@ export const Donate = (props) => {
                       name="state"
                       onChange={(e) => {
                         handleDetails(e);
+                        handleStateChange(e);
                       }}
                     >
-                      {state.map((st) => {
-                        return <option>{st}</option>;
-                      })}{" "}
+                      <option>All</option>
+                      {states.map((st) => {
+                        return <option>{st.name}</option>;
+                      })}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <select
+                      class="form-control"
+                      type=""
+                      placeholder="City"
+                      name="city"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    >
+                      {city.map((ct) => {
+                        return <option>{ct.name}</option>;
+                      })}
                     </select>
                   </div>
                 </div>
