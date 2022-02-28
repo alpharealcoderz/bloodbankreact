@@ -1,17 +1,17 @@
 import React from "react";
-export default function AboutUs() {
+export default function PrivacyPolicy() {
   return (
     <section
-      id="about"
+      id="privacypolicy"
       class="pt-page pt-page-6 pt-5"
-      data-id="about"
+      data-id="privacypolicy"
       style={{ overflowY: "scroll", display: "block", marginTop: "47px" }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">
           <iframe
-            style={{ width: "100%", height: "90vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/aboutus.html"
+            style={{ width: "100%", height: "100vh" }}
+            src="http://bloodbankreal.herokuapp.com/htmls/privacypolicy.html"
           />
         </div>
       </div>

@@ -21,6 +21,7 @@ import ProjectCompleted from "./Components/Sections/ProjectCompleted";
 import ProjectInprocess from "./Components/Sections/ProjectInprocess";
 import Contributions from "./Components/Sections/Contributions";
 import VisionMission from "./Components/Sections/VisionMission";
+import PrivacyPolicy from "./Components/Sections/PrivacyPolicy";
 export const Theme = ({ getBloodType, getAllStates }) => {
   useEffect(() => {
     getBloodType();
@@ -38,12 +39,12 @@ export const Theme = ({ getBloodType, getAllStates }) => {
         </a>
 
         <SideNavigation />
+        <TopNavigation />
       </header>
 
       <div class="main-left" id="main">
         <div class="pt-wrapper">
           <div class="subpages">
-            <TopNavigation />
             <Home />
             <Donate />
             <Achievements />
@@ -62,6 +63,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
             <Presscoverage />
             <ProjectCompleted />
             <ProjectInprocess />
+            <PrivacyPolicy />
           </div>
         </div>
       </div>

@@ -12,11 +12,7 @@ export default function SideNavigation() {
         onClick={() => toggleNav()}
         class="sidemenu_btn"
         id="sidemenu_toggle"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      ></div>
       <div class="site-nav" id="navToggle">
         <ul class="site-main-menu alt-font" id="nav">
           <li>
@@ -303,6 +299,22 @@ export default function SideNavigation() {
                 Project In
                 <br /> Process{" "}
               </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="18"
+              href="#privacypolicy"
+            >
+              <span>Privacy Policy</span>
             </a>
           </li>
         </ul>

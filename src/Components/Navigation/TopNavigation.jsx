@@ -4,12 +4,11 @@ import { updateDonorsData } from "../../redux/actions/donors";
 export const TopNavigation = ({ updateDonorsData }) => {
   return (
     <div
-      // id="topNavigation"
+      id="topNavigation"
       style={{
         display: "flex",
         position: "fixed",
         top: 0,
-        // backgroundColor: "#ed2d34",
         justifyContent: "center",
         width: "100%",
         zIndex: 1000,
@@ -22,7 +21,13 @@ export const TopNavigation = ({ updateDonorsData }) => {
           width: "calc(100% - 1050px)",
           overflow: "hidden",
         }}
-      ></div>
+      >
+        <a class="logo" href="#home">
+          <h1 class="logo-text">
+            <img style={{ borderRadius: "50%" }} src="/logo.png" alt="logo" />
+          </h1>
+        </a>
+      </div>
       <div>
         <a
           data-animation="58"
