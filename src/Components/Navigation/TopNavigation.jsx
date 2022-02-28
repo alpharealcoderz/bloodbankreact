@@ -4,7 +4,7 @@ import { updateDonorsData } from "../../redux/actions/donors";
 export const TopNavigation = ({ updateDonorsData }) => {
   return (
     <div
-      id="topNavigation"
+      // id="topNavigation"
       style={{
         display: "flex",
         position: "fixed",

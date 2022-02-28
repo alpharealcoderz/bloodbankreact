@@ -8,7 +8,7 @@ import Donate from "./Components/Sections/Donate";
 import Clients from "./Components/Sections/Clients";
 import Request from "./Components/Sections/Request";
 import Home from "./Components/Sections/Home";
-import Services from "./Components/Sections/Services";
+import Achievements from "./Components/Sections/Achievements";
 import AboutUs from "./Components/Sections/AboutUs";
 import Facts from "./Components/Sections/Facts";
 import FAQ from "./Components/Sections/FAQ";
@@ -16,6 +16,11 @@ import Donors from "./Components/Donors";
 import { getBloodType, getAllStates } from "./redux/actions/constants";
 import Profile from "./Components/Sections/Profile";
 import AllRequest from "./Components/AllRequest";
+import Presscoverage from "./Components/Sections/Presscoverage";
+import ProjectCompleted from "./Components/Sections/ProjectCompleted";
+import ProjectInprocess from "./Components/Sections/ProjectInprocess";
+import Contributions from "./Components/Sections/Contributions";
+import VisionMission from "./Components/Sections/VisionMission";
 export const Theme = ({ getBloodType, getAllStates }) => {
   useEffect(() => {
     getBloodType();
@@ -41,7 +46,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
             <TopNavigation />
             <Home />
             <Donate />
-            <Services />
+            <Achievements />
             <Clients />
             <Request />
             <Login />
@@ -50,9 +55,13 @@ export const Theme = ({ getBloodType, getAllStates }) => {
             <Facts />
             <FAQ />
             <Profile />
-
             <Donors />
             <AllRequest />
+            <Contributions />
+            <VisionMission />
+            <Presscoverage />
+            <ProjectCompleted />
+            <ProjectInprocess />
           </div>
         </div>
       </div>

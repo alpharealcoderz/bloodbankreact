@@ -78,7 +78,7 @@ export default function SideNavigation() {
               }}
               data-animation="61"
               data-goto="3"
-              href="#services"
+              href="#achievements"
             >
               <span>Achivements</span>
             </a>
@@ -161,7 +161,11 @@ export default function SideNavigation() {
               data-goto="10"
               href="#faq"
             >
-              <span>FAQ</span>
+              <span>
+                Who Can/
+                <br />
+                Can't Donate
+              </span>
             </a>
           </li>
           <li style={{ display: "none" }}>
@@ -210,6 +214,95 @@ export default function SideNavigation() {
               href="#allRequest"
             >
               <span>All Request</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="13"
+              href="#contributions"
+            >
+              <span>Contributions</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="14"
+              href="#visionmission"
+            >
+              <span>Vision Mission</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="15"
+              href="#presscoverage"
+            >
+              <span>
+                Press <br />
+                Coverage{" "}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="16"
+              href="#projectcompleted"
+            >
+              <span>
+                Project <br />
+                Completed
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="17"
+              href="#projectinprocess"
+            >
+              <span>
+                Project In
+                <br /> Process{" "}
+              </span>
             </a>
           </li>
         </ul>
