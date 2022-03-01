@@ -11,6 +11,7 @@ export default function Facts() {
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
           <iframe
+            loading="lazy"
             style={{ height: "100vh" }}
             src="http://bloodbankreal.herokuapp.com/htmls/facts.html"
           />

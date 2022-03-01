@@ -102,6 +102,7 @@ export default function Achivements() {
       <div class="container" style={{ marginTop: "50px" }}>
         <div class=" align-items-lg-center dot-box">
           <iframe
+            loading="lazy"
             style={{ height: "100vh" }}
             src="https://bloodbankreal.herokuapp.com/htmls/Achievements.html"
           />
