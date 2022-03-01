@@ -808,7 +808,7 @@ blockquote > cite {
   top: auto;
   left: 0;
   display: flex;
-  min-height: 100vh;
+  min-height: 130vh;
   align-items: center;
   background-color: #fff;
   visibility: hidden;
