@@ -3,7 +3,7 @@ import { state } from "../../Constants";
 import { getAllCityByStates } from "../../redux/actions/constants";
 import { registerDonor } from "../../Service/DonorService";
 import { useSelector, useDispatch } from "react-redux";
-export const Donate = (props) => {
+export const Register = (props) => {
   const dispatch = useDispatch();
   const bloodType = useSelector((state) => state.donors.bloodType);
   const city = useSelector((state) => state.donors.city);
@@ -42,12 +42,12 @@ export const Donate = (props) => {
     console.log(filter);
   };
   return (
-    <section id="donate" class="pt-page pt-page-6" data-id="request">
+    <section id="register" class="pt-page pt-page-6" data-id="register">
       <div class="container">
         <div class="row align-items-lg-center">
           <div class="col-6">
             <div class="heading-area">
-              <h2 class="title">Donate Blood!</h2>
+              <h2 class="title">Register</h2>
               <h6 class="sub-title main-color">Please fill All Details.</h6>
             </div>
 
@@ -55,7 +55,7 @@ export const Donate = (props) => {
               class="contact-form"
               id="contact-form-data"
               onSubmit={(e) => {
-                handleSubmit(e, "donate");
+                handleSubmit(e, "register");
               }}
             >
               <div class="row">
@@ -210,15 +210,18 @@ export const Donate = (props) => {
               </div>
 
               <button
-                type="submit"
+                type="button"
                 id="submit_btn"
+                onClick={(e) => {
+                  handleSubmit(e, "register");
+                }}
                 class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
               >
                 <i
                   class="fa fa-spinner fa-spin mr-2 d-none"
                   aria-hidden="true"
                 ></i>
-                Donate
+                Register
               </button>
             </form>
           </div>
@@ -272,4 +275,4 @@ export const Donate = (props) => {
 // }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Contact)
-export default Donate;
+export default Register;

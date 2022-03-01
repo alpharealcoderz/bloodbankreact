@@ -12,7 +12,7 @@ export default function ProjectCompleted() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/projectCompleted.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/projectCompleted.html"
           />
         </div>
       </div>

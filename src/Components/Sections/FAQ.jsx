@@ -12,7 +12,7 @@ export default function FAQ() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/whocancant.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/whocancant.html"
           />
         </div>
       </div>

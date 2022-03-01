@@ -12,7 +12,7 @@ export default function Contributions() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/contribution.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/contribution.html"
           />
         </div>
       </div>

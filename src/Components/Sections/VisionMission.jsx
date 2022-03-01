@@ -12,7 +12,7 @@ export default function VisionMission() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/visionmission.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/visionmission.html"
           />
         </div>
       </div>

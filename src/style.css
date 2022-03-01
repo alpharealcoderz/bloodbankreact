@@ -12,3 +12,9 @@
 svg {
   color: black;
 }
+.navbarActive {
+  display: none;
+}
+.leftActive {
+  padding-left: 0px;
+}

@@ -12,7 +12,7 @@ export default function AboutUs() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/aboutus.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/aboutus.html"
           />
         </div>
       </div>

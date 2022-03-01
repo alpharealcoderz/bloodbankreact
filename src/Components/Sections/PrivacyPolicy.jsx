@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/privacypolicy.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/privacypolicy.html"
           />
         </div>
       </div>

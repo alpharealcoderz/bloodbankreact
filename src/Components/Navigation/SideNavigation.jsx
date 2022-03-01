@@ -13,7 +13,7 @@ export default function SideNavigation() {
         class="sidemenu_btn"
         id="sidemenu_toggle"
       ></div>
-      <div class="site-nav" id="navToggle">
+      <div class="site-nav navbarActive" id="navToggle">
         <ul class="site-main-menu alt-font" id="nav">
           <li>
             <a
@@ -23,6 +23,7 @@ export default function SideNavigation() {
                 zIndex: "1000",
                 fontSize: "12px",
                 padding: "10px",
+                marginTop: "95px",
               }}
               data-animation="58"
               data-goto="1"
@@ -178,6 +179,22 @@ export default function SideNavigation() {
               href="#donors"
             >
               <span>All Donors</span>
+            </a>
+          </li>
+          <li style={{ display: "none" }}>
+            <a
+              class="btn btn-large btn-green "
+              style={{
+                color: "white",
+                zIndex: "1000",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+              data-animation="61"
+              data-goto="19"
+              href="#register"
+            >
+              <span>Register</span>
             </a>
           </li>
           <li style={{ display: "none" }}>

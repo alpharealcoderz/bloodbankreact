@@ -12,7 +12,7 @@ export default function ProjectInprocess() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/projectInprocess.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/projectInprocess.html"
           />
         </div>
       </div>

@@ -12,7 +12,7 @@ export default function Presscoverage() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/presscoverage.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/presscoverage.html"
           />
         </div>
       </div>

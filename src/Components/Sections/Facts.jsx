@@ -13,7 +13,7 @@ export default function Facts() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/facts.html"
+            src="https://bloodbankreal.herokuapp.com/htmls/facts.html"
           />
         </div>
       </div>
