@@ -23,6 +23,7 @@ import Contributions from "./Components/Sections/Contributions";
 import VisionMission from "./Components/Sections/VisionMission";
 import PrivacyPolicy from "./Components/Sections/PrivacyPolicy";
 import Register from "./Components/Sections/Register";
+import Footer from "./Components/Admin/layout/Footer";
 export const Theme = ({ getBloodType, getAllStates }) => {
   useEffect(() => {
     getBloodType();
@@ -83,6 +84,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
