@@ -1,5 +1,6 @@
 import React, { useState, useE } from "react";
 import { connect } from "react-redux";
+import blood from "./bloodlogo.jpg";
 
 import { updateDonorsData } from "../../redux/actions/donors";
 import {
@@ -63,6 +64,7 @@ export const Home = ({
           </div>
 
           <div class="col-lg-5 wow fadeInRight">
+            <img src={blood} />
             <div class="heading-box">
               <h3>
                 <span class="main-color">Blood Bank Name</span>{" "}
