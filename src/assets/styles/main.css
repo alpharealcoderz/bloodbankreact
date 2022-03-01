@@ -634,8 +634,9 @@ header.ant-layout-header.subheader {
 }
 
 .logo img {
-  width: 32px;
+  width: 52px;
   margin-right: 10px;
+  margin-top: 20px;
 }
 
 .logo {

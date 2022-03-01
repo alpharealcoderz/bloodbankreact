@@ -10,8 +10,8 @@ export default function Contributions() {
       <div class="container">
         <div class=" align-items-lg-center dot-box">
           <iframe
-            style={{ width: "100%", height: "100vh" }}
-            src="http://bloodbankreal.herokuapp.com/htmls/contributions.html"
+            style={{ height: "100vh" }}
+            src="http://bloodbankreal.herokuapp.com/htmls/contribution.html"
           />
         </div>
       </div>

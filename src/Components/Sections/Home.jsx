@@ -160,10 +160,10 @@ export const Home = ({
             </div>
           </div>
         </div>
-        <span class="shape-square"></span>
+        {/* <span class="shape-square"></span>
         <span class="shape-triangle"></span>
         <span class="shape-plus"></span>
-        <span class="shape-circle"></span>
+        <span class="shape-circle"></span> */}
       </div>
     </section>
   );
