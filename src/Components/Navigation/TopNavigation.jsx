@@ -139,7 +139,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
         <div>
           <a
             data-animation="61"
-            data-goto="6"
+            data-goto="11"
             href="#profile"
             class="btn btn-large btn-green  "
             style={{ color: "white", height: "53px" }}

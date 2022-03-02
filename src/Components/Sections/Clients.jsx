@@ -6,7 +6,7 @@ export default function Clients() {
       id="clients"
       class="pt-page pt-page-5"
       data-id="clients"
-      style={{ marginTop: "47px" }}
+      style={{ paddingTop: "67px" }}
     >
       <div class="container">
         <div class="row d-flex align-content-lg-center min-height-100vh">

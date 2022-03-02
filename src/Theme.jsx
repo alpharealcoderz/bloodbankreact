@@ -49,7 +49,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
         <a class="logo" href="#home">
           <h1 class="logo-text">
             {/* <img style={{ borderRadius: "50%" }} src="/logo.png" alt="logo" />{" "} */}
-            {toggler}
+            {/* {toggler} */}
           </h1>
         </a>
 

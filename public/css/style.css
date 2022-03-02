@@ -638,7 +638,7 @@ blockquote > cite {
   left: 0;
   overflow: hidden;
   display: inline-block;
-  background-color: white;
+  background-color: #ed2d34;
   box-shadow: 1px 1px 7px #e1e1e1;
 }
 .signle-layout {
