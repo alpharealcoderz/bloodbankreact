@@ -2,7 +2,9 @@
     color: white;
     background-color: #ed2d34;
     padding-top: 3em;
-    position: relative;
-    bottom: 0;
+    position: absolute;
+    bottom: 0%;
     width: 100%;
+    margin-bottom: -40%;
+    /* height: 95px; */
   }

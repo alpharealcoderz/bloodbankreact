@@ -125,6 +125,26 @@ export const Home = ({
                 </div>
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
+                    <label>District</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <select
+                      class="form-control"
+                      name="District"
+                      onChange={(e) => {
+                        handleSearchParam(e);
+                      }}
+                    >
+                      <option>All</option>;
+                      {city.map((ct) => {
+                        return <option>{ct.name}</option>;
+                      })}
+                    </select>
+                    {/* </div> */}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4" style={{ marginTop: "6px" }}>
                     <label>City</label>
                   </div>
                   <div class="col-sm-6">
@@ -137,7 +157,7 @@ export const Home = ({
                     >
                       <option>All</option>;
                       {city.map((ct) => {
-                        return <option>{ct.name}</option>;
+                        return <option></option>;
                       })}
                     </select>
                     {/* </div> */}
