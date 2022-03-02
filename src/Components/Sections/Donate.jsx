@@ -407,12 +407,40 @@ export const Donate = (props) => {
                 <div class="col-sm-6">
                   <div class="form-group">
                     <p>Are you interested to work as a volunteer also?</p>
-                    <input type="checkbox" id="yes" name="yes" value="yes" />
-                    <label for="yes"> yes</label>
-                    <br></br>
-                    <input type="checkbox" id="no" name="no" value="no" />
-                    <label for="no">No</label>
-                    <br></br>
+                    <div class="row">
+                      <div class="col-sm-3">
+                      <input type="checkbox" id="no" name="no" value="no" />
+                        <label for="no">No</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="pick"
+                          name="pick"
+                          value="pick"
+                        />
+                        <label for="pick">pick</label>
+                      </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="AFA"
+                          name="AFA"
+                          value="AFA"
+                        />
+                        <label for="AFA">admin</label>
+                        <br></br>
+                        
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="other"
+                          name="other"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
