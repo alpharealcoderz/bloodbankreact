@@ -276,6 +276,15 @@ export const Donate = (props) => {
                         />
                         <label for="WBC">WBC</label>
                       </div>
+                      <div class="col-sm-3">
+                      <input
+                          type="checkbox"
+                          id="Blood"
+                          name="Blood"
+                          value="Blood"
+                        />
+                        <label for="Blood">Blood</label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -347,6 +356,15 @@ export const Donate = (props) => {
                         />
                         <label for="WBC">WBC</label>
                       </div>
+                      <div class="col-sm-3">
+                      <input
+                          type="checkbox"
+                          id="Blood"
+                          name="Blood"
+                          value="Blood"
+                        />
+                        <label for="Blood">Blood</label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -416,7 +434,7 @@ export const Donate = (props) => {
                   <div class="form-group">
                     <p>Are you interested to work as a volunteer also?</p>
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-5">
                         <input type="checkbox" id="no" name="no" value="no" />
                         <label for="no">No</label>
                         <br></br>
@@ -426,16 +444,16 @@ export const Donate = (props) => {
                           name="pick"
                           value="pick"
                         />
-                        <label for="pick">pick</label>
+                        <label for="pick">Pick & Drop</label>
                       </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-5">
                         <input
                           type="checkbox"
                           id="AFA"
                           name="AFA"
                           value="AFA"
                         />
-                        <label for="AFA">admin</label>
+                        <label for="AFA">As admin</label>
                         <br></br>
                         <input
                           class="form-control"
