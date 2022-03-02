@@ -235,39 +235,53 @@ export const Donate = (props) => {
                     </select>
                   </div>
                 </div>
-
-              
-                
-              </div><br></br>
+              </div>
+              <br></br>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <p>
-                      Donation availability ?
-                    </p>
+                    <p>Donation availability ?</p>
                     <div class="row">
-                    <div class="col-sm-3">
-                    <input type="checkbox" id="SDP" name="SDP" value="SDP" /> 
-                    <label for="SDP"> SDP</label>
-                    <br></br>
-                    <input type="checkbox" id="FFP" name="FFP" value="FFP" />
-                    <label for="FFP">FFP</label>
-                    </div>
-                    <div class="col-sm-3">
-                    <input type="checkbox" id="RDP" name="RDP" value="RDP" />
-                    <label for="RDP">RDP</label>
-                    <br></br>
-                    <input type="checkbox" id="WBC" name="WBC" value="WBC" />
-                    <label for="WBC">WBC</label>
-                    </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="SDP"
+                          name="SDP"
+                          value="SDP"
+                        />
+                        <label for="SDP"> SDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="FFP"
+                          name="FFP"
+                          value="FFP"
+                        />
+                        <label for="FFP">FFP</label>
+                      </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="RDP"
+                          name="RDP"
+                          value="RDP"
+                        />
+                        <label for="RDP">RDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="WBC"
+                          name="WBC"
+                          value="WBC"
+                        />
+                        <label for="WBC">WBC</label>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                  <p>
-                      Last Donated date
-                    </p>
+                    <p>Last Donated date</p>
                     <input
                       class="form-control"
                       type="Date"
@@ -281,9 +295,7 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                  <p>
-                      Donated Place
-                    </p>
+                    <p>Donated Place</p>
                     <input
                       class="form-control"
                       type="text"
@@ -299,32 +311,48 @@ export const Donate = (props) => {
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <p>
-                      Type of donation?
-                    </p>
+                    <p>Type of donation?</p>
                     <div class="row">
-                    <div class="col-sm-3">
-                    <input type="checkbox" id="SDP" name="SDP" value="SDP" /> 
-                    <label for="SDP"> SDP</label>
-                    <br></br>
-                    <input type="checkbox" id="FFP" name="FFP" value="FFP" />
-                    <label for="FFP">FFP</label>
-                    </div>
-                    <div class="col-sm-3">
-                    <input type="checkbox" id="RDP" name="RDP" value="RDP" />
-                    <label for="RDP">RDP</label>
-                    <br></br>
-                    <input type="checkbox" id="WBC" name="WBC" value="WBC" />
-                    <label for="WBC">WBC</label>
-                    </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="SDP"
+                          name="SDP"
+                          value="SDP"
+                        />
+                        <label for="SDP"> SDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="FFP"
+                          name="FFP"
+                          value="FFP"
+                        />
+                        <label for="FFP">FFP</label>
+                      </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="RDP"
+                          name="RDP"
+                          value="RDP"
+                        />
+                        <label for="RDP">RDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="WBC"
+                          name="WBC"
+                          value="WBC"
+                        />
+                        <label for="WBC">WBC</label>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                  <p>
-                      what distance you can travel to donate blood?
-                    </p>
+                    <p>what distance you can travel to donate blood?</p>
                     <input
                       class="form-control"
                       type="number"
@@ -341,9 +369,7 @@ export const Donate = (props) => {
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <p>
-                      Do you own a vehicle ?
-                    </p>
+                    <p>Do you own a vehicle ?</p>
                     <input type="checkbox" id="yes" name="yes" value="car" />
                     <label for="car"> car</label>
                     <br></br>
@@ -354,9 +380,7 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <p>
-                     What is your convenient time to interact ?
-                    </p>
+                    <p>What is your convenient time to interact ?</p>
                     <input
                       class="form-control"
                       type="time"
@@ -371,9 +395,7 @@ export const Donate = (props) => {
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <p>
-                     Are you ready to support in emergency
-                    </p>
+                    <p>Are you ready to support in emergency</p>
                     <input type="checkbox" id="yes" name="yes" value="yes" />
                     <label for="yes"> yes</label>
                     <br></br>
@@ -384,9 +406,7 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <p>
-                      Are you interested to work as a volunteer also?
-                    </p>
+                    <p>Are you interested to work as a volunteer also?</p>
                     <input type="checkbox" id="yes" name="yes" value="yes" />
                     <label for="yes"> yes</label>
                     <br></br>
@@ -473,26 +493,4 @@ export const Donate = (props) => {
     </section>
   );
 };
-
-// const mapStateToProps = (state) => ({
-
-// })
-
-// const mapDispatchToProps = {
-
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Contact)
 export default Donate;
-
-
-
-// const mapStateToProps = (state) => ({
-
-// })
-
-// const mapDispatchToProps = {
-
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Contact)

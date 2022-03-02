@@ -22,16 +22,9 @@ function Footer() {
     <div className="main-footer">
       <div className="container">
         <div className="row">
-
           {/* Column1 */}
-          <div style={{marginLeft:"2%"}} className="col">
+          <div style={{marginRight:"3%",marginTop:"3%"}} className="col">
           <img src={footerimg} alt="BigCo Inc. logo"/>
-            {/* <h4>THICC MEMES INC</h4>
-            <h1 className="list-unstyled">
-              <li>342-420-6969</li>
-              <li>Moscow, Russia</li>
-              <li>123 Streeet South North</li>
-            </h1> */}
           </div>
           {/* Column2 */}
           <div className="col">
@@ -62,7 +55,7 @@ function Footer() {
             </ui>
           </div>
           {/* Column4 */}
-          <div style={{marginTop:'3%'}} className="col">
+          <div style={{marginTop:'2%'}} className="col">
           <ui className="list-unstyled">
               <img src={wanna} alt="BigCo Inc. logo"/>
               <li>011-41548185, 25814379</li>
