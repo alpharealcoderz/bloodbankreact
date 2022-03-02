@@ -1,6 +1,8 @@
-import React, { useState, useE } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import blood from "./bloodlogo.jpg";
+import { api_base_url } from "../../Constants";
+import axios from "axios";
 
 import { updateDonorsData } from "../../redux/actions/donors";
 import {
@@ -19,6 +21,7 @@ export const Home = ({
     state: "All",
     city: "All",
   });
+  const [st, setSt] = useState("");
   // const [donorsData, setDonorsData] = useState([]);
   const handleSearchParam = (e) => {
     let payload = {};
@@ -39,7 +42,15 @@ export const Home = ({
     await updateDonorsData(searchParameters);
     window.location.hash = "#donors";
   };
-
+  useEffect(() => {
+    axios.post(api_base_url+'/getAllStates').then((res) => {
+      const state = res.data;
+      for(let i=0;i<state.length;i++){
+        setSt(state[i].state_title);
+      }  
+    });
+  }, []);
+  console.log(st);
   return (
     <section
       id="home"
@@ -49,7 +60,7 @@ export const Home = ({
     >
       <div class="container slider-container">
         <div class="row align-items-lg-center">
-          <div style={{marginTop:'-15%'}} class="col-lg-7 order-lg-2 ">
+          <div style={{ marginTop: "-15%" }} class="col-lg-7 order-lg-2 ">
             <div class="">
               <img
                 src="https://i.pinimg.com/originals/0d/0f/85/0d0f85b1504a9ebe9a080b5b1dd95c0b.gif"
@@ -63,7 +74,7 @@ export const Home = ({
             </div>
           </div>
 
-          <div style={{marginTop:'-20%'}} class="col-lg-5 wow fadeInRight">
+          <div style={{ marginTop: "-20%" }} class="col-lg-5 wow fadeInRight">
             <img src={blood} />
             <div class="heading-box">
               <h3>
@@ -117,8 +128,8 @@ export const Home = ({
                       }}
                     >
                       <option>All</option>;
-                      {states.map((st) => {
-                        return <option>{st.name}</option>;
+                      {states.map((stt) => {
+                        return <option>{stt.name}</option>;
                       })}
                     </select>
                   </div>

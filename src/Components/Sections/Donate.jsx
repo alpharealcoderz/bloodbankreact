@@ -3,6 +3,8 @@ import { state } from "../../Constants";
 import { getAllCityByStates } from "../../redux/actions/constants";
 import { registerDonor } from "../../Service/DonorService";
 import { useSelector, useDispatch } from "react-redux";
+import axios from 'axios';
+import { api_base_url } from "../../Constants";
 export const Donate = (props) => {
   const dispatch = useDispatch();
   const bloodType = useSelector((state) => state.donors.bloodType);
@@ -11,17 +13,37 @@ export const Donate = (props) => {
 
   const [details, setDetails] = useState({
     name: "",
+    wodoso:"",
+    phone: "",
     email: "",
-    phone: 0,
+    dob: "",
     age: 0,
-    gender: "male",
-    address: "",
+    gender: "",
+    // state: state[0],
+    st:"",
+    district:"",
     city: "",
-    state: state[0],
-    password: "",
-    blood_type: "A+",
-    is_donor_active: 1,
-  });
+    blood_type:"",
+    SDP:"",
+    FFP:"",
+    RDP:"",
+    WBC:"",
+    DoSDP:"",
+    DoFFP:"",
+    DoRDP:"",
+    DoWBC:"",
+    vehicle_car:"",
+    vehicle_bike:"",
+    emergencysupport:"",
+    lastdonateddate:"",
+    donatedplace:"",
+    distancetravel:"",
+    convtime:"",
+    volunteer_admin:"",
+    volunteer_pick:"",
+    volunteer_other:"",
+});
+console.log(details)
   const handleDetails = (e) => {
     let object = {};
     object[e.target.name] = e.target.value;
@@ -29,9 +51,14 @@ export const Donate = (props) => {
   };
   const handleSubmit = (e, type) => {
     e.preventDefault();
-    console.log("saransh", details);
-    type == "register" && setDetails({ ...details, is_donor_active: 0 });
-    registerDonor(details);
+    console.log('dfdff');
+    const data ={name:details.name,wo_do_so:details.wodoso,email:details.email,phone:details.phone,dob:details.dob,age:details.age,gender:details.gender,city:details.city,district:details.district,state:details.st,blood_type:details.blood_type,do_av_sdp:details.DoSDP,do_av_ffp:details.DoFFP,do_av_rdp:details.DoRDP,do_av_wbc:details.DoWBC,last_do_date:details.lastdonateddate,last_do_place:details.donatedplace}
+    console.log(data);
+    axios.post(api_base_url+'/beuserregister',data).then(res=> {
+      console.log('gulshan');
+    })
+    // type == "register" && setDetails({ ...details, is_donor_active: 0 });
+    // registerDonor(details);
   };
   const handleStateChange = (e) => {
     let filter = states.find((name) => {
@@ -79,7 +106,7 @@ export const Donate = (props) => {
                       class="form-control"
                       type="text"
                       placeholder="Wife/ Daughter/ Son of"
-                      name="wds"
+                      name="wodoso"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -156,10 +183,10 @@ export const Donate = (props) => {
                         handleDetails(e);
                       }}
                     >
-                      <option>Gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                      <option>other</option>
+                      <option name="gender" value="select">Gender</option>
+                      <option name="gender" value="male">Male</option>
+                      <option name="gender" value="female">Female</option>
+                      <option name="gender" value="other">other</option>
                     </select>
                   </div>
                 </div>
@@ -172,7 +199,7 @@ export const Donate = (props) => {
                       class="form-control"
                       type=""
                       placeholder="State"
-                      name="state"
+                      name="st"
                       onChange={(e) => {
                         handleDetails(e);
                         handleStateChange(e);
@@ -191,8 +218,8 @@ export const Donate = (props) => {
                     <select
                       class="form-control"
                       type=""
-                      placeholder="City"
-                      name="city"
+                      placeholder="district"
+                      name="district"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -248,6 +275,9 @@ export const Donate = (props) => {
                           id="SDP"
                           name="SDP"
                           value="SDP"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="SDP"> SDP</label>
                         <br></br>
@@ -256,6 +286,9 @@ export const Donate = (props) => {
                           id="FFP"
                           name="FFP"
                           value="FFP"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="FFP">FFP</label>
                       </div>
@@ -265,6 +298,9 @@ export const Donate = (props) => {
                           id="RDP"
                           name="RDP"
                           value="RDP"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="RDP">RDP</label>
                         <br></br>
@@ -273,6 +309,9 @@ export const Donate = (props) => {
                           id="WBC"
                           name="WBC"
                           value="WBC"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="WBC">WBC</label>
                       </div>
@@ -282,6 +321,9 @@ export const Donate = (props) => {
                           id="Blood"
                           name="Blood"
                           value="Blood"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="Blood">Blood</label>
                       </div>
@@ -419,23 +461,6 @@ export const Donate = (props) => {
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-6">  
-                    <p>Are you ready to support in emergency</p>
-                    <div class="form-group">
-                    <select
-                      class="form-control"
-                      placeholder="Gender"
-                      name="gender"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                    >
-                      <option>Select</option>
-                      <option>Yes</option>
-                      <option>No</option>
-                    </select>
-                  </div>
-                </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <p>Are you interested to work as a volunteer also?</p>
@@ -472,6 +497,23 @@ export const Donate = (props) => {
                         />
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">  
+                    <p>Are you ready to support in emergency</p>
+                    <div class="form-group">
+                    <select
+                      class="form-control"
+                      placeholder="Gender"
+                      name="gender"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    >
+                      <option>Select</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
                   </div>
                 </div>
               </div>
