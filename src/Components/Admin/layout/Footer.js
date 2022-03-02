@@ -22,7 +22,7 @@ function Footer() {
     <div className="main-footer">
       <div className="container">
         <div className="row">
-
+{/* hello */}
           {/* Column1 */}
           <div style={{marginLeft:"2%"}} className="col">
           <img src={footerimg} alt="BigCo Inc. logo"/>
