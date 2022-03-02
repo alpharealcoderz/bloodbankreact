@@ -24,7 +24,7 @@ function Footer() {
         <div className="row">
           {/* Column1 */}
           <div style={{marginRight:"3%",marginTop:"3%"}} className="col">
-          <img src={footerimg} alt="BigCo Inc. logo"/>
+          <img style={{height:"170px",width:"200px"}} src={footerimg} alt="BigCo Inc. logo"/>
           </div>
           {/* Column2 */}
           <div className="col">
@@ -50,8 +50,7 @@ function Footer() {
               <li>Testimonial</li>
               <li>Review us</li>
               <h6 style={{color:"black"}}>Download Our App</h6>
-              <hr></hr>
-              <img style={{height:"30px"}} src={playstore} alt="BigCo Inc. logo"/>
+              <img style={{height:"30px",width:"55px"}} src={playstore} alt="BigCo Inc. logo"/>
             </ui>
           </div>
           {/* Column4 */}

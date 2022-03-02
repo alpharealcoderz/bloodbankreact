@@ -370,12 +370,20 @@ export const Donate = (props) => {
                 <div class="col-lg-6">
                   <div class="form-group">
                     <p>Do you own a vehicle ?</p>
-                    <input type="checkbox" id="yes" name="yes" value="car" />
-                    <label for="car"> car</label>
+                    <div class="row">
+                    <div class="col-lg-3">
+                      <input type="checkbox" id="yes" name="yes" value="car" />
+                      <label for="car"> car</label>
+                      <br></br>
+                      <input type="checkbox" id="yes" name="yes" value="bike" />
+                      <label for="bike">bike</label>
+                    </div>
+                    <div class="col-lg-3">
+                      <input type="checkbox" id="No" name="No" value="No" />
+                      <label for="No">No</label>
+                      </div>
                     <br></br>
-                    <input type="checkbox" id="yes" name="yes" value="bike" />
-                    <label for="bike">bike</label>
-                    <br></br>
+                    </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -409,7 +417,7 @@ export const Donate = (props) => {
                     <p>Are you interested to work as a volunteer also?</p>
                     <div class="row">
                       <div class="col-sm-3">
-                      <input type="checkbox" id="no" name="no" value="no" />
+                        <input type="checkbox" id="no" name="no" value="no" />
                         <label for="no">No</label>
                         <br></br>
                         <input
@@ -429,7 +437,6 @@ export const Donate = (props) => {
                         />
                         <label for="AFA">admin</label>
                         <br></br>
-                        
                         <input
                           class="form-control"
                           type="text"
