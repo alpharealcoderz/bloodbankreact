@@ -808,7 +808,7 @@ blockquote > cite {
   top: auto;
   left: 0;
   display: flex;
-  min-height: 100vh;
+  min-height: 120vh;
   align-items: center;
   background-color: #fff;
   visibility: hidden;
@@ -828,10 +828,12 @@ blockquote > cite {
   visibility: visible;
   z-index: 90;
   opacity: 1;
+  min-height: 135vh;
 }
 
+
 .min-height-100vh {
-  min-height: 100vh;
+  min-height: 150vh;
 }
 
 /* ===================================

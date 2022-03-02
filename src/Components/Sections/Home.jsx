@@ -1,5 +1,6 @@
 import React, { useState, useE } from "react";
 import { connect } from "react-redux";
+import blood from "./bloodlogo.jpg";
 
 import { updateDonorsData } from "../../redux/actions/donors";
 import {
@@ -48,7 +49,7 @@ export const Home = ({
     >
       <div class="container slider-container">
         <div class="row align-items-lg-center">
-          <div class="col-lg-7 order-lg-2 ">
+          <div style={{marginTop:'-15%'}} class="col-lg-7 order-lg-2 ">
             <div class="">
               <img
                 src="https://i.pinimg.com/originals/0d/0f/85/0d0f85b1504a9ebe9a080b5b1dd95c0b.gif"
@@ -62,10 +63,11 @@ export const Home = ({
             </div>
           </div>
 
-          <div class="col-lg-5 wow fadeInRight">
+          <div style={{marginTop:'-20%'}} class="col-lg-5 wow fadeInRight">
+            <img src={blood} />
             <div class="heading-box">
               <h3>
-                <span class="main-color">Blood Bank Name</span>{" "}
+                <span class="main-color">Omnicent Blood Bank</span>{" "}
               </h3>
               <p>
                 This is an organization that brings voluntary blood donors and
@@ -123,6 +125,26 @@ export const Home = ({
                 </div>
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
+                    <label>District</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <select
+                      class="form-control"
+                      name="District"
+                      onChange={(e) => {
+                        handleSearchParam(e);
+                      }}
+                    >
+                      <option>All</option>;
+                      {city.map((ct) => {
+                        return <option>{ct.name}</option>;
+                      })}
+                    </select>
+                    {/* </div> */}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4" style={{ marginTop: "6px" }}>
                     <label>City</label>
                   </div>
                   <div class="col-sm-6">
@@ -135,7 +157,7 @@ export const Home = ({
                     >
                       <option>All</option>;
                       {city.map((ct) => {
-                        return <option>{ct.name}</option>;
+                        return <option></option>;
                       })}
                     </select>
                     {/* </div> */}

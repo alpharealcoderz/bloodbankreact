@@ -45,7 +45,7 @@ export const Donate = (props) => {
     <section id="donate" class="pt-page pt-page-6" data-id="request">
       <div class="container">
         <div class="row align-items-lg-center">
-          <div class="col-6">
+          <div class="col-7">
             <div class="heading-area">
               <h2 class="title">Donate Blood!</h2>
               <h6 class="sub-title main-color">Please fill All Details.</h6>
@@ -77,6 +77,36 @@ export const Donate = (props) => {
                   <div class="form-group">
                     <input
                       class="form-control"
+                      type="text"
+                      placeholder="Wife/ Daughter/ Son of"
+                      name="wds"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12" id="result"></div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="number"
+                      placeholder="Phone"
+                      name="phone"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
                       type="email"
                       placeholder="Email"
                       name="email"
@@ -87,14 +117,15 @@ export const Donate = (props) => {
                   </div>
                 </div>
               </div>
+
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <input
                       class="form-control"
-                      type="number"
-                      placeholder="Phone"
-                      name="phone"
+                      type="date"
+                      placeholder="Dob"
+                      name="dob"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -125,41 +156,17 @@ export const Donate = (props) => {
                         handleDetails(e);
                       }}
                     >
+                      <option>Gender</option>
                       <option>Male</option>
                       <option>Female</option>
+                      <option>other</option>
                     </select>
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-lg-9">
-                    <input
-                      class="form-control"
-                      name="address"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                      placeholder="address"
-                    ></input>
-                  </div>
-                  <div class="col-sm-3">
-                    <select
-                      class="form-control"
-                      name="blood_type"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                    >
-                      {bloodType.map((st) => {
-                        return <option>{st}</option>;
-                      })}
-                    </select>
-                  </div>
-                </div>
-              </div>
+
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-lg-6">
                   <div class="form-group">
                     <select
                       class="form-control"
@@ -171,14 +178,15 @@ export const Donate = (props) => {
                         handleStateChange(e);
                       }}
                     >
-                      <option>All</option>
+                      <option>State</option>
                       {states.map((st) => {
                         return <option>{st.name}</option>;
                       })}
                     </select>
                   </div>
                 </div>
-                <div class="col-sm-6">
+
+                <div class="col-sm-3">
                   <div class="form-group">
                     <select
                       class="form-control"
@@ -189,40 +197,298 @@ export const Donate = (props) => {
                         handleDetails(e);
                       }}
                     >
+                      <option>District</option>
                       {city.map((ct) => {
                         return <option>{ct.name}</option>;
                       })}
                     </select>
                   </div>
                 </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="City"
+                      placeholder="City"
+                      name="City"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
-
-              <div class="form-group">
-                <input
-                  class="form-control"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={(e) => {
-                    handleDetails(e);
-                  }}
-                />
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <select
+                      class="form-control"
+                      name="blood_type"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    >
+                      <option>Blood Group</option>;<option>Don't know</option>;
+                      {bloodType.map((st) => {
+                        return <option>{st}</option>;
+                      })}
+                    </select>
+                  </div>
+                </div>
               </div>
-
-              <button
-                type="submit"
-                id="submit_btn"
-                class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
-              >
-                <i
-                  class="fa fa-spinner fa-spin mr-2 d-none"
-                  aria-hidden="true"
-                ></i>
-                Donate
-              </button>
+              <br></br>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <p>Donation availability ?</p>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="SDP"
+                          name="SDP"
+                          value="SDP"
+                        />
+                        <label for="SDP"> SDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="FFP"
+                          name="FFP"
+                          value="FFP"
+                        />
+                        <label for="FFP">FFP</label>
+                      </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="RDP"
+                          name="RDP"
+                          value="RDP"
+                        />
+                        <label for="RDP">RDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="WBC"
+                          name="WBC"
+                          value="WBC"
+                        />
+                        <label for="WBC">WBC</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <p>Last Donated date</p>
+                    <input
+                      class="form-control"
+                      type="Date"
+                      placeholder="date"
+                      name="date"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <p>Donated Place</p>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Place"
+                      name="place"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <p>Type of donation?</p>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="SDP"
+                          name="SDP"
+                          value="SDP"
+                        />
+                        <label for="SDP"> SDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="FFP"
+                          name="FFP"
+                          value="FFP"
+                        />
+                        <label for="FFP">FFP</label>
+                      </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="RDP"
+                          name="RDP"
+                          value="RDP"
+                        />
+                        <label for="RDP">RDP</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="WBC"
+                          name="WBC"
+                          value="WBC"
+                        />
+                        <label for="WBC">WBC</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <p>what distance you can travel to donate blood?</p>
+                    <input
+                      class="form-control"
+                      type="number"
+                      placeholder="in km"
+                      name="age"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <br></br>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <p>Do you own a vehicle ?</p>
+                    <div class="row">
+                    <div class="col-lg-3">
+                      <input type="checkbox" id="yes" name="yes" value="car" />
+                      <label for="car"> car</label>
+                      <br></br>
+                      <input type="checkbox" id="yes" name="yes" value="bike" />
+                      <label for="bike">bike</label>
+                    </div>
+                    <div class="col-lg-3">
+                      <input type="checkbox" id="No" name="No" value="No" />
+                      <label for="No">No</label>
+                      </div>
+                    <br></br>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <p>What is your convenient time to interact ?</p>
+                    <input
+                      class="form-control"
+                      type="time"
+                      name="time"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <p>Are you ready to support in emergency</p>
+                    <input type="checkbox" id="yes" name="yes" value="yes" />
+                    <label for="yes"> yes</label>
+                    <br></br>
+                    <input type="checkbox" id="no" name="no" value="no" />
+                    <label for="no">No</label>
+                    <br></br>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <p>Are you interested to work as a volunteer also?</p>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <input type="checkbox" id="no" name="no" value="no" />
+                        <label for="no">No</label>
+                        <br></br>
+                        <input
+                          type="checkbox"
+                          id="pick"
+                          name="pick"
+                          value="pick"
+                        />
+                        <label for="pick">pick</label>
+                      </div>
+                      <div class="col-sm-3">
+                        <input
+                          type="checkbox"
+                          id="AFA"
+                          name="AFA"
+                          value="AFA"
+                        />
+                        <label for="AFA">admin</label>
+                        <br></br>
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="other"
+                          name="other"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <button
+                      type="submit"
+                      id="submit_btn"
+                      class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
+                    >
+                      <i
+                        class="fa fa-spinner fa-spin mr-2 d-none"
+                        aria-hidden="true"
+                      ></i>
+                      Register And Donate
+                    </button>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <button
+                      type="button"
+                      id="submit_btn"
+                      onClick={(e) => {
+                        handleSubmit(e, "register");
+                      }}
+                      class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
+                    >
+                      <i
+                        class="fa fa-spinner fa-spin mr-2 d-none"
+                        aria-hidden="true"
+                      ></i>
+                      Register Only
+                    </button>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <ul class="address-item">
               <li class="w-100 mb-4">
                 <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
@@ -262,14 +528,4 @@ export const Donate = (props) => {
     </section>
   );
 };
-
-// const mapStateToProps = (state) => ({
-
-// })
-
-// const mapDispatchToProps = {
-
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Contact)
 export default Donate;

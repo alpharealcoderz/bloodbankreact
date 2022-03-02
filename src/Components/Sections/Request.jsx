@@ -47,16 +47,15 @@ export const Request = (props) => {
   };
   return (
     <section id="request" class="pt-page pt-page-6" data-id="request">
-      <div class="container">
+      <div style={{marginTop:'-22%'}}class="container">
         <div class="row align-items-lg-center">
-          <div class="col-6">
+          <div  class="col-6">
             <div class="heading-area">
               <h2 class="title">Post Blood Request!</h2>
               <h6 class="sub-title main-color">
                 Please fill Patient's Details.
               </h6>
             </div>
-
             <form
               onSubmit={(e) => addRequests(e)}
               class="contact-form"
@@ -260,7 +259,7 @@ export const Request = (props) => {
               </button>
             </form>
           </div>
-          <div class="col-6">
+          <div  class="col-6">
             <ul class="address-item">
               <li class="w-100 mb-4">
                 <i class="lni-apartment main-color"></i>

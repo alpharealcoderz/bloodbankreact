@@ -66,7 +66,7 @@ export const Register = (props) => {
   };
   return (
     <section id="register" class="pt-page pt-page-6" data-id="register">
-      <div class="container">
+      <div style={{marginTop:'-20%'}} class="container">
         <div class="row align-items-lg-center">
           <div class="col-6">
             <div class="heading-area">

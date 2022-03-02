@@ -16,7 +16,7 @@ export default function Login() {
   };
   return (
     <section id="login" class="pt-page pt-page-6" data-id="login">
-      <div class="container">
+      <div style={{marginTop:'-25%'}} class="container">
         <div class="row align-items-lg-center dot-box">
           <div class="col-6">
             <div class="heading-area">
