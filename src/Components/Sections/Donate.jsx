@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { state } from "../../Constants";
 import { getAllCityByStates } from "../../redux/actions/constants";
 import { registerDonor } from "../../Service/DonorService";
@@ -10,7 +10,10 @@ export const Donate = (props) => {
   const bloodType = useSelector((state) => state.donors.bloodType);
   const city = useSelector((state) => state.donors.city);
   const states = useSelector((state) => state.donors.states);
-
+  const [st, setSt] = useState([]);
+const [district,setDistrict]=useState([])
+const [ct,setCt]=useState([])
+console.log(ct);
   const [details, setDetails] = useState({
     name: "",
     wodoso:"",
@@ -63,13 +66,23 @@ console.log(details)
     // registerDonor(details);
   };
   const handleStateChange = (e) => {
-    let filter = states.find((name) => {
-      return name.name == e.target.value;
-    });
+   axios.post(api_base_url+'/getAllDistrictByStates',{state_id:e.target.value}).then(res=>
+    setDistrict(res.data))
 
-    filter && dispatch(getAllCityByStates(filter.id));
-    console.log(filter);
   };
+  const handleDistrictChange = (e) => {
+    axios.post(api_base_url+'/getAllCityByDistrict',{districtid:e.target.value}).then(res=>
+     setCt(res.data))
+ 
+   };
+
+  useEffect(() => {
+    axios.post(api_base_url+'/getAllStates').then((res) => {
+      const st = res.data;
+      setSt(st);
+    })
+  }, [])
+  console.log(st)
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
       <div class="container">
@@ -208,8 +221,8 @@ console.log(details)
                       }}
                     >
                       <option>State</option>
-                      {states.map((st) => {
-                        return <option>{st.name}</option>;
+                      {st.map((stt) => {
+                        return <option value={stt.state_id}>{stt.state_title}</option>;
                       })}
                     </select>
                   </div>
@@ -224,26 +237,33 @@ console.log(details)
                       name="district"
                       onChange={(e) => {
                         handleDetails(e);
+                        handleDistrictChange(e);
                       }}
                     >
                       <option>District</option>
-                      {city.map((ct) => {
-                        return <option>{ct.name}</option>;
+                      {district.map((dt) => {
+                        return <option value={dt.districtid}>{dt.district_title}</option>;
                       })}
                     </select>
                   </div>
                 </div>
+               
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <input
+                    <select
                       class="form-control"
-                      type="City"
+                      type=""
                       placeholder="City"
                       name="city"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <option>City</option>
+                      {ct.map((ctt) => {
+                        return <option value={ctt.id}>{ctt.name}</option>;
+                      })}
+                    </select>
                   </div>
                 </div>
               </div>
