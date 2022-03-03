@@ -53,7 +53,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       id="donors"
       class="pt-page pt-page-6 pt-5"
       data-id="donors"
-      style={{ overflowY: "scroll", display: "block", marginTop: "47px" }}
+      style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">

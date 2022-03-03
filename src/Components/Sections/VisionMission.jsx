@@ -5,7 +5,7 @@ export default function VisionMission() {
       id="visionmission"
       class="pt-page pt-page-6 pt-5"
       data-id="visionmission"
-      style={{ overflowY: "scroll", display: "block", marginTop: "47px" }}
+      style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">

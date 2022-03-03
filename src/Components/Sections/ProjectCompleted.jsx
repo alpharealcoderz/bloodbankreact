@@ -5,7 +5,7 @@ export default function ProjectCompleted() {
       id="projectcompleted"
       class="pt-page pt-page-6 pt-5"
       data-id="projectcompleted"
-      style={{ overflowY: "scroll", display: "block", marginTop: "47px" }}
+      style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">

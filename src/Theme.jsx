@@ -50,7 +50,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
         <a class="logo" href="#home">
           <h1 class="logo-text">
             {/* <img style={{ borderRadius: "50%" }} src="/logo.png" alt="logo" />{" "} */}
-            {toggler}
+            {/* {toggler} */}
           </h1>
         </a>
 
@@ -85,6 +85,42 @@ export const Theme = ({ getBloodType, getAllStates }) => {
         </div>
       </div>
       <Footer />
+      <div
+        style={{
+          position: "fixed",
+          right: 0,
+          top: "35%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <a href="tel:+91-9819887086">
+          <img
+            src="https://vnslogistics.com/images/callback.jpg"
+            width="71"
+            height="87"
+            alt=""
+          />
+        </a>
+
+        <a href="tel:+91-9819887086">
+          <img
+            src="https://vnslogistics.com/images/contactus.jpg"
+            width="71"
+            height="87"
+            alt=""
+          />
+        </a>
+
+        <a href="https://api.whatsapp.com/send?phone=+91-0000000000">
+          <img
+            src="https://vnslogistics.com/images/whatsappcall.jpg"
+            width="71"
+            height="87"
+            alt=""
+          />
+        </a>
+      </div>
     </div>
   );
 };
