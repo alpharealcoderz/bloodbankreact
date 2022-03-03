@@ -21,9 +21,7 @@ export const Home = ({
     state: "All",
     city: "All",
   });
-  const [st, setSt] = useState([]);
-  const [dt, setDt] = useState([]);
-  const [ct, setCt] = useState([]);
+  const [st, setSt] = useState("");
   // const [donorsData, setDonorsData] = useState([]);
   const handleSearchParam = (e) => {
     let payload = {};
@@ -45,14 +43,21 @@ export const Home = ({
     window.location.hash = "#donors";
   };
   useEffect(() => {
-
+    axios.post(api_base_url+'/getAllStates').then((res) => {
+      const state = res.data;
+      for(let i=0;i<state.length;i++){
+        setSt(state[i].state_title);
+      }  
+    });
+  }, []);
+  console.log(st);
   return (
     <section
       id="home"
       class="pt-page pt-page-1"
       data-id="home"
       style={{ fontSize: "14px", color: "black", fontWeight: "300" }}
-    >
+    >   
       <div class="container slider-container">
         <div class="row align-items-lg-center">
           <div style={{ marginTop: "-15%" }} class="col-lg-7 order-lg-2 ">
@@ -73,10 +78,7 @@ export const Home = ({
             <img src={blood} />
             <div class="heading-box">
               <h3>
-
                 <span class="main-color">Post blood request</span>{" "}
-              <span class="main-color">Check Blood Availability</span>{" "}
-
               </h3>
               <p>
                 This is an organization that brings voluntary blood donors and
@@ -126,8 +128,8 @@ export const Home = ({
                       }}
                     >
                       <option>All</option>;
-                      {st.map((stt) => {
-                        return <option>{stt.state_title}</option>;
+                      {states.map((stt) => {
+                        return <option>{stt.name}</option>;
                       })}
                     </select>
                   </div>
@@ -145,8 +147,8 @@ export const Home = ({
                       }}
                     >
                       <option>All</option>;
-                      {dt.map((dtt) => {
-                        return <option>{dtt.district_title}</option>;
+                      {city.map((ct) => {
+                        return <option>{ct.name}</option>;
                       })}
                     </select>
                     {/* </div> */}
