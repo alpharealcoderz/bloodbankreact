@@ -336,8 +336,22 @@ export const Donate = (props) => {
                         return <option>{st}</option>;
                       })}
                     </select>
+                    </div>
                   </div>
-                </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control"
+                        type="Password"
+                        placeholder="Create password"
+                        name="password"
+                        onChange={(e) => {
+                          handleDetails(e);
+                        }}
+                      />
+                    </div>
+                  </div>
+                
               </div>
               <br></br>
               <div class="row">
@@ -355,7 +369,10 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="SDP"> SDP</label>
+                        <label class="ml-2" for="SDP">
+                          {" "}
+                          SDP
+                        </label>
                         <br></br>
                         <input
                           type="checkbox"
@@ -366,7 +383,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="FFP">FFP</label>
+                        <label class="ml-2" for="FFP">
+                          FFP
+                        </label>
                       </div>
                       <div class="col-sm-3">
                         <input
@@ -378,7 +397,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="RDP">RDP</label>
+                        <label class="ml-2" for="RDP">
+                          RDP
+                        </label>
                         <br></br>
                         <input
                           type="checkbox"
@@ -389,7 +410,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="WBC">WBC</label>
+                        <label class="ml-2" for="WBC">
+                          WBC
+                        </label>
                       </div>
                       <div class="col-sm-3">
                         <input
@@ -401,7 +424,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-1' for="Blood">Blood</label>
+                        <label class="ml-1" for="Blood">
+                          Blood
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -450,7 +475,10 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="SDP"> SDP</label>
+                        <label class="ml-2" for="SDP">
+                          {" "}
+                          SDP
+                        </label>
                         <br></br>
                         <input
                           type="checkbox"
@@ -461,7 +489,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="FFP">FFP</label>
+                        <label class="ml-2" for="FFP">
+                          FFP
+                        </label>
                       </div>
                       <div class="col-sm-3">
                         <input
@@ -473,7 +503,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="RDP">RDP</label>
+                        <label class="ml-2" for="RDP">
+                          RDP
+                        </label>
                         <br></br>
                         <input
                           type="checkbox"
@@ -484,7 +516,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-2' for="WBC">WBC</label>
+                        <label class="ml-2" for="WBC">
+                          WBC
+                        </label>
                       </div>
                       <div class="col-sm-3">
                         <input
@@ -496,7 +530,9 @@ export const Donate = (props) => {
                             handleDetails(e);
                           }}
                         />
-                        <label class='ml-1' for="Blood">Blood</label>
+                        <label class="ml-1" for="Blood">
+                          Blood
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -533,7 +569,10 @@ export const Donate = (props) => {
                           name="vehicle"
                           value="yes"
                         />
-                        <label class='ml-2' for="car"> yes</label>
+                        <label class="ml-2" for="car">
+                          {" "}
+                          yes
+                        </label>
                       </div>
 
                       <br></br>
@@ -548,7 +587,9 @@ export const Donate = (props) => {
                           name="vehicle"
                           value="no"
                         />
-                        <label class='ml-2' for="bike">No</label>
+                        <label class="ml-2" for="bike">
+                          No
+                        </label>
                       </div>
                     </div>
 
@@ -562,7 +603,9 @@ export const Donate = (props) => {
                               name="car"
                               value="Car"
                             />
-                            <label class='ml-2' for="Car">Car</label>
+                            <label class="ml-2" for="Car">
+                              Car
+                            </label>
                           </div>
                           <div class="col-lg-3">
                             <input
@@ -571,7 +614,9 @@ export const Donate = (props) => {
                               name="bike"
                               value="Bike"
                             />
-                            <label class='ml-2' for="Bike">Bike</label>
+                            <label class="ml-2" for="Bike">
+                              Bike
+                            </label>
                           </div>
                         </div>
                       )}
@@ -610,7 +655,10 @@ export const Donate = (props) => {
                           name="volunteer"
                           value="yes"
                         />
-                        <label class='ml-2' for="volunteer"> yes</label>
+                        <label class="ml-2" for="volunteer">
+                          {" "}
+                          yes
+                        </label>
                       </div>
                       <br></br>
                       <div class="col-lg-3">
@@ -624,7 +672,9 @@ export const Donate = (props) => {
                           name="volunteer"
                           value="no"
                         />
-                        <label class='ml-2' for="no">No</label>
+                        <label class="ml-2" for="no">
+                          No
+                        </label>
                       </div>
                     </div>
                     <>
@@ -640,7 +690,9 @@ export const Donate = (props) => {
                                 handleDetails(e);
                               }}
                             />
-                            <label class='ml-2' for="pick">Pick&Drop</label>
+                            <label class="ml-2" for="pick">
+                              Pick&Drop
+                            </label>
                           </div>
                           <div class="col-lg-4">
                             <input
@@ -652,11 +704,13 @@ export const Donate = (props) => {
                                 handleDetails(e);
                               }}
                             />
-                            <label class='ml-1' for="Admin">Admin</label>
+                            <label class="ml-1" for="Admin">
+                              Admin
+                            </label>
                           </div>
                           <div class="col-lg-6">
                             <input
-                            class='form-control'
+                              class="form-control"
                               type="text"
                               name="volunteer_admin"
                               placeholder="Other"
@@ -680,10 +734,13 @@ export const Donate = (props) => {
                         name="support"
                         value="yes"
                         onChange={(e) => {
-                          handleDetails(e);       
-                        }}                     
+                          handleDetails(e);
+                        }}
                       />
-                      <label class='ml-2' for="yes"> yes</label>
+                      <label class="ml-2" for="yes">
+                        {" "}
+                        yes
+                      </label>
                     </div>
                     <div class="col-lg-3">
                       <input
@@ -692,10 +749,12 @@ export const Donate = (props) => {
                         name="support"
                         value="no"
                         onChange={(e) => {
-                          handleDetails(e);    
+                          handleDetails(e);
                         }}
                       />
-                      <label class='ml-2' for="No">No</label>
+                      <label class="ml-2" for="No">
+                        No
+                      </label>
                     </div>
                   </div>
                 </div>
