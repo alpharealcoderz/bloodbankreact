@@ -17,13 +17,14 @@ export const Donate = (props) => {
     phone: "",
     email: "",
     dob: "",
-    age: 0,
+    age: "",
     gender: "",
     // state: state[0],
     st:"",
     district:"",
     city: "",
     blood_type:"",
+    BLOOD:"",
     SDP:"",
     FFP:"",
     RDP:"",
@@ -32,6 +33,7 @@ export const Donate = (props) => {
     DoFFP:"",
     DoRDP:"",
     DoWBC:"",
+    DoBLOOD:"",
     vehicle_car:"",
     vehicle_bike:"",
     emergencysupport:"",
@@ -52,7 +54,7 @@ console.log(details)
   const handleSubmit = (e, type) => {
     e.preventDefault();
     console.log('dfdff');
-    const data ={name:details.name,wo_do_so:details.wodoso,email:details.email,phone:details.phone,dob:details.dob,age:details.age,gender:details.gender,city:details.city,district:details.district,state:details.st,blood_type:details.blood_type,do_av_sdp:details.DoSDP,do_av_ffp:details.DoFFP,do_av_rdp:details.DoRDP,do_av_wbc:details.DoWBC,last_do_date:details.lastdonateddate,last_do_place:details.donatedplace}
+    const data ={name:details.name,wo_do_so:details.wodoso,email:details.email,phone:details.phone,dob:details.dob,age:details.age,gender:details.gender,city:details.city,district:details.district,state:details.st,blood_type:details.blood_type,do_av_blood:details.BLOOD,do_av_sdp:details.SDP,do_av_ffp:details.FFP,do_av_rdp:details.RDP,do_av_wbc:details.WBC,last_do_date:details.lastdonateddate,last_do_place:details.lastdonatedplace,vehicle_car:details.vehicle_car,vehicle_bike:details.vehicle_bike,ready_emergency:details.emergencysupport,travel_do_blood:details.distancetravel,convt_time_int:details.convtime,volunteer_admin:details.volunteer_admin,volunteer_pick:details.volunteer_pick,volunteer_other:details.volunteer_other,type_do_blood:details.DoBLOOD,type_do_sdp:details.DoSDP,type_do_ffp:details.DoFFP,type_do_rdp:details.DoRDP,type_do_wbc:details.DoWBC}
     console.log(data);
     axios.post(api_base_url+'/beuserregister',data).then(res=> {
       console.log('gulshan');
@@ -237,7 +239,7 @@ console.log(details)
                       class="form-control"
                       type="City"
                       placeholder="City"
-                      name="City"
+                      name="city"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -319,7 +321,7 @@ console.log(details)
                       <input
                           type="checkbox"
                           id="Blood"
-                          name="Blood"
+                          name="BLOOD"
                           value="Blood"
                           onChange={(e) => {
                             handleDetails(e);
@@ -337,7 +339,7 @@ console.log(details)
                       class="form-control"
                       type="Date"
                       placeholder="date"
-                      name="date"
+                      name="lastdonateddate"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -351,7 +353,7 @@ console.log(details)
                       class="form-control"
                       type="text"
                       placeholder="Place"
-                      name="place"
+                      name="donatedplace"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -368,16 +370,22 @@ console.log(details)
                         <input
                           type="checkbox"
                           id="SDP"
-                          name="SDP"
+                          name="DoSDP"
                           value="SDP"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="SDP"> SDP</label>
                         <br></br>
                         <input
                           type="checkbox"
                           id="FFP"
-                          name="FFP"
+                          name="DoFFP"
                           value="FFP"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="FFP">FFP</label>
                       </div>
@@ -385,16 +393,22 @@ console.log(details)
                         <input
                           type="checkbox"
                           id="RDP"
-                          name="RDP"
+                          name="DoRDP"
                           value="RDP"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="RDP">RDP</label>
                         <br></br>
                         <input
                           type="checkbox"
                           id="WBC"
-                          name="WBC"
+                          name="DoWBC"
                           value="WBC"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="WBC">WBC</label>
                       </div>
@@ -402,8 +416,12 @@ console.log(details)
                       <input
                           type="checkbox"
                           id="Blood"
-                          name="Blood"
+                          name="DoBLOOD"
                           value="Blood"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
+
                         />
                         <label for="Blood">Blood</label>
                       </div>
@@ -417,7 +435,7 @@ console.log(details)
                       class="form-control"
                       type="number"
                       placeholder="in km"
-                      name="age"
+                      name="distancetravel"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -432,10 +450,12 @@ console.log(details)
                     <p>Do you own a vehicle ?</p>
                     <div class="row">
                     <div class="col-lg-3">
-                      <input type="checkbox" id="yes" name="yes" value="car" />
+                      <input type="checkbox" id="yes" onChange={(e) => {handleDetails(e); }}
+name="vehicle_car" value="car" />
                       <label for="car"> car</label>
                       <br></br>
-                      <input type="checkbox" id="yes" name="yes" value="bike" />
+                      <input type="checkbox" id="yes" onChange={(e) => {handleDetails(e); }}
+ name="vehicle_bike" value="bike" />
                       <label for="bike">bike</label>
                     </div>
                     <div class="col-lg-3">
@@ -452,7 +472,7 @@ console.log(details)
                     <input
                       class="form-control"
                       type="time"
-                      name="time"
+                      name="convtime"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -472,17 +492,23 @@ console.log(details)
                         <input
                           type="checkbox"
                           id="pick"
-                          name="pick"
+                          name="volunteer_pick"
                           value="pick"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="pick">Pick & Drop</label>
                       </div>
                       <div class="col-sm-5">
                         <input
                           type="checkbox"
-                          id="AFA"
-                          name="AFA"
-                          value="AFA"
+                          id="admin"
+                          name="volunteer_admin"
+                          value="admin"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
                         />
                         <label for="AFA">As admin</label>
                         <br></br>
@@ -490,7 +516,7 @@ console.log(details)
                           class="form-control"
                           type="text"
                           placeholder="other"
-                          name="other"
+                          name="volunteer_other"
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -504,15 +530,14 @@ console.log(details)
                     <div class="form-group">
                     <select
                       class="form-control"
-                      placeholder="Gender"
-                      name="gender"
+                      name="emergencysupport"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
                     >
-                      <option>Select</option>
-                      <option>Yes</option>
-                      <option>No</option>
+                      <option value="">Select</option>
+                      <option value="Yes" name="emergencysupport">Yes</option>
+                      <option value="No" name="emergencysupport">No</option>
                     </select>
                   </div>
                 </div>
