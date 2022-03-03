@@ -49,6 +49,10 @@ export const Donate = (props) => {
     volunteer_admin: "",
     volunteer_pick: "",
     volunteer_other: "",
+    is_donor_active:"",
+    is_volunteer_active:"",
+    password:""
+
   });
   console.log(details);
   const handleDetails = (e) => {
@@ -60,6 +64,9 @@ export const Donate = (props) => {
     e.preventDefault();
     console.log("dfdff");
     const data = {
+      is_donor_active: details.is_donor_active,
+      is_volunteer_active:details.is_volunteer_active,
+      password:details.password,
       name: details.name,
       wo_do_so: details.wodoso,
       email: details.email,
@@ -452,7 +459,7 @@ export const Donate = (props) => {
                       class="form-control"
                       type="text"
                       placeholder="Place"
-                      name="donatedplace"
+                      name="lastdonatedplace"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -537,7 +544,7 @@ export const Donate = (props) => {
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                   <div class="form-group">
                     <p>what distance you can travel to donate blood?</p>
                     <input
@@ -549,6 +556,46 @@ export const Donate = (props) => {
                         handleDetails(e);
                       }}
                     />
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <p>Do you want to donate?</p>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <input
+                          type="radio"
+                          id="yes"
+                          onChange={(e) => {
+                            handleDetails(e);
+                            setVehicle(true);
+                          }}
+                          name="is_donor_active"
+                          value="1"
+                        />
+                        <label class="ml-2" for="Yes">
+                          
+                          yes
+                        </label>
+                      </div>
+
+                      <br></br>
+                      <div class="col-lg-6">
+                        <input
+                          type="radio"
+                          id="no"
+                          onChange={(e) => {
+                            handleDetails(e);
+                            setVehicle(false);
+                          }}
+                          name="is_donor_active"
+                          value="0"
+                        />
+                        <label class="ml-2" for="bike">
+                          No
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -600,8 +647,12 @@ export const Donate = (props) => {
                             <input
                               type="checkbox"
                               id="Car"
-                              name="car"
-                              value="Car"
+                              name="vehicle_car"
+                              value="1"
+                              onChange={(e) => {
+                                handleDetails(e);
+                                
+                              }}
                             />
                             <label class="ml-2" for="Car">
                               Car
@@ -611,8 +662,11 @@ export const Donate = (props) => {
                             <input
                               type="checkbox"
                               id="bike"
-                              name="bike"
-                              value="Bike"
+                              name="vehicle_bike"
+                              value="1"
+                              onChange={(e) => {
+                                handleDetails(e);
+                              }}
                             />
                             <label class="ml-2" for="Bike">
                               Bike
@@ -652,8 +706,8 @@ export const Donate = (props) => {
                             handleDetails(e);
                             setVolunteer(true);
                           }}
-                          name="volunteer"
-                          value="yes"
+                          name="is_volunteer_active"
+                          value="1"
                         />
                         <label class="ml-2" for="volunteer">
                           {" "}
@@ -669,8 +723,8 @@ export const Donate = (props) => {
                             handleDetails(e);
                             setVolunteer(false);
                           }}
-                          name="volunteer"
-                          value="no"
+                          name="is_volunteer_active"
+                          value="0"
                         />
                         <label class="ml-2" for="no">
                           No
@@ -685,7 +739,7 @@ export const Donate = (props) => {
                               type="checkbox"
                               id="pick"
                               name="volunteer_pick"
-                              value="pick"
+                              value="1"
                               onChange={(e) => {
                                 handleDetails(e);
                               }}
@@ -699,7 +753,7 @@ export const Donate = (props) => {
                               type="checkbox"
                               id="admin"
                               name="volunteer_admin"
-                              value="admin"
+                              value="0"
                               onChange={(e) => {
                                 handleDetails(e);
                               }}
@@ -712,7 +766,7 @@ export const Donate = (props) => {
                             <input
                               class="form-control"
                               type="text"
-                              name="volunteer_admin"
+                              name="volunteer_other"
                               placeholder="Other"
                               onChange={(e) => {
                                 handleDetails(e);
@@ -730,9 +784,9 @@ export const Donate = (props) => {
                     <div class="col-lg-3">
                       <input
                         type="radio"
-                        id="no"
-                        name="support"
-                        value="yes"
+                        id="yes"
+                        name="emergencysupport"
+                        value="1"
                         onChange={(e) => {
                           handleDetails(e);
                         }}
@@ -746,8 +800,8 @@ export const Donate = (props) => {
                       <input
                         type="radio"
                         id="no"
-                        name="support"
-                        value="no"
+                        name="emergencysupport"
+                        value="0"
                         onChange={(e) => {
                           handleDetails(e);
                         }}
