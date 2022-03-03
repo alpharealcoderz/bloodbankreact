@@ -21,7 +21,9 @@ export const Home = ({
     state: "All",
     city: "All",
   });
-  const [st, setSt] = useState("");
+  const [st, setSt] = useState([]);
+  const [dt, setDt] = useState([]);
+  const [ct, setCt] = useState([]);
   // const [donorsData, setDonorsData] = useState([]);
   const handleSearchParam = (e) => {
     let payload = {};
@@ -43,14 +45,7 @@ export const Home = ({
     window.location.hash = "#donors";
   };
   useEffect(() => {
-    axios.post(api_base_url + "/getAllStates").then((res) => {
-      const state = res.data;
-      for (let i = 0; i < state.length; i++) {
-        setSt(state[i].state_title);
-      }
-    });
-  }, []);
-  console.log(st);
+
   return (
     <section
       id="home"
@@ -128,8 +123,8 @@ export const Home = ({
                       }}
                     >
                       <option>All</option>;
-                      {states.map((stt) => {
-                        return <option>{stt.name}</option>;
+                      {st.map((stt) => {
+                        return <option>{stt.state_title}</option>;
                       })}
                     </select>
                   </div>
@@ -147,8 +142,8 @@ export const Home = ({
                       }}
                     >
                       <option>All</option>;
-                      {city.map((ct) => {
-                        return <option>{ct.name}</option>;
+                      {dt.map((dtt) => {
+                        return <option>{dtt.district_title}</option>;
                       })}
                     </select>
                     {/* </div> */}
