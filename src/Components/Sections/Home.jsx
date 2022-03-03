@@ -43,11 +43,11 @@ export const Home = ({
     window.location.hash = "#donors";
   };
   useEffect(() => {
-    axios.post(api_base_url+'/getAllStates').then((res) => {
+    axios.post(api_base_url + "/getAllStates").then((res) => {
       const state = res.data;
-      for(let i=0;i<state.length;i++){
+      for (let i = 0; i < state.length; i++) {
         setSt(state[i].state_title);
-      }  
+      }
     });
   }, []);
   console.log(st);
@@ -78,7 +78,7 @@ export const Home = ({
             <img src={blood} />
             <div class="heading-box">
               <h3>
-                <span class="main-color">Omnicent Blood Bank</span>{" "}
+                <span class="main-color">Check Blood Availability</span>{" "}
               </h3>
               <p>
                 This is an organization that brings voluntary blood donors and
