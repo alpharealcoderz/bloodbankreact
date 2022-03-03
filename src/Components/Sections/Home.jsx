@@ -57,7 +57,7 @@ export const Home = ({
       class="pt-page pt-page-1"
       data-id="home"
       style={{ fontSize: "14px", color: "black", fontWeight: "300" }}
-    >
+    >   
       <div class="container slider-container">
         <div class="row align-items-lg-center">
           <div style={{ marginTop: "-15%" }} class="col-lg-7 order-lg-2 ">
