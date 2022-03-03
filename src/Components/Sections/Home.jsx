@@ -73,7 +73,10 @@ export const Home = ({
             <img src={blood} />
             <div class="heading-box">
               <h3>
-                <span class="main-color">Check Blood Availability</span>{" "}
+
+                <span class="main-color">Post blood request</span>{" "}
+              <span class="main-color">Check Blood Availability</span>{" "}
+
               </h3>
               <p>
                 This is an organization that brings voluntary blood donors and
