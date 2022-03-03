@@ -3,6 +3,7 @@ import { state } from "../../Constants";
 import { getAllCityByStates } from "../../redux/actions/constants";
 import { registerDonor } from "../../Service/DonorService";
 import { useSelector, useDispatch } from "react-redux";
+import { message } from "antd";
 import axios from "axios";
 import { api_base_url } from "../../Constants";
 export const Donate = (props) => {
@@ -24,7 +25,6 @@ export const Donate = (props) => {
     dob: "",
     age: "",
     gender: "",
-    // state: state[0],
     st: "",
     district: "",
     city: "",
@@ -99,10 +99,12 @@ export const Donate = (props) => {
       type_do_rdp: details.DoRDP,
       type_do_wbc: details.DoWBC,
     };
-    console.log(data);
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
-      console.log("gulshan");
-    });
+      if(res.status=='sucess'){
+      message.success("Register successfully")}else{
+        message.success("Please Check Input")
+      };
+    }).catch(()=> message.success("Error Occured"))
     // type == "register" && setDetails({ ...details, is_donor_active: 0 });
     // registerDonor(details);
   };
@@ -114,8 +116,7 @@ export const Donate = (props) => {
       .then((res) => setDistrict(res.data));
   };
   const handleDistrictChange = (e) => {
-    axios
-      .post(api_base_url + "/getAllCityByDistrict", {
+    axios.post(api_base_url + "/getAllCityByDistrict", {
         districtid: e.target.value,
       })
       .then((res) => setCt(res.data));
@@ -182,6 +183,7 @@ export const Donate = (props) => {
                     <input
                       class="form-control"
                       type="number"
+                      min={0}
                       placeholder="Phone"
                       name="phone"
                       onChange={(e) => {
@@ -225,6 +227,7 @@ export const Donate = (props) => {
                     <input
                       class="form-control"
                       type="number"
+                      min={0}
                       placeholder="Age"
                       name="age"
                       onChange={(e) => {
@@ -550,6 +553,7 @@ export const Donate = (props) => {
                     <input
                       class="form-control"
                       type="number"
+                      min={0}
                       placeholder="in km"
                       name="distancetravel"
                       onChange={(e) => {

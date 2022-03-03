@@ -61,21 +61,6 @@ export const TopNavigation = ({ updateDonorsData }) => {
 
       <div>
         <a
-          data-animation="58"
-          data-goto="8"
-          href="#donate"
-          class="btn btn-large btn-green topNavHover"
-          style={{
-            color: "white",
-            height: "53px",
-            textAlign: "center",
-          }}
-        >
-          Donate Blood
-        </a>
-      </div>
-      <div>
-        <a
           data-animation="61"
           data-goto="5"
           href="#request"
@@ -124,6 +109,22 @@ export const TopNavigation = ({ updateDonorsData }) => {
             </a>
           </div>
           <div>
+        <a
+          data-animation="58"
+          data-goto="8"
+          href="#donate"
+          class="btn btn-large btn-green topNavHover"
+          style={{
+            color: "white",
+            height: "53px",
+            textAlign: "center",
+          }}
+        >
+          Register
+        </a>
+      </div>
+
+          {/* <div>
             <a
               data-animation="61"
               data-goto="18"
@@ -133,7 +134,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
             >
               Register
             </a>
-          </div>
+          </div> */}
         </>
       ) : (
         <div>
