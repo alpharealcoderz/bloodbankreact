@@ -78,7 +78,7 @@ export const Home = ({
             <img src={blood} />
             <div class="heading-box">
               <h3>
-                <span class="main-color">Omnicent Blood Bank</span>{" "}
+                <span class="main-color">Post blood request</span>{" "}
               </h3>
               <p>
                 This is an organization that brings voluntary blood donors and

@@ -15,6 +15,7 @@ import React from "react";
 import "./Footer.css";
 import footerimg from "./foot.png";
 import playstore from "./app.png";
+import apple from "./apple.png";
 import wanna from "./wanna.png";
 
 function Footer() {
@@ -22,46 +23,18 @@ function Footer() {
     <div className="main-footer">
       <div className="container">
         <div className="row">
-          {/* Column1 */}
-          <div style={{marginRight:"3%",marginTop:"3%"}} className="col">
-          <img style={{height:"170px",width:"200px"}} src={footerimg} alt="BigCo Inc. logo"/>
-          </div>
           {/* Column2 */}
-          <div className="col">
-            <h4>Information</h4><hr></hr>
-            <ui className="list-unstyled">
-              <li>login</li>
-              <li>Career</li>
-              <li>Request Quote</li>
-              <li>Our portfolio</li>
-              <li>Blog</li>
-              <li>FAQ</li>
-              <li>Contact Us</li>
-            </ui>
+          <div style={{ textAlign:"center"}} className="col ">
+          <div className="mt-5">
+            <i style={{width:'30px',height:'30px'}} class="lni lni-facebook-filled mr-2"></i>
+            <i style={{width:'30px',height:'30px'}}class="lni lni-whatsapp mr-2"></i>
+            <i style={{width:'30px',height:'30px'}}class="lni lni-twitter mr-2"></i>
+            <i style={{width:'30px',height:'30px'}}class="lni lni-linkedin mr-2"></i>
+            <i style={{width:'30px',height:'30px'}}class="lni lni-instagram-original mr-2"></i>
+            <img style={{width:'55px'}} src={playstore}></img> <img style={{width:'55px'}} src={apple}></img>
+            </div>
           </div>
-          {/* Column3 */}
-          <div className="col">
-            <h4>About Company</h4><hr></hr>
-            <ui className="list-unstyled">
-              <li>Our Milestone</li>
-              <li>Purpose</li>
-              <li>Core Values</li>
-              <li>Why OITSPL</li>
-              <li>Testimonial</li>
-              <li>Review us</li>
-              <h6 style={{color:"black"}}>Download Our App</h6>
-              <img style={{height:"30px",width:"55px"}} src={playstore} alt="BigCo Inc. logo"/>
-            </ui>
-          </div>
-          {/* Column4 */}
-          <div style={{marginTop:'2%'}} className="col">
-          <ui className="list-unstyled">
-              <img src={wanna} alt="BigCo Inc. logo"/>
-              <li>011-41548185, 25814379</li>
-              <li>+91-9811027310</li>
-              <h4>info@Omniscient.com</h4>
-            </ui>
-          </div>
+          
         </div>
         <hr />
         <div className="row">

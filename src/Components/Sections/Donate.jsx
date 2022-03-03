@@ -70,7 +70,7 @@ console.log(details)
   };
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
-      <div class="container">
+      <div style={{marginBottom:'4%'}} class="container">
         <div class="row align-items-lg-center">
           <div class="col-7">
             <div class="heading-area">
