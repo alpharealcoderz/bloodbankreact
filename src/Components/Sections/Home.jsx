@@ -21,7 +21,9 @@ export const Home = ({
     state: "All",
     city: "All",
   });
-  const [st, setSt] = useState("");
+const [st, setSt] = useState([]);
+const [district,setDistrict]=useState([])
+const [ct,setCt]=useState([])
   // const [donorsData, setDonorsData] = useState([]);
   const handleSearchParam = (e) => {
     let payload = {};
@@ -30,6 +32,16 @@ export const Home = ({
     payload[name] = value;
     setSearchParameters({ ...searchParameters, ...payload });
   };
+  const handleStateChange = (e) => {
+    axios.post(api_base_url+'/getAllDistrictByStates',{state_id:e.target.value}).then(res=>
+     setDistrict(res.data))
+ 
+   };
+   const handleDistrictChange = (e) => {
+     axios.post(api_base_url+'/getAllCityByDistrict',{districtid:e.target.value}).then(res=>
+      setCt(res.data))
+  
+    };
   const handleCity = (e) => {
     let filter = states.find((name) => {
       return name.name == e.target.value;
@@ -44,12 +56,11 @@ export const Home = ({
   };
   useEffect(() => {
     axios.post(api_base_url+'/getAllStates').then((res) => {
-      const state = res.data;
-      for(let i=0;i<state.length;i++){
-        setSt(state[i].state_title);
-      }  
-    });
-  }, []);
+      const st = res.data;
+      setSt(st);
+    })
+  }, [])
+  console.log(st)
   console.log(st);
   return (
     <section
@@ -121,15 +132,16 @@ export const Home = ({
                   <div class="col-sm-6">
                     <select
                       class="form-control"
-                      name="state"
+                      name="st"
                       onChange={(e) => {
                         handleSearchParam(e);
+                        handleStateChange(e);
                         handleCity(e);
                       }}
                     >
                       <option>All</option>;
-                      {states.map((stt) => {
-                        return <option>{stt.name}</option>;
+                      {st.map((stt) => {
+                        return <option value={stt.state_id}>{stt.state_title}</option>;
                       })}
                     </select>
                   </div>
@@ -144,11 +156,13 @@ export const Home = ({
                       name="District"
                       onChange={(e) => {
                         handleSearchParam(e);
+                        handleDistrictChange(e);
+
                       }}
                     >
                       <option>All</option>;
-                      {city.map((ct) => {
-                        return <option>{ct.name}</option>;
+                      {district.map((dt) => {
+                        return <option value={dt.districtid}>{dt.district_title}</option>;
                       })}
                     </select>
                     {/* </div> */}
@@ -167,8 +181,8 @@ export const Home = ({
                       }}
                     >
                       <option>All</option>;
-                      {city.map((ct) => {
-                        return <option></option>;
+                      {ct.map((ctt) => {
+                        return <option value={ctt.id}>{ctt.name}</option>;
                       })}
                     </select>
                     {/* </div> */}
