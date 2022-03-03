@@ -20,12 +20,20 @@ export const Register = (props) => {
     state: state[0],
     password: "",
     blood_type: "A+",
-    is_donor_active: 1,
+    role: "user",
+  });
+  const [donorDetails, setDonorDetails] = useState({
+    checkBox4: [],
+    vehicle: 0,
+    can_travel_distance: 0,
+    emergency: 0,
+    convt_time: 0,
   });
   const handleDetails = (e) => {
     let object = {};
     object[e.target.name] = e.target.value;
     setDetails({ ...details, ...object });
+    console.log("details", details);
   };
   const handleSubmit = (e, type) => {
     e.preventDefault();
@@ -40,6 +48,21 @@ export const Register = (props) => {
 
     filter && dispatch(getAllCityByStates(filter.id));
     console.log(filter);
+  };
+  const handle4checkbox = (e) => {
+    let temp = [...donorDetails.checkBox4];
+    temp.push(e.target.value);
+    setDonorDetails({ ...donorDetails, checkBox4: temp });
+  };
+  const handleDonorDetails = (e) => {
+    let object = {};
+    object[e.target.name] = e.target.value;
+    setDonorDetails({ ...donorDetails, ...object });
+  };
+  const handleVehicleCheck = (e) => {
+    let object = {};
+    object[e.target.name] = !donorDetails[e.target.name];
+    setDonorDetails({ ...donorDetails, ...object });
   };
   return (
     <section id="register" class="pt-page pt-page-6" data-id="register">
@@ -159,7 +182,7 @@ export const Register = (props) => {
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                   <div class="form-group">
                     <select
                       class="form-control"
@@ -171,14 +194,32 @@ export const Register = (props) => {
                         handleStateChange(e);
                       }}
                     >
-                      <option>All</option>
+                      <option>State</option>
                       {states.map((st) => {
                         return <option>{st.name}</option>;
                       })}
                     </select>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <select
+                      class="form-control"
+                      type=""
+                      placeholder="District"
+                      name="district"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    >
+                      <option>District</option>
+                      {city.map((ct) => {
+                        return <option>{ct.name}</option>;
+                      })}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
                   <div class="form-group">
                     <select
                       class="form-control"
@@ -189,6 +230,7 @@ export const Register = (props) => {
                         handleDetails(e);
                       }}
                     >
+                      <option>City</option>
                       {city.map((ct) => {
                         return <option>{ct.name}</option>;
                       })}
@@ -196,19 +238,183 @@ export const Register = (props) => {
                   </div>
                 </div>
               </div>
-
-              <div class="form-group">
-                <input
-                  class="form-control"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={(e) => {
-                    handleDetails(e);
-                  }}
-                />
+              <div class="row">
+                <div class="col-sm-6" style={{ marginTop: "10px" }}>
+                  <div class="form-group">
+                    <input
+                      type="radio"
+                      id="donor"
+                      name="role"
+                      value="donor"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                    <label style={{ marginLeft: "5px" }} for="donor">
+                      Donor
+                    </label>
+                    <input
+                      type="radio"
+                      id="volunteer"
+                      name="role"
+                      value="volunteer"
+                      style={{ marginLeft: "10px" }}
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                    <label style={{ marginLeft: "5px" }} for="volunteer">
+                      Volunteer
+                    </label>
+                    <input
+                      type="radio"
+                      id="request"
+                      name="role"
+                      value="request"
+                      style={{ marginLeft: "10px" }}
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                    <label style={{ marginLeft: "5px" }} for="request">
+                      Request
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
-
+              {details.role == "donor" && (
+                <>
+                  {" "}
+                  <div class="row">
+                    <div style={{ marginTop: "10px", marginLeft: "20px" }}>
+                      Available
+                    </div>
+                    <div class="col-sm-9" style={{ marginTop: "10px" }}>
+                      <input
+                        type="checkbox"
+                        value="blood"
+                        name="blood"
+                        onChange={(e) => handle4checkbox(e)}
+                      />
+                      <label style={{ marginLeft: "5px" }} for="blood">
+                        Request
+                      </label>
+                      <input
+                        type="checkbox"
+                        value="sdp"
+                        name="sdp"
+                        onChange={(e) => handle4checkbox(e)}
+                        style={{ marginLeft: "10px" }}
+                      />
+                      <label style={{ marginLeft: "5px" }} for="sdp">
+                        SDP
+                      </label>
+                      <input
+                        type="checkbox"
+                        value="ffp"
+                        name="ffp"
+                        onChange={(e) => handle4checkbox(e)}
+                        style={{ marginLeft: "10px" }}
+                      />
+                      <label style={{ marginLeft: "5px" }} for="ffp">
+                        FFP
+                      </label>
+                      <input
+                        type="checkbox"
+                        value="rdp"
+                        name="rdp"
+                        onChange={(e) => handle4checkbox(e)}
+                        style={{ marginLeft: "10px" }}
+                      />
+                      <label style={{ marginLeft: "5px" }} for="rdp">
+                        RDP
+                      </label>
+                      <input
+                        type="checkbox"
+                        value="wbc"
+                        name="wbc"
+                        onChange={(e) => handle4checkbox(e)}
+                        style={{ marginLeft: "10px" }}
+                      />
+                      <label style={{ marginLeft: "5px" }} for="wbc">
+                        WBC
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <input
+                      type="checkbox"
+                      value="1"
+                      name="vehicle"
+                      onChange={(e) => handleVehicleCheck(e)}
+                      style={{ marginLeft: "10px", marginTop: "10px" }}
+                    />
+                    <label
+                      style={{ marginLeft: "5px", marginTop: "10px" }}
+                      for="wbc"
+                    >
+                      Select If you have a Vehicle
+                    </label>
+                    {donorDetails.vehicle == 1 && (
+                      <div class="col-sm-6">
+                        <input
+                          class="form-control"
+                          type="number"
+                          placeholder="Can travel distance"
+                          onChange={(e) => {
+                            handleDonorDetails(e);
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div class="row">
+                    <input
+                      type="checkbox"
+                      value="1"
+                      name="emergency"
+                      onChange={(e) => handleVehicleCheck(e)}
+                      style={{ marginLeft: "10px", marginTop: "10px" }}
+                    />
+                    <label
+                      style={{ marginLeft: "5px", marginTop: "10px" }}
+                      for="emergency"
+                    >
+                      Select If you are willing to support in emerygency.
+                    </label>
+                  </div>
+                  <div class="row">
+                    <label
+                      style={{ marginLeft: "5px", marginTop: "10px" }}
+                      for="convt_time"
+                    >
+                      Convenient Time To talk
+                    </label>
+                    <div class="col-sm-6">
+                      <input
+                        className="form-control"
+                        type="time"
+                        name="convt_time"
+                        onChange={(e) => handleDonorDetails(e)}
+                        style={{ marginLeft: "10px", marginTop: "10px" }}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
               <button
                 type="button"
                 id="submit_btn"
