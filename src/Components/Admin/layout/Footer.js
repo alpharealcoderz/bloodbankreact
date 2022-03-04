@@ -9,21 +9,17 @@
   =========================================================
   * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-
-
 import React from "react";
 import "./Footer.css";
-import footerimg from "./foot.png";
 import playstore from "./app.png";
 import apple from "./apple.png";
-import wanna from "./wanna.png";
+
 
 function Footer() {
   return (
     <div className="main-footer">
       <div className="container">
         <div className="row">
-          {/* Column2 */}
           <div style={{ textAlign:"center"}} className="col ">
           <div className="mt-5">
             <i style={{width:'30px',height:'30px'}} class="lni lni-facebook-filled mr-2"></i>
@@ -49,70 +45,3 @@ function Footer() {
 
 export default Footer;
 
-// import { Layout, Row, Col } from "antd";
-// import { HeartFilled } from "@ant-design/icons";
-
-// function Footer() {
-//   const { Footer: AntFooter } = Layout;
-
-//   return (
-//     <AntFooter style={{ background: "#fafafa" }}>
-//       <Row className="just">
-//         <Col xs={24} md={12} lg={12}>
-//           <div className="copyright">
-//             © 2022, made with
-//             {<HeartFilled />} by
-//             <a className="font-weight-bold" target="_blank">
-//               RealCoderZ
-//             </a>
-//             for a better world.
-//           </div>
-//         </Col>
-//         {/* <Col xs={24} md={12} lg={12}>
-//           <div className="footer-menu">
-//             <ul>
-//               <li className="nav-item">
-//                 <a
-//                   href="#pablo"
-//                   className="nav-link text-muted"
-//                   target="_blank"
-//                 >
-//                   Creative Tim
-//                 </a>
-//               </li>
-//               <li className="nav-item">
-//                 <a
-//                   href="#pablo"
-//                   className="nav-link text-muted"
-//                   target="_blank"
-//                 >
-//                   About Us
-//                 </a>
-//               </li>
-//               <li className="nav-item">
-//                 <a
-//                   href="#pablo"
-//                   className="nav-link text-muted"
-//                   target="_blank"
-//                 >
-//                   Blog
-//                 </a>
-//               </li>
-//               <li className="nav-item">
-//                 <a
-//                   href="#pablo"
-//                   className="nav-link pe-0 text-muted"
-//                   target="_blank"
-//                 >
-//                   License
-//                 </a>
-//               </li>
-//             </ul>
-//           </div>
-//         </Col> */}
-//       </Row>
-//     </AntFooter>
-//   );
-// }
-
-// export default Footer;

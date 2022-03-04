@@ -16,6 +16,7 @@ export const Donate = (props) => {
   const [vehicle, setVehicle] = useState(false);
   const [support, setSupport] = useState(false);
   const [volunteer, setVolunteer] = useState(false);
+  const [dateofbirth, setDateofbirth] = useState(false);
   const [ct, setCt] = useState([]);
   const [details, setDetails] = useState({
     name: "",
@@ -131,7 +132,7 @@ export const Donate = (props) => {
   console.log(st);
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
-      <div style={{ marginBottom: "4%" }} class="container">
+      <div style={{ marginTop: "-11%" }} class="container">
         <div class="row align-items-lg-center">
           <div class="col-7">
             <div class="heading-area">
@@ -217,8 +218,14 @@ export const Donate = (props) => {
                       name="dob"
                       onChange={(e) => {
                         handleDetails(e);
+                        
                       }}
+                      onMouseEnter={() => setDateofbirth(true)}
+                      onMouseLeave={() =>setDateofbirth(false)}
                     />
+                    {dateofbirth && (
+                      <label style={{color:'red'}}>date of birth</label>
+                     )}
                   </div>
                 </div>
 
