@@ -27,7 +27,7 @@ function Footer() {
             <i style={{width:'30px',height:'30px'}}class="lni lni-twitter mr-2"></i>
             <i style={{width:'30px',height:'30px'}}class="lni lni-linkedin mr-2"></i>
             <i style={{width:'30px',height:'30px'}}class="lni lni-instagram-original mr-2"></i>
-            <img style={{width:'55px'}} src={playstore}></img> <img style={{width:'55px'}} src={apple}></img>
+            <img style={{width:'55px',borderRadius:'5px'}} src={playstore}></img> <img style={{width:'55px',borderRadius:'5px'}} src={apple}></img>
             </div>
           </div>
           
