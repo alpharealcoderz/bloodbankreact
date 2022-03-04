@@ -9,7 +9,9 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./redux/reducer/rootReducer";
 axios.interceptors.request.use((request) => {
+  // alert('saransh')
   request.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+  console.log(request.headers)
   return request;
 });
 // axios.interceptors.response.use((res) => {
