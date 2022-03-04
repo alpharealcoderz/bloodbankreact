@@ -90,12 +90,12 @@ setData(temp)
       data-id="donors"
       style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >
-      <div class="container">
+      <div  class="container">
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
           <div class="heading-area">
             <h2 class="title">Donor's Data</h2>
-            <h6 class="sub-title main-color">BloodBank Name: Moto</h6>
+            <h6 class="sub-title main-color">Omniscient BloodBank</h6>
           </div>
           <div style={{display:'flex'}}>
             <div >

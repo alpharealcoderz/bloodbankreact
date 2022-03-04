@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { state } from "../../Constants";
-import { getAllCityByStates } from "../../redux/actions/constants";
-import { registerDonor } from "../../Service/DonorService";
-import { useSelector, useDispatch } from "react-redux";
-import { message } from "antd";
+import { useSelector } from "react-redux";
+import { message, Button } from "antd";
 import axios from "axios";
 import { api_base_url } from "../../Constants";
 export const Donate = (props) => {
-  const dispatch = useDispatch();
   const bloodType = useSelector((state) => state.donors.bloodType);
-  const city = useSelector((state) => state.donors.city);
-  const states = useSelector((state) => state.donors.states);
   const [st, setSt] = useState([]);
   const [district, setDistrict] = useState([]);
   const [vehicle, setVehicle] = useState(false);
-  const [support, setSupport] = useState(false);
   const [volunteer, setVolunteer] = useState(false);
   const [dateofbirth, setDateofbirth] = useState(false);
+  const [gard, setGard] = useState(false);
   const [ct, setCt] = useState([]);
   const [details, setDetails] = useState({
     name: "",
@@ -102,12 +96,13 @@ export const Donate = (props) => {
     };
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
       if(res.status=='201'){
-      message.success("Register successfully")}else{
-        message.success("your form is not submitted,Please fill all details correctly ")
+      message.success("Register successfully",10)}else{
+        message.error("your form is not submitted,Please fill all the details correctly ",6)
       };
-    }).catch(()=> message.success("your form is not submitted,Please fill all details correctly"))
+    }).catch(()=> message.error("your form is not submitted,Please fill all details correctly",6))
     // type == "register" && setDetails({ ...details, is_donor_active: 0 });
     // registerDonor(details);
+    
   };
   const handleStateChange = (e) => {
     axios
@@ -162,12 +157,32 @@ export const Donate = (props) => {
                     />
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <select
+                      class="form-control"
+                      type=""
+                      name="sdwo"
+                      onChange={(e) => {
+                        handleDetails(e);
+                        setGard(true)
+                      }}
+                    >
+                      <option>Select</option>
+                      <option>Son of</option>
+                      <option>Wife of</option>
+                      <option>Daughter of</option>
+                    </select>
+                  </div>
+                </div>
+                <>
+                      {gard && (
+                <div class="col-lg-3">
                   <div class="form-group">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Wife/ Daughter/ Son of"
+                      placeholder="Guardian"
                       name="wodoso"
                       onChange={(e) => {
                         handleDetails(e);
@@ -175,6 +190,8 @@ export const Donate = (props) => {
                     />
                   </div>
                 </div>
+                      )}
+                      </>
               </div>
 
               <div class="row">
@@ -184,7 +201,8 @@ export const Donate = (props) => {
                     <input
                       class="form-control"
                       type="number"
-                      min={0}
+                    min={1111111111}
+                    max={9999999999}
                       placeholder="Phone"
                       name="phone"
                       onChange={(e) => {
@@ -234,9 +252,10 @@ export const Donate = (props) => {
                     <input
                       class="form-control"
                       type="number"
-                      min={0}
+                      min={11}
+                      max={99}
                       placeholder="Age"
-                      name="age"
+                      name="age"           
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -579,14 +598,14 @@ export const Donate = (props) => {
                           id="yes"
                           onChange={(e) => {
                             handleDetails(e);
-                            setVehicle(true);
+                            
                           }}
                           name="is_donor_active"
                           value="1"
                         />
                         <label class="ml-2" for="Yes">
                           
-                          yes
+                          Yes
                         </label>
                       </div>
 
@@ -597,7 +616,7 @@ export const Donate = (props) => {
                           id="no"
                           onChange={(e) => {
                             handleDetails(e);
-                            setVehicle(false);
+                            
                           }}
                           name="is_donor_active"
                           value="0"
@@ -629,7 +648,7 @@ export const Donate = (props) => {
                         />
                         <label class="ml-2" for="car">
                           {" "}
-                          yes
+                          Yes
                         </label>
                       </div>
 
@@ -722,7 +741,7 @@ export const Donate = (props) => {
                         />
                         <label class="ml-2" for="volunteer">
                           {" "}
-                          yes
+                          Yes
                         </label>
                       </div>
                       <br></br>
@@ -756,7 +775,7 @@ export const Donate = (props) => {
                               }}
                             />
                             <label class="ml-2" for="pick">
-                              Pick&Drop
+                              Pick & Drop
                             </label>
                           </div>
                           <div class="col-lg-4">
@@ -804,7 +823,7 @@ export const Donate = (props) => {
                       />
                       <label class="ml-2" for="yes">
                         {" "}
-                        yes
+                        Yes
                       </label>
                     </div>
                     <div class="col-lg-3">

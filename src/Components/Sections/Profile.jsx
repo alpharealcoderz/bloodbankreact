@@ -110,7 +110,7 @@ export default function Profile() {
                 </Button>
               </div>
             </div>
-            <h6 class="sub-title main-color">BloodBank Name: Moto</h6>
+            <h6 class="sub-title main-color">Omniscient BloodBank</h6>
           </div>
           <Modal
             title="Edit Profile"
