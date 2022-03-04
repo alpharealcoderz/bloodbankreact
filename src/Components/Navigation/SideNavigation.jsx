@@ -15,7 +15,7 @@ export default function SideNavigation() {
       ></div>{" "}
       <div class="site-nav navbarActive" id="navToggle">
         <ul class="site-main-menu alt-font" id="nav">
-          <div style={{ height: "10px", backgroundColor: "white" }}></div>
+          <div style={{ height: "150px", backgroundColor: "white" }}></div>
           <li>
             <a
               class="btn btn-large btn-green "
