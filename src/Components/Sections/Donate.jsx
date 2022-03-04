@@ -112,13 +112,13 @@ export const Donate = (props) => {
   const handleStateChange = (e) => {
     axios
       .post(api_base_url + "/getAllDistrictByStates", {
-        state_id: e.target.value,
+        state_id: e.target.name,
       })
       .then((res) => setDistrict(res.data));
   };
   const handleDistrictChange = (e) => {
     axios.post(api_base_url + "/getAllCityByDistrict", {
-        districtid: e.target.value,
+        districtid: e.target.name,
       })
       .then((res) => setCt(res.data));
   };
@@ -286,7 +286,7 @@ export const Donate = (props) => {
                       <option>State</option>
                       {st.map((stt) => {
                         return (
-                          <option value={stt.state_id}>
+                          <option value={stt.state_title}name={stt.state_id}>
                             {stt.state_title}
                           </option>
                         );
@@ -310,7 +310,7 @@ export const Donate = (props) => {
                       <option>District</option>
                       {district.map((dt) => {
                         return (
-                          <option value={dt.districtid}>
+                          <option value={dt.district_title}name={dt.districtid}>
                             {dt.district_title}
                           </option>
                         );
@@ -332,7 +332,7 @@ export const Donate = (props) => {
                     >
                       <option>City</option>
                       {ct.map((ctt) => {
-                        return <option value={ctt.id}>{ctt.name}</option>;
+                        return <option value={ctt.name}name={ctt.id}>{ctt.name}</option>;
                       })}
                     </select>
                   </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "antd";
+import { Table,Button } from "antd";
 import "antd/dist/antd.css";
 import { api_base_url } from "../Constants";
 import axios from "axios";
@@ -9,14 +9,21 @@ import { connect } from "react-redux";
 import { updateDonorsData } from "../redux/actions/donors";
 export const Donors = ({ donorsData, updateDonorsData, canFetchDonors}) => {
   const [data, setData] = useState([]);
+  const [permanent,setPermanent]=useState([])
   const [st, setSt] = useState([]);
   const [district,setDistrict]=useState([])
   const [ct,setCt]=useState([])
   const bloodType = useSelector((state) => state.donors.bloodType);
   useEffect(() => {
     console.log(donorsData.length);
-    canFetchDonors ? setData(donorsData) : updateDonorsData();
+    if(canFetchDonors){
+      setData(donorsData);setPermanent(donorsData)
+    }else{
+      updateDonorsData()
+    }
+
   }, [donorsData]);
+  let searchObj={}
   const [columns, setColumns] = useState([
     {
       title: "Name",
@@ -72,16 +79,58 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors}) => {
         setSt(st);
       })
     }, [])
+const search = async() => {
+  console.log('saransh',searchObj)
+  let temp = [...permanent]
+  let newData=[]
+if(searchObj.hasOwnProperty('state')){
+ 
+let temp1= await temp.filter(el=>{return el.state==searchObj.state})
+newData=[...newData,...temp1]
+setData(newData)
+}
+if(searchObj.hasOwnProperty('district')){
+ let temp2=await temp.filter(el=>{return el.district==searchObj.district})
+  newData=[...newData,...temp2]
+  setData(newData)
+  }
+  if(searchObj.hasOwnProperty('city')){
+    let temp2=await temp.filter(el=>{return el.city==searchObj.city})
+     newData=[...newData,...temp2]
+     setData(newData)
+     }
+     if(searchObj.hasOwnProperty('blood_type')){
+      let temp2=await temp.filter(el=>{return el.blood_type==searchObj.blood_type})
+       newData=[...newData,...temp2]
+       setData(newData)
+       }
 
+}
 const handleStateFilter = (e) => {
-const temp = data.filter(el=>{return el.st==e.target.value} )
+// const temp = data.filter(el=>{return el.st==e.target.name} )
+let name=document.getElementsByName(e.target.value+'state')[0].innerText
 
-setData(temp)
+searchObj.state=name
+
+// setData(temp)
 }  
+const handleDistrictFilter = (e) => {
+  // const temp = data.filter(el=>{return el.st==e.target.name} )
+  searchObj.district=e.target.name
+  
+  // setData(temp)
+  }  
+  const handleCityFilter = (e) => {
+    // const temp = data.filter(el=>{return el.st==e.target.name} )
+    searchObj.city=e.target.name
+    
+    // setData(temp)
+    }  
 
 const handleBloodFilter = (e) => {
-  const temp = data.filter(el=>{return el.blood_type==e.target.value})
-setData(temp)
+//   const temp = data.filter(el=>{return el.blood_type==e.target.value})
+// setData(temp)
+searchObj.blood_type=e.target.value
 }
   return (
     <section
@@ -110,7 +159,7 @@ setData(temp)
                     >
                       <option>All</option>;
                       {st.map((stt) => {
-                        return <option value={stt.state_id}>{stt.state_title}</option>;
+                        return <option value={stt.state_id} name={stt.state_id+'state'}>{stt.state_title}</option>;
                       })}
               </select>
             </div>
@@ -121,12 +170,12 @@ setData(temp)
                       name="District"
                       onChange={(e) => {
                       handleDistrictChange(e);
-
+                      handleDistrictFilter(e)
                       }}
                     >
                       <option>All</option>;
                       {district.map((dt) => {
-                        return <option value={dt.districtid}>{dt.district_title}</option>;
+                        return <option name={dt.district_title}value={dt.districtid}>{dt.district_title}</option>;
                       })}
                     </select>            
                     </div>
@@ -136,11 +185,12 @@ setData(temp)
                       class="form-control"
                       name="city"
                       onChange={(e) => {
+                        handleCityFilter(e)
                       }}
                     >
                       <option>All</option>;
                       {ct.map((ctt) => {
-                        return <option value={ctt.id}>{ctt.name}</option>;
+                        return <option name={ctt.name} value={ctt.id}>{ctt.name}</option>;
                       })}
                     </select>            
                     </div>
@@ -159,6 +209,7 @@ setData(temp)
                       })}
                     </select>            
                     </div>
+<Button type="primary" onClick={search}> Search</Button>
           </div>
           
           <Table dataSource={data} columns={columns} />;
