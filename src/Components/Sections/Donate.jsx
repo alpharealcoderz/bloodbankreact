@@ -100,11 +100,11 @@ export const Donate = (props) => {
       type_do_wbc: details.DoWBC,
     };
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
-      if(res.status=='sucess'){
+      if(res.status=='201'){
       message.success("Register successfully")}else{
-        message.success("Please Check Input")
+        message.success("your form is not submitted,Please fill all details correctly ")
       };
-    }).catch(()=> message.success("Error Occured"))
+    }).catch(()=> message.success("your form is not submitted,Please fill all details correctly"))
     // type == "register" && setDetails({ ...details, is_donor_active: 0 });
     // registerDonor(details);
   };
