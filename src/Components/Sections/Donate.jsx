@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { message, Button } from "antd";
 import axios from "axios";
 import { api_base_url } from "../../Constants";
+import { toBeEmpty } from "@testing-library/jest-dom/dist/matchers";
 export const Donate = (props) => {
   const bloodType = useSelector((state) => state.donors.bloodType);
   const [st, setSt] = useState([]);
@@ -15,6 +16,7 @@ export const Donate = (props) => {
   const [details, setDetails] = useState({
     name: "",
     wodoso: "",
+    wod:"",
     phone: "",
     email: "",
     dob: "",
@@ -63,7 +65,7 @@ export const Donate = (props) => {
       is_volunteer_active:details.is_volunteer_active,
       password:details.password,
       name: details.name,
-      wo_do_so: details.wodoso,
+      wo_do_so:  details.wod +details.wodoso,
       email: details.email,
       phone: details.phone,
       dob: details.dob,
@@ -94,6 +96,7 @@ export const Donate = (props) => {
       type_do_rdp: details.DoRDP,
       type_do_wbc: details.DoWBC,
     };
+    // console.log(data.wo_do_so)
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
       if(res.status=='201'){
       message.success("Register successfully",10)}else{
@@ -105,15 +108,17 @@ export const Donate = (props) => {
     
   };
   const handleStateChange = (e) => {
+  let temp=  st.find(el=>{return el.state_title==e.target.value})
     axios
       .post(api_base_url + "/getAllDistrictByStates", {
-        state_id: e.target.name,
+        state_id: temp.state_id,
       })
       .then((res) => setDistrict(res.data));
   };
   const handleDistrictChange = (e) => {
+    let temp=  district.find(el=>{return el.district_title==e.target.value})
     axios.post(api_base_url + "/getAllCityByDistrict", {
-        districtid: e.target.name,
+        districtid: temp.districtid,
       })
       .then((res) => setCt(res.data));
   };
@@ -162,16 +167,16 @@ export const Donate = (props) => {
                     <select
                       class="form-control"
                       type=""
-                      name="sdwo"
+                      name="wod"
                       onChange={(e) => {
                         handleDetails(e);
                         setGard(true)
                       }}
                     >
                       <option>Select</option>
-                      <option>Son of</option>
-                      <option>Wife of</option>
-                      <option>Daughter of</option>
+                      <option name='wod' value='so-'>Son of</option>
+                      <option name='wod' value='wo-'>Wife of</option>
+                      <option name='wod' value='do-'>Daughter of</option>
                     </select>
                   </div>
                 </div>
@@ -305,7 +310,7 @@ export const Donate = (props) => {
                       <option>State</option>
                       {st.map((stt) => {
                         return (
-                          <option value={stt.state_title}name={stt.state_id}>
+                          <option value={stt.state_title}name={stt.state_id+'state'}>
                             {stt.state_title}
                           </option>
                         );
@@ -329,7 +334,7 @@ export const Donate = (props) => {
                       <option>District</option>
                       {district.map((dt) => {
                         return (
-                          <option value={dt.district_title}name={dt.districtid}>
+                          <option value={dt.district_title}name={dt.districtid+'district'}>
                             {dt.district_title}
                           </option>
                         );
