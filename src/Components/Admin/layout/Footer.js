@@ -21,7 +21,7 @@ function Footer() {
       <div className="container">
         <div className="row">
           <div style={{ textAlign:"center"}} className="col ">
-          <div className="mt-5">
+          <div style={{marginBottom:'-10px'}} className="mt-5 ">
             <i style={{width:'30px',height:'30px'}} class="lni lni-facebook-filled mr-2"></i>
             <i style={{width:'30px',height:'30px'}}class="lni lni-whatsapp mr-2"></i>
             <i style={{width:'30px',height:'30px'}}class="lni lni-twitter mr-2"></i>
@@ -34,7 +34,7 @@ function Footer() {
         </div>
         <hr />
         <div className="row">
-        <p style={{ textAlign:"center"}} className="col-sm">
+        <p style={{ textAlign:"center"}} className="col-sm pb-3">
             &copy;{new Date().getFullYear()} Omniscient IT Solutions Pvt Ltd. All rights reserved. Terms and Conditions Privacy Policy Resources
           </p>
         </div>
