@@ -368,9 +368,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
-            <div style={{marginTop:'20px'}} className="ml-2 ">
-              
-              <Button type="primary" onClick={search}>
+
+           
+              <div></div>{" "}
+              <Button style={{ marginTop: "20px",marginLeft: "10px" }} type="primary" onClick={search}>
+
                 {" "}
                 Search
               </Button>

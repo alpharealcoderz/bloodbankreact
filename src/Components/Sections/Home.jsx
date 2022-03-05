@@ -32,6 +32,14 @@ const [ct,setCt]=useState([])
     payload[name] = value;
     setSearchParameters({ ...searchParameters, ...payload });
   };
+  const handleSearchParams = (e,type) => {
+    let payload = {};
+    let name = type;
+    let value=document.getElementById(e.target.value+type).innerText
+    payload[name] = value;
+    setSearchParameters({ ...searchParameters, ...payload });
+  };
+  
   const handleStateChange = (e) => {
     axios.post(api_base_url+'/getAllDistrictByStates',{state_id:e.target.value}).then(res=>
      setDistrict(res.data))
@@ -42,13 +50,13 @@ const [ct,setCt]=useState([])
       setCt(res.data))
   
     };
-  const handleCity = (e) => {
-    let filter = states.find((name) => {
-      return name.name == e.target.value;
-    });
-    filter && getAllCityByStates(filter.id);
-    console.log(filter);
-  };
+  // const handleCity = (e) => {
+  //   let filter = states.find((name) => {
+  //     return name.name == e.target.value;
+  //   });
+  //   filter && getAllCityByStates(filter.id);
+  //   console.log(filter);
+  // };
 
   const searchDonors = async () => {
     await updateDonorsData(searchParameters);
@@ -134,14 +142,14 @@ const [ct,setCt]=useState([])
                       class="form-control"
                       name="st"
                       onChange={(e) => {
-                        handleSearchParam(e);
+                        handleSearchParams(e,'state');
                         handleStateChange(e);
-                        handleCity(e);
+                        // handleCity(e);
                       }}
                     >
                       <option>All</option>;
                       {st.map((stt) => {
-                        return <option value={stt.state_id}>{stt.state_title}</option>;
+                        return <option id={stt.state_id+'state'} value={stt.state_id}>{stt.state_title}</option>;
                       })}
                     </select>
                   </div>
@@ -155,14 +163,14 @@ const [ct,setCt]=useState([])
                       class="form-control"
                       name="District"
                       onChange={(e) => {
-                        handleSearchParam(e);
+                        handleSearchParams(e,'district');
                         handleDistrictChange(e);
 
                       }}
                     >
                       <option>All</option>;
                       {district.map((dt) => {
-                        return <option value={dt.districtid}>{dt.district_title}</option>;
+                        return <option id={dt.districtid+'district'} value={dt.districtid}>{dt.district_title}</option>;
                       })}
                     </select>
                     {/* </div> */}
