@@ -421,7 +421,7 @@ export const Request = (props) => {
                 <i class="lni-apartment main-color"></i>
                 <div class="content">
                   <h6 class="main-color m-0">Address</h6>
-                  <p>Come visit us: Address</p>
+                  <p>Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block 4, WEA, Karol Bagh, New Delhi, Delhi 110005</p>
                 </div>
               </li>
 
@@ -430,7 +430,7 @@ export const Request = (props) => {
                 <div class="content">
                   <h6 class="main-color m-0">Email:</h6>
                   <p>
-                    <a href="mailto:email@website.co">email@website.com</a>
+                    <a href="mailto:info@omniscientitsolutions.com">info@omniscientitsolutions.com</a>
                   </p>
                 </div>
               </li>
@@ -438,9 +438,9 @@ export const Request = (props) => {
               <li>
                 <i class="lni-phone-handset main-color"></i>
                 <div class="content">
-                  <h6 class="main-color m-0">Address</h6>
+                  <h6 class="main-color m-0">Contact</h6>
                   <p>
-                    <a href="tel:002343474383">+91 1234567890</a>
+                    <a href="tel:+91-9811027310">+91-9811027310</a>
                   </p>
                 </div>
               </li>
