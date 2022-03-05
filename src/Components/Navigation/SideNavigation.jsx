@@ -1,3 +1,4 @@
+import { hover } from "@testing-library/user-event/dist/hover";
 import React from "react";
 import styled from "styled-components";
 export default function SideNavigation() {
@@ -15,7 +16,7 @@ export default function SideNavigation() {
       ></div>{" "}
       <div class="site-nav navbarActive" id="navToggle">
         <ul class="site-main-menu alt-font" id="nav">
-          <div style={{ height: "150px", backgroundColor: "white" }}></div>
+          <div style={{ height: "70px", backgroundColor: "white" }}></div>
           <li>
             <a
               class="btn btn-large btn-green "
@@ -28,8 +29,11 @@ export default function SideNavigation() {
               data-animation="58"
               data-goto="1"
               href="#home"
-            >
-              <span>Home</span>
+            > 
+              <div style={{marginLeft:'10px'}} class="row">
+               <i style={{color:'white'}} class="fa fa-home hov" aria-hidden="true"></i>
+              <span> Home</span>
+              </div>
             </a>
           </li>
 
@@ -46,7 +50,10 @@ export default function SideNavigation() {
               data-goto="7"
               href="#about"
             >
-              <span>About Us</span>
+              <div style={{marginLeft:'10px'}} class="row" >
+              <i style={{color:'white'}} class="fa fa-globe" aria-hidden="true"></i>
+              <span> About Us</span>
+              </div>
             </a>
           </li>
           <li style={{ display: "none" }}>
@@ -62,7 +69,7 @@ export default function SideNavigation() {
               data-goto="8"
               href="#donate"
             >
-              <span>Donate Now</span>
+              <span> Donate Now</span>
             </a>
           </li>
           <li>
@@ -78,7 +85,11 @@ export default function SideNavigation() {
               data-goto="3"
               href="#achievements"
             >
-              <span>Achivements</span>
+             <div style={{marginLeft:'10px'}} className="row">
+             <i style={{color:'white'}} class="fa fa-trophy" aria-hidden="true"></i>
+             <span>Achivements</span>
+               </div>
+              
             </a>
           </li>
 
@@ -95,7 +106,11 @@ export default function SideNavigation() {
               data-goto="4"
               href="#clients"
             >
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:'white'}} class="fa fa-users" aria-hidden="true"></i>
               <span>Our Volunteer</span>
+                </div>
+              
             </a>
           </li>
           <li style={{ display: "none" }}>
@@ -143,7 +158,11 @@ export default function SideNavigation() {
               data-goto="9"
               href="#facts"
             >
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:'white'}} class="fa fa-lightbulb-o" aria-hidden="true"></i>
               <span>Facts</span>
+                </div>
+              
             </a>
           </li>
           <li>
@@ -159,11 +178,11 @@ export default function SideNavigation() {
               data-goto="10"
               href="#faq"
             >
-              <span>
-                Who Can/
-                <br />
-                Can't Donate
-              </span>
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:'white'}} class="fa fa-question" aria-hidden="true"></i>
+              <span>Who Can/<br />Can't Donate</span>
+                </div>
+              
             </a>
           </li>
           <li style={{ display: "none" }}>
@@ -243,7 +262,11 @@ export default function SideNavigation() {
               data-goto="13"
               href="#contributions"
             >
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:"white"}} class="fa fa-handshake-o" aria-hidden="true"></i>
               <span>Contributions</span>
+                </div>
+              
             </a>
           </li>
           <li>
@@ -259,7 +282,10 @@ export default function SideNavigation() {
               data-goto="14"
               href="#visionmission"
             >
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:"white"}} class="fa fa-diamond" aria-hidden="true"></i>
               <span>Vision Mission</span>
+                </div>             
             </a>
           </li>
           <li>
@@ -275,10 +301,10 @@ export default function SideNavigation() {
               data-goto="15"
               href="#presscoverage"
             >
-              <span>
-                Press <br />
-                Coverage{" "}
-              </span>
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:'white'}} class="fa fa-newspaper-o" aria-hidden="true"></i>
+              <span>Press<br/>Coverage</span>
+                </div>        
             </a>
           </li>
           <li>
@@ -294,10 +320,10 @@ export default function SideNavigation() {
               data-goto="16"
               href="#projectcompleted"
             >
-              <span>
-                Project <br />
-                Completed
-              </span>
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:'white'}} class="fa fa-bar-chart" aria-hidden="true"></i>
+              <span>Project<br/>Completed</span>
+                </div>             
             </a>
           </li>
           <li>
@@ -313,10 +339,10 @@ export default function SideNavigation() {
               data-goto="17"
               href="#projectinprocess"
             >
-              <span>
-                Project In
-                <br /> Process{" "}
-              </span>
+               <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:'white'}} class="fa fa-bar-chart" aria-hidden="true"></i>
+              <span>Project In<br /> Process </span>
+              </div>
             </a>
           </li>
           <li>
@@ -332,7 +358,11 @@ export default function SideNavigation() {
               data-goto="18"
               href="#privacypolicy"
             >
+              <div style={{marginLeft:'10px'}} className="row">
+              <i style={{color:'white'}} class="fa fa-user-secret" aria-hidden="true"></i>
               <span>Privacy Policy</span>
+                </div>
+              
             </a>
           </li>
           <li>

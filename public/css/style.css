@@ -736,6 +736,7 @@ blockquote > cite {
   position: relative;
 }
 
+
 .site-main-menu li > a i,
 .site-main-menu li > a:hover {
   transition: color 0.1s ease-in-out;
@@ -746,6 +747,7 @@ blockquote > cite {
   color: #ed2d34;
   transition: color 0.1s ease-in-out;
 }
+
 
 .site-main-menu li:first-child > a {
   /* border-top: 1px solid #eaeaea; */
@@ -764,7 +766,9 @@ blockquote > cite {
   right: 0;
   background-color: #ed2d34;
 }
-
+.site-main-menu li{
+  color: #b3b3b3;
+}
 .site-main-menu li > a i {
   font-size: 18px;
   margin-bottom: 7px;
