@@ -46,7 +46,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
           overflow: "hidden",
         }}
       >
-        <a class="logo" style={{ marginLeft: "57px" }}>
+        <a class="logo" style={{ marginLeft: "93px" }}>
           <h1 class="logo-text">
             <a href="#home">
               {" "}
