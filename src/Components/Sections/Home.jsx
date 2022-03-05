@@ -69,7 +69,7 @@ const [ct,setCt]=useState([])
       data-id="home"
       style={{ fontSize: "14px", color: "black", fontWeight: "300" }}
     >   
-      <div  style={{marginLeft:'68px'}} class="container slider-container">
+      <div  style={{marginLeft:'100px'}} class="container slider-container">
         <div class="row align-items-lg-center">
           <div style={{ marginTop: "-15%" }} class="col-lg-7 order-lg-2 ">
             <div class="">
@@ -79,7 +79,7 @@ const [ct,setCt]=useState([])
                   borderRadius: "50%",
                   height: "60%",
                   width: "60%",
-                  marginLeft: "120px",
+                  marginLeft: "190px",
                 }}
               />
             </div>
