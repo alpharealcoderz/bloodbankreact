@@ -66,12 +66,9 @@ export const Theme = ({ getBloodType, getAllStates }) => {
             <Achievements />
             <Clients />
             <Request />
-            <Login />
             <AboutUs />
-            <Donate />
             <Facts />
             <FAQ />
-            <Profile />
             <Donors />
             <AllRequest />
             <Contributions />
@@ -80,7 +77,7 @@ export const Theme = ({ getBloodType, getAllStates }) => {
             <ProjectCompleted />
             <ProjectInprocess />
             <PrivacyPolicy />
-            <Register />
+            {localStorage.getItem("token") == null ?<> <Login /><Register /></>:<><Profile /><Profile/></>}
           </div>
         </div>
       </div>
