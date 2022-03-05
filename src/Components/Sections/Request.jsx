@@ -12,32 +12,39 @@ export const Request = (props) => {
   const bloodType = useSelector((state) => state.donors.bloodType);
   const city = useSelector((state) => state.donors.city);
   const states = useSelector((state) => state.donors.states);
-  const [st, setSt] = useState([]);
+  const [state, setSt] = useState([]);
   const [ct, setCt] = useState([]);
   const [dob, setDt] =useState(false)
   const [rdt, setRdt] =useState(false)
   const [district, setDistrict] = useState([]);
   const [details, setDetails] = useState({
+
     name: "",
     email: "",
     age: 0,
     gender: "Male",
-    address: "",
+    district: "",
     city: "",
     state: "",
     phone: 0,
     hospital_name: "",
-    hospital_address: "",
+    hospital_district: "",
     hospital_city: "",
     hospital_state: "",
     hospital_phone: "",
-    blood_type: "A+",
+    blood_type: "",
+    unit:"",
+    date_required:"",id:JSON.parse(localStorage.getItem('userDetails')).id
+
   });
   const addRequests = (e) => {
+
     e.preventDefault();
     if (localStorage.getItem("token") == null)
       message.success("Please Login To Post Request");
-    else dispatch(addRequest(details));
+    else
+    //  console.log('saransh',JSON.parse(localStorage.getItem('userDetails').id));
+     dispatch(addRequest(details));
   };
   useEffect(() => {}, []);
 
@@ -54,19 +61,20 @@ export const Request = (props) => {
   //   console.log(filter);
   // };
   const handleStateChange = (e) => {
+    let temp=  state.find(el=>{return el.state_title==e.target.value})
     axios
       .post(api_base_url + "/getAllDistrictByStates", {
-        state_id: e.target.name,
+        state_id: temp.state_id,
       })
       .then((res) => setDistrict(res.data));
   };
   const handleDistrictChange = (e) => {
+    let temp=  district.find(el=>{return el.district_title==e.target.value})
     axios.post(api_base_url + "/getAllCityByDistrict", {
-        districtid: e.target.name,
+        districtid: temp.districtid,
       })
       .then((res) => setCt(res.data));
   };
-
   useEffect(() => {
     axios.post(api_base_url + "/getAllStates").then((res) => {
       const st = res.data;
@@ -145,25 +153,7 @@ export const Request = (props) => {
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <input
-                      class="form-control"
-                      type="date"
-                      min={0}
-                      placeholder="Date"
-                      name="date"
-                      onChange={(e) => handleDetails(e)}
-                      onMouseEnter={() => setDt(true)}
-                      onMouseLeave={() =>setDt(false)}
-                    />
-                     {dob && (
-                      <label style={{color:'red'}}>date of birth</label>
-                     )}
-                  </div>
-                </div>
-
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <input
                       class="form-control"
@@ -174,7 +164,7 @@ export const Request = (props) => {
                     />
                   </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <select
                       class="form-control"
@@ -183,10 +173,27 @@ export const Request = (props) => {
                         handleDetails(e);
                       }}
                     >
-                      <option>Blood type</option>;
+                      <option>Blood Group</option>;
                       {bloodType.map((bt) => {
                         return <option>{bt}</option>;
                       })}
+                    </select>
+                  </div>
+                </div>
+                <div style={{display:'none'}} class="col-sm-3">
+                  <div class="form-group">
+                  <select
+                      class="form-control"
+                      name="blood_type"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    >
+                      <option>Blood Type</option>;
+                      <option>WBC</option>;
+                      <option>RDP</option>;
+                      <option>FFP</option>;
+                      <option>SDP</option>;
                     </select>
                   </div>
                 </div>
@@ -198,16 +205,16 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="State"
-                      name="st"
+                      name="state"
                       onChange={(e) => {
                         handleDetails(e);
                         handleStateChange(e);
                       }}
                     >
                       <option>State</option>
-                      {st.map((stt) => {
+                      {state.map((stt) => {
                         return (
-                          <option value={stt.state_title}name={stt.state_id}>
+                          <option value={stt.state_title}name={stt.state_id+'state'}>
                             {stt.state_title}
                           </option>
                         );
@@ -231,7 +238,7 @@ export const Request = (props) => {
                       <option>District</option>
                       {district.map((dt) => {
                         return (
-                          <option value={dt.district_title}name={dt.districtid}>
+                          <option value={dt.district_title}name={dt.districtid+'district'}>
                             {dt.district_title}
                           </option>
                         );
@@ -275,32 +282,18 @@ export const Request = (props) => {
                     />
                   </div>
                 </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <input
-                      class="form-control"
-                      type="email"
-                      placeholder="Hospital email"
-                      name="hospital_email"
-                      onChange={(e) => handleDetails(e)}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                   <input
                   class="form-control"
                   min={1111111111}
                   max={9999999999}
-                  name="Hospital_number"
-                  placeholder="Hospital_number"
+                  name="hospital_phone"
+                  placeholder="Hospital phone number"
                   onChange={(e) => handleDetails(e)}
                   />
                   </div>
                 </div>
-               
               </div>
               <div class="row">
                 <div class="col-lg-6">
@@ -309,14 +302,14 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="State"
-                      name="st"
+                      name="handle_state"                                                                             
                       onChange={(e) => {
                         handleDetails(e);
                         handleStateChange(e);
                       }}
                     >
                       <option>State</option>
-                      {st.map((stt) => {
+                      {state.map((stt) => {
                         return (
                           <option value={stt.state_title}name={stt.state_id}>
                             {stt.state_title}
@@ -333,7 +326,7 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="district"
-                      name="district"
+                      name="handle_district"
                       onChange={(e) => {
                         handleDetails(e);
                         handleDistrictChange(e);
@@ -357,7 +350,7 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="City"
-                      name="city"
+                      name="handle_city"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -382,53 +375,19 @@ export const Request = (props) => {
                       type="number"
                       min={0}
                       placeholder="How much unit blood needed"
-                      name="blood_need"
+                      name="unit"
                       onChange={(e) => handleDetails(e)}
                     />
                   </div>
                 </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                  <select
-                      class="form-control"
-                      name="blood_group_need"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                    >
-                      <option>Blood Group</option>;
-                      {bloodType.map((bt) => {
-                        return <option>{bt}</option>;
-                      })}
-                    </select>
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                  <select
-                      class="form-control"
-                      name="blood_type_need"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                    >
-                      <option>Blood Type</option>;
-                      <option>WBC</option>;
-                      <option>RDP</option>;
-                      <option>FFP</option>;
-                      <option>SDP</option>;
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
+               
                 <div class="col-lg-6">
                   <div class="form-group">
                   <input
                       class="form-control"
                       type="Date"
                       placeholder="Date needed"
-                      name="Date_need"
+                      name="date_required"
                       onChange={(e) => handleDetails(e)}
                       onMouseEnter={() => setRdt(true)}
                       onMouseLeave={() =>setRdt(false)}
@@ -438,9 +397,8 @@ export const Request = (props) => {
                      )}
                   </div>
                 </div>
-
-               
               </div>
+              
               <div style={{align:'right'}}>
               <button
                 
