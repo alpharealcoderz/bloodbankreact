@@ -49,9 +49,8 @@ export const TopNavigation = ({ updateDonorsData }) => {
         <a class="logo" style={{ marginLeft: "93px" }}>
           <h1 class="logo-text">
             <a href="#home">
-              {" "}
               <img style={{ borderRadius: "50%" }} src="/logo.png" alt="logo" />
-            </a>{" "}
+            </a>
             <span style={{ marginLeft: "20px", color: "white" }}>
               {toggler}
             </span>
@@ -73,7 +72,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
       <div>
         <a
           data-animation="61"
-          data-goto="12"
+          data-goto=""
           href="#donors"
           class="btn btn-large btn-green  "
           style={{ color: "white", height: "53px" }}
@@ -85,7 +84,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
       <div>
         <a
           data-animation="61"
-          data-goto="11"
+          data-goto="10"
           href="#allRequest"
           class="btn btn-large btn-green  "
           style={{ color: "white", height: "53px" }}
@@ -100,7 +99,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
           <div>
             <a
               data-animation="61"
-              data-goto="6"
+              data-goto="17"
               href="#login"
               class="btn btn-large btn-green  "
               style={{ color: "white", height: "53px" }}
@@ -111,7 +110,7 @@ export const TopNavigation = ({ updateDonorsData }) => {
           <div>
         <a
           data-animation="58"
-          data-goto="8"
+          data-goto="18"
           href="#donate"
           class="btn btn-large btn-green topNavHover"
           style={{
@@ -124,23 +123,12 @@ export const TopNavigation = ({ updateDonorsData }) => {
         </a>
       </div>
 
-          {/* <div>
-            <a
-              data-animation="61"
-              data-goto="18"
-              href="#register"
-              class="btn btn-large btn-green  "
-              style={{ color: "white", height: "53px" }}
-            >
-              Register
-            </a>
-          </div> */}
         </>
       ) : (
         <div>
           <a
             data-animation="61"
-            data-goto="11"
+            data-goto="17"
             href="#profile"
             class="btn btn-large btn-green  "
             style={{ color: "white", height: "53px" }}

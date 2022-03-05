@@ -10,7 +10,7 @@ export const loginHandler = (email, password) => {
     .then((res) => {
       if (res.data.status == "success") {
         res.data.loginData.role !== "admin"
-          ? (window.location.hash = "#donors")
+          ?( (window.location.hash = "#donors")(window.location.reload()))
           : (window.location.pathname = "/admin/users");
 
         message.success("Logged In Successfully");

@@ -134,7 +134,7 @@ export default function Profile() {
                       type="text"
                       placeholder="Full Name"
                       name="name"
-                      value={details.name}
+                      value={details?.name}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -148,7 +148,7 @@ export default function Profile() {
                       type="email"
                       placeholder="Email"
                       name="email"
-                      value={details.email}
+                      value={details?.email}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -164,7 +164,7 @@ export default function Profile() {
                       type="number"
                       placeholder="Phone"
                       name="phone"
-                      value={details.phone}
+                      value={details?.phone}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -178,7 +178,7 @@ export default function Profile() {
                       class="form-control"
                       type="number"
                       placeholder="Age"
-                      value={details.age}
+                      value={details?.age}
                       name="age"
                       onChange={(e) => {
                         handleDetails(e);
@@ -191,7 +191,7 @@ export default function Profile() {
                     <select
                       class="form-control"
                       placeholder="Gender"
-                      value={details.gender}
+                      value={details?.gender}
                       name="gender"
                       onChange={(e) => {
                         handleDetails(e);
@@ -212,7 +212,7 @@ export default function Profile() {
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                      value={details.address}
+                      value={details?.address}
                       placeholder="address"
                     ></input>
                   </div>
@@ -220,7 +220,7 @@ export default function Profile() {
                     <input
                       class="form-control"
                       name="blood_type"
-                      value={details.blood_type}
+                      value={details?.blood_type}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -236,7 +236,7 @@ export default function Profile() {
                       type="text"
                       placeholder="City"
                       name="city"
-                      value={details.city}
+                      value={details?.city}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -249,7 +249,7 @@ export default function Profile() {
                       class="form-control"
                       type=""
                       placeholder="State"
-                      value={details.state}
+                      value={details?.state}
                       name="state"
                       onChange={(e) => {
                         handleDetails(e);

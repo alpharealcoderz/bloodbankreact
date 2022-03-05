@@ -299,7 +299,7 @@ export const AllRequest = () => {
           {/* <div class="col-6"> */}
           <div class="heading-area">
             <h2 class="title">All Request</h2>
-            <h6 class="sub-title main-color">BloodBank Name: Moto</h6>
+            <h6 class="sub-title main-color">Omniscient BloodBank</h6>
           </div>
           {/* <div style={{ display: "flex" }}>
             <div>
