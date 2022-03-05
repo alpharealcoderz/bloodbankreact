@@ -77,9 +77,9 @@ const [ct,setCt]=useState([])
                 src="https://i.pinimg.com/originals/0d/0f/85/0d0f85b1504a9ebe9a080b5b1dd95c0b.gif"
                 style={{
                   borderRadius: "50%",
-                  height: "70%",
-                  width: "70%",
-                  marginLeft: "100px",
+                  height: "60%",
+                  width: "60%",
+                  marginLeft: "120px",
                 }}
               />
             </div>
