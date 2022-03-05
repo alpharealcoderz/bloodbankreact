@@ -35,7 +35,7 @@ function Footer() {
         <hr />
         <div className="row">
         <p style={{ textAlign:"center"}} className="col-sm pb-3">
-            &copy;{new Date().getFullYear()} Omniscient IT Solutions Pvt Ltd. All rights reserved. Terms and Conditions Privacy Policy Resources
+            &copy;{new Date().getFullYear()} Omniscient IT Solutions Pvt Ltd. All rights reserved.Terms and Conditions Privacy Policy Resources
           </p>
         </div>
       </div>
