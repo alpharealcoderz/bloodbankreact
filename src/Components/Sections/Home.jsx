@@ -185,12 +185,12 @@ const [ct,setCt]=useState([])
                       class="form-control"
                       name="city"
                       onChange={(e) => {
-                        handleSearchParam(e);
+                        handleSearchParams(e,'city');
                       }}
                     >
                       <option>All</option>;
                       {ct.map((ctt) => {
-                        return <option value={ctt.id}>{ctt.name}</option>;
+                        return <option id={ctt.id+'city'} value={ctt.id}>{ctt.name}</option>;
                       })}
                     </select>
                     {/* </div> */}
