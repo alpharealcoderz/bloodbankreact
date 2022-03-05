@@ -2,9 +2,9 @@ import React from "react";
 export default function Facts() {
   return (
     <section
-      id="about"
+      id="facts"
       class="pt-page pt-page-6 pt-5"
-      data-id="about"
+      data-id="facts"
       style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >
       <div class="container">
