@@ -286,11 +286,12 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
     >
       <div  class="container">
         <div class=" align-items-lg-center dot-box">
+          {/* <div class="col-6"> */}
           <div class="heading-area">
             <h2 class="title">Donor's Data</h2>
             <h6 class="sub-title main-color">Omniscient BloodBank</h6>
           </div>
-          <div class="row" style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <div>
               <div>Select State</div>
               <select
@@ -368,11 +369,9 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
-
-           
+            <div>
               <div></div>{" "}
-              <Button style={{ marginTop: "20px",marginLeft: "10px" }} type="primary" onClick={search}>
-
+              <Button style={{ marginTop: "20px",marginLeft: "20px" }} type="primary" onClick={search}>
                 {" "}
                 Search
               </Button>
