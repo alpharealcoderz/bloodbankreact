@@ -16,7 +16,7 @@ export default function SideNavigation() {
       ></div>{" "}
       <div class="site-nav navbarActive" id="navToggle">
         <ul class="site-main-menu alt-font" id="nav">
-          <div style={{ height: "70px", backgroundColor: "white" }}></div>
+          <div style={{ height: "50px", backgroundColor: "white" }}></div>
           <li>
             <a
               class="btn btn-large btn-green "
@@ -180,7 +180,7 @@ export default function SideNavigation() {
             >
               <div style={{marginLeft:'10px'}} className="row">
               <i style={{color:'white'}} class="fa fa-question" aria-hidden="true"></i>
-              <span>Who Can/<br />Can't Donate</span>
+              <span>Who Can Donate</span>
                 </div>
               
             </a>
@@ -303,7 +303,7 @@ export default function SideNavigation() {
             >
               <div style={{marginLeft:'10px'}} className="row">
               <i style={{color:'white'}} class="fa fa-newspaper-o" aria-hidden="true"></i>
-              <span>Press<br/>Coverage</span>
+              <span>Press Coverage</span>
                 </div>        
             </a>
           </li>
@@ -322,7 +322,7 @@ export default function SideNavigation() {
             >
               <div style={{marginLeft:'10px'}} className="row">
               <i style={{color:'white'}} class="fa fa-bar-chart" aria-hidden="true"></i>
-              <span>Project<br/>Completed</span>
+              <span>Project Completed</span>
                 </div>             
             </a>
           </li>
@@ -341,7 +341,7 @@ export default function SideNavigation() {
             >
                <div style={{marginLeft:'10px'}} className="row">
               <i style={{color:'white'}} class="fa fa-bar-chart" aria-hidden="true"></i>
-              <span>Project In<br /> Process </span>
+              <span>Project In Process </span>
               </div>
             </a>
           </li>
