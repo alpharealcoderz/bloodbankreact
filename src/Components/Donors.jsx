@@ -371,7 +371,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
             </div>
             <div>
               <div></div>{" "}
-              <Button type="primary" onClick={search}>
+              <Button style={{ marginTop: "20px",marginLeft: "10px" }} type="primary" onClick={search}>
                 {" "}
                 Search
               </Button>
