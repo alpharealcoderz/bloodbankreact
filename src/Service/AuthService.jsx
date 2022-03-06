@@ -10,7 +10,7 @@ export const loginHandler = (email, password) => {
     .then((res) => {
       if (res.data.status == "success") {
         res.data.loginData.role !== "admin"
-        ?window.location.reload()
+          ? window.location.reload()
           : (window.location.pathname = "/admin/users");
 
         message.success("Logged In Successfully");
@@ -30,6 +30,7 @@ export const logout = (email, password) => {
         window.location.pathname = "/";
       }
       window.location.hash = "home";
+      window.location.reload();
       message.success("Logged Out Successfully");
       localStorage.clear();
     } else if (res.data.status == "failure") {

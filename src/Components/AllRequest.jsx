@@ -18,9 +18,8 @@ export const AllRequest = () => {
   const [ct, setCt] = useState([]);
   const [data, setData] = useState(requestData);
   const [city, setCity] = useState(
-    localStorage.getItem("userDetails")
-      ? JSON.parse(localStorage.getItem("userDetails")?.city)
-      : ""
+    localStorage.getItem("userDetails") &&
+      JSON.parse(localStorage.getItem("userDetails"))
   );
   const [hospitalCity, setHospitalCity] = useState("");
   const [distance, setDistance] = useState(0);
@@ -102,7 +101,7 @@ export const AllRequest = () => {
   ]);
   const getDistance = (record) => {
     fetch(
-      `https://www.mapquestapi.com/directions/v2/route?key=AXj4OC6T2gtJyy0WDsu9pI0PGHlqFhPA&from=${city}&to=${record}`
+      `https://www.mapquestapi.com/directions/v2/route?key=AXj4OC6T2gtJyy0WDsu9pI0PGHlqFhPA&from=${city.city}&to=${record}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -358,8 +357,8 @@ export const AllRequest = () => {
         onOk={() => setDistance(0)}
         onCancel={() => setDistance(0)}
       >
-        Your Distance From Your city {city} to Hospital City {hospitalCity} is{" "}
-        {distance}
+        Your Distance From Your city {city?.city} to Hospital City{" "}
+        {hospitalCity} is {distance}
       </Modal>
     </section>
   );
