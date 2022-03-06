@@ -50,11 +50,7 @@ export const AllRequest = () => {
       dataIndex: "phone",
       key: "phone",
     },
-    {
-      title: "Address",
-      dataIndex: "address",
-      key: "adress",
-    },
+   
     {
       title: "City",
       dataIndex: "city",
@@ -81,7 +77,7 @@ export const AllRequest = () => {
       key: "hospital_state",
     },
     {
-      title: "Hospital State",
+      title: "Distance",
       dataIndex: "hospital_state",
       key: "hospital_state",
 

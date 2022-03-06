@@ -13,15 +13,18 @@ export const Request = (props) => {
   const city = useSelector((state) => state.donors.city);
   const states = useSelector((state) => state.donors.states);
   const [state, setSt] = useState([]);
+  const [hospital_state, setHosstate] = useState([]);
   const [ct, setCt] = useState([]);
+  const [hospital_city, setHosct] = useState([]);
   const [dob, setDt] = useState(false);
   const [rdt, setRdt] = useState(false);
   const [district, setDistrict] = useState([]);
+  const [ hospital_district, setHosdistrict] = useState([]);
   const [details, setDetails] = useState({
     name: "",
     email: "",
     age: 0,
-    gender: "Male",
+    gender: "",
     district: "",
     city: "",
     state: "",
@@ -83,6 +86,34 @@ export const Request = (props) => {
       setSt(st);
     });
   }, []);
+
+  const handlehosStateChange = (e) => {
+    let temp =  hospital_state.find((el) => {
+      return el.state_title == e.target.value;
+    });
+    axios
+      .post(api_base_url + "/getAllDistrictByStates", {
+        state_id: temp.state_id,
+      })
+      .then((res) => setHosdistrict(res.data));
+  };
+  const handlehosDistrictChange = (e) => {
+    let temp = hospital_district.find((el) => {
+      return el.district_title == e.target.value;
+    });
+    axios
+      .post(api_base_url + "/getAllCityByDistrict", {
+        districtid: temp.districtid,
+      })
+      .then((res) => setHosct(res.data));
+  };
+  useEffect(() => {
+    axios.post(api_base_url + "/getAllStates").then((res) => {
+      const st = res.data;
+      setHosstate(st);
+    });
+  }, []);
+
   return (
     <section id="request" class="pt-page pt-page-6" data-id="request">
       <div style={{ marginTop: "-22%" }} class="container">
@@ -311,14 +342,14 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="State"
-                      name="handle_state"
+                      name="hospital_state"
                       onChange={(e) => {
                         handleDetails(e);
-                        handleStateChange(e);
+                        handlehosStateChange(e);
                       }}
                     >
                       <option>State</option>
-                      {state.map((stt) => {
+                      {hospital_state.map((stt) => {
                         return (
                           <option value={stt.state_title} name={stt.state_id}>
                             {stt.state_title}
@@ -335,14 +366,14 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="district"
-                      name="handle_district"
+                      name="hospital_district"
                       onChange={(e) => {
                         handleDetails(e);
-                        handleDistrictChange(e);
+                        handlehosDistrictChange(e);
                       }}
                     >
                       <option>District</option>
-                      {district.map((dt) => {
+                      {hospital_district.map((dt) => {
                         return (
                           <option
                             value={dt.district_title}
@@ -362,13 +393,13 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="City"
-                      name="handle_city"
+                      name="hospital_city"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
                     >
                       <option>City</option>
-                      {ct.map((ctt) => {
+                      {hospital_city.map((ctt) => {
                         return (
                           <option value={ctt.name} name={ctt.id}>
                             {ctt.name}
