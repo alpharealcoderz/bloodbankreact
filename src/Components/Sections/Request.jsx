@@ -5,7 +5,7 @@ import { message } from "antd";
 import { addRequest } from "../../redux/actions/request";
 import { getAllCityByStates } from "../../redux/actions/constants";
 import { api_base_url } from "../../Constants";
-import axios from 'axios';
+import axios from "axios";
 
 export const Request = (props) => {
   const dispatch = useDispatch();
@@ -14,11 +14,10 @@ export const Request = (props) => {
   const states = useSelector((state) => state.donors.states);
   const [state, setSt] = useState([]);
   const [ct, setCt] = useState([]);
-  const [dob, setDt] =useState(false)
-  const [rdt, setRdt] =useState(false)
+  const [dob, setDt] = useState(false);
+  const [rdt, setRdt] = useState(false);
   const [district, setDistrict] = useState([]);
   const [details, setDetails] = useState({
-
     name: "",
     email: "",
     age: 0,
@@ -33,18 +32,16 @@ export const Request = (props) => {
     hospital_state: "",
     hospital_phone: "",
     blood_type: "",
-    unit:"",
-    date_required:"",id:JSON.parse(localStorage.getItem('userDetails')).id
-
+    unit: "",
+    date_required: "",
+    id: JSON.parse(localStorage.getItem("userDetails"))?.id,
   });
   const addRequests = (e) => {
-
     e.preventDefault();
     if (localStorage.getItem("token") == null)
       message.success("Please Login To Post Request");
-    else
     //  console.log('saransh',JSON.parse(localStorage.getItem('userDetails').id));
-     dispatch(addRequest(details));
+    else dispatch(addRequest(details));
   };
   useEffect(() => {}, []);
 
@@ -61,7 +58,9 @@ export const Request = (props) => {
   //   console.log(filter);
   // };
   const handleStateChange = (e) => {
-    let temp=  state.find(el=>{return el.state_title==e.target.value})
+    let temp = state.find((el) => {
+      return el.state_title == e.target.value;
+    });
     axios
       .post(api_base_url + "/getAllDistrictByStates", {
         state_id: temp.state_id,
@@ -69,8 +68,11 @@ export const Request = (props) => {
       .then((res) => setDistrict(res.data));
   };
   const handleDistrictChange = (e) => {
-    let temp=  district.find(el=>{return el.district_title==e.target.value})
-    axios.post(api_base_url + "/getAllCityByDistrict", {
+    let temp = district.find((el) => {
+      return el.district_title == e.target.value;
+    });
+    axios
+      .post(api_base_url + "/getAllCityByDistrict", {
         districtid: temp.districtid,
       })
       .then((res) => setCt(res.data));
@@ -83,9 +85,9 @@ export const Request = (props) => {
   }, []);
   return (
     <section id="request" class="pt-page pt-page-6" data-id="request">
-      <div style={{marginTop:'-22%'}}class="container">
+      <div style={{ marginTop: "-22%" }} class="container">
         <div class="row align-items-lg-center">
-          <div  class="col-6">
+          <div class="col-6">
             <div class="heading-area">
               <h2 class="title">Post Blood Request!</h2>
               <h6 class="sub-title main-color">
@@ -135,7 +137,6 @@ export const Request = (props) => {
                   </div>
                 </div>
 
-                
                 <div class="col-sm-6">
                   <div class="form-group">
                     <select
@@ -144,7 +145,7 @@ export const Request = (props) => {
                       placeholder="Gender"
                       name="gender"
                     >
-                       <option>Gender</option>
+                      <option>Gender</option>
                       <option>Male</option>
                       <option>Female</option>
                       <option>other</option>
@@ -180,19 +181,17 @@ export const Request = (props) => {
                     </select>
                   </div>
                 </div>
-                <div style={{display:'none'}} class="col-sm-3">
+                <div style={{ display: "none" }} class="col-sm-3">
                   <div class="form-group">
-                  <select
+                    <select
                       class="form-control"
                       name="blood_type"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
                     >
-                      <option>Blood Type</option>;
-                      <option>WBC</option>;
-                      <option>RDP</option>;
-                      <option>FFP</option>;
+                      <option>Blood Type</option>;<option>WBC</option>;
+                      <option>RDP</option>;<option>FFP</option>;
                       <option>SDP</option>;
                     </select>
                   </div>
@@ -214,7 +213,10 @@ export const Request = (props) => {
                       <option>State</option>
                       {state.map((stt) => {
                         return (
-                          <option value={stt.state_title}name={stt.state_id+'state'}>
+                          <option
+                            value={stt.state_title}
+                            name={stt.state_id + "state"}
+                          >
                             {stt.state_title}
                           </option>
                         );
@@ -238,7 +240,10 @@ export const Request = (props) => {
                       <option>District</option>
                       {district.map((dt) => {
                         return (
-                          <option value={dt.district_title}name={dt.districtid+'district'}>
+                          <option
+                            value={dt.district_title}
+                            name={dt.districtid + "district"}
+                          >
                             {dt.district_title}
                           </option>
                         );
@@ -260,7 +265,11 @@ export const Request = (props) => {
                     >
                       <option>City</option>
                       {ct.map((ctt) => {
-                        return <option value={ctt.name}name={ctt.id}>{ctt.name}</option>;
+                        return (
+                          <option value={ctt.name} name={ctt.id}>
+                            {ctt.name}
+                          </option>
+                        );
                       })}
                     </select>
                   </div>
@@ -284,14 +293,14 @@ export const Request = (props) => {
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                  <input
-                  class="form-control"
-                  min={1111111111}
-                  max={9999999999}
-                  name="hospital_phone"
-                  placeholder="Hospital phone number"
-                  onChange={(e) => handleDetails(e)}
-                  />
+                    <input
+                      class="form-control"
+                      min={1111111111}
+                      max={9999999999}
+                      name="hospital_phone"
+                      placeholder="Hospital phone number"
+                      onChange={(e) => handleDetails(e)}
+                    />
                   </div>
                 </div>
               </div>
@@ -302,7 +311,7 @@ export const Request = (props) => {
                       class="form-control"
                       type=""
                       placeholder="State"
-                      name="handle_state"                                                                             
+                      name="handle_state"
                       onChange={(e) => {
                         handleDetails(e);
                         handleStateChange(e);
@@ -311,7 +320,7 @@ export const Request = (props) => {
                       <option>State</option>
                       {state.map((stt) => {
                         return (
-                          <option value={stt.state_title}name={stt.state_id}>
+                          <option value={stt.state_title} name={stt.state_id}>
                             {stt.state_title}
                           </option>
                         );
@@ -335,7 +344,10 @@ export const Request = (props) => {
                       <option>District</option>
                       {district.map((dt) => {
                         return (
-                          <option value={dt.district_title}name={dt.districtid}>
+                          <option
+                            value={dt.district_title}
+                            name={dt.districtid}
+                          >
                             {dt.district_title}
                           </option>
                         );
@@ -357,16 +369,18 @@ export const Request = (props) => {
                     >
                       <option>City</option>
                       {ct.map((ctt) => {
-                        return <option value={ctt.name}name={ctt.id}>{ctt.name}</option>;
+                        return (
+                          <option value={ctt.name} name={ctt.id}>
+                            {ctt.name}
+                          </option>
+                        );
                       })}
                     </select>
                   </div>
                 </div>
               </div>
               <br></br>
-              <h6 class="sub-title main-color">
-               Blood Requirement
-              </h6>
+              <h6 class="sub-title main-color">Blood Requirement</h6>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
@@ -380,48 +394,52 @@ export const Request = (props) => {
                     />
                   </div>
                 </div>
-               
+
                 <div class="col-lg-6">
                   <div class="form-group">
-                  <input
+                    <input
                       class="form-control"
                       type="Date"
                       placeholder="Date needed"
                       name="date_required"
                       onChange={(e) => handleDetails(e)}
                       onMouseEnter={() => setRdt(true)}
-                      onMouseLeave={() =>setRdt(false)}
+                      onMouseLeave={() => setRdt(false)}
                     />
                     {rdt && (
-                      <label style={{color:'red'}}>date of Requirement</label>
-                     )}
+                      <label style={{ color: "red" }}>
+                        date of Requirement
+                      </label>
+                    )}
                   </div>
                 </div>
               </div>
-              
-              <div style={{align:'right'}}>
-              <button
-                
-                type="submit"
-                id="submit_btn"
-                class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn "
-              >
-                <i
-                  class="fa fa-spinner fa-spin mr-2 d-none"
-                  aria-hidden="true"
-                ></i>
-                Submit Request
-              </button>
+
+              <div style={{ align: "right" }}>
+                <button
+                  type="submit"
+                  id="submit_btn"
+                  class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn "
+                >
+                  <i
+                    class="fa fa-spinner fa-spin mr-2 d-none"
+                    aria-hidden="true"
+                  ></i>
+                  Submit Request
+                </button>
               </div>
             </form>
           </div>
-          <div  class="col-6">
+          <div class="col-6">
             <ul class="address-item">
               <li class="w-100 mb-4">
                 <i class="lni-apartment main-color"></i>
                 <div class="content">
                   <h6 class="main-color m-0">Address</h6>
-                  <p>Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block 4, WEA, Karol Bagh, New Delhi, Delhi 110005</p>
+                  <p>
+                    Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block
+                    4, WEA, Karol Bagh, New Delhi, Delhi 110005
+                  </p>
                 </div>
               </li>
 
@@ -430,7 +448,9 @@ export const Request = (props) => {
                 <div class="content">
                   <h6 class="main-color m-0">Email:</h6>
                   <p>
-                    <a href="mailto:info@omniscientitsolutions.com">info@omniscientitsolutions.com</a>
+                    <a href="mailto:info@omniscientitsolutions.com">
+                      info@omniscientitsolutions.com
+                    </a>
                   </p>
                 </div>
               </li>
