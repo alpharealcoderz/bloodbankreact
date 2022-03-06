@@ -86,7 +86,7 @@ export const AllRequest = () => {
           <Button
             type="danger"
             onClick={() => {
-              getDistance(record.city);
+              getDistance(record.hospital_city);
             }}
             style={{ marginLeft: "10px" }}
           >
