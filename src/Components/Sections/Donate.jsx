@@ -13,6 +13,7 @@ export const Donate = (props) => {
   const [dateofbirth, setDateofbirth] = useState(false);
   const [gard, setGard] = useState(false);
   const [ct, setCt] = useState([]);
+  const [da, setDa] = useState();
   const [details, setDetails] = useState({
     name: "",
     wodoso: "",
@@ -51,7 +52,7 @@ export const Donate = (props) => {
     password:""
 
   });
-  console.log(details);
+ 
   const handleDetails = (e) => {
     let object = {};
     object[e.target.name] = e.target.value;
@@ -59,7 +60,7 @@ export const Donate = (props) => {
   };
   const handleSubmit = (e, type) => {
     e.preventDefault();
-    console.log("dfdff");
+   
     const data = {
       is_donor_active: details.is_donor_active,
       is_volunteer_active:details.is_volunteer_active,
@@ -96,7 +97,8 @@ export const Donate = (props) => {
       type_do_rdp: details.DoRDP,
       type_do_wbc: details.DoWBC,
     };
-    // console.log(data.wo_do_so)
+    console.log(new Date().getFullYear())
+    console.log('gulshan',da.getFullYear())
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
       if(res.status=='201'){
       message.success("Register successfully",10)}else{
@@ -108,7 +110,7 @@ export const Donate = (props) => {
     
   };
   const handleStateChange = (e) => {
-  let temp=  st.find(el=>{return el.state_title==e.target.value})
+  let temp= st.find(el=>{return el.state_title==e.target.value})
     axios
       .post(api_base_url + "/getAllDistrictByStates", {
         state_id: temp.state_id,
@@ -129,7 +131,7 @@ export const Donate = (props) => {
       setSt(st);
     });
   }, []);
-  console.log(st);
+  
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
       <div style={{ marginTop: "-11%" }} class="container">
@@ -238,12 +240,12 @@ export const Donate = (props) => {
                       class="form-control"
                       type="date"
                       min={'1975-01-02'}
-                      max={'2006-01-02'}
+                       max={'2006-01-02'}
                       placeholder="Dob"
-                      name="gulshandob"
+                      name="dob"
                       onChange={(e) => {
                         handleDetails(e);
-                        
+                        setDa(e.target.value)
                       }}
                       onMouseEnter={() => setDateofbirth(true)}
                       onMouseLeave={() =>setDateofbirth(false)}
