@@ -326,7 +326,7 @@ export const AllRequest = () => {
       class="pt-page pt-page-6 pt-5"
       data-id="allRequest"
       style={{
-        overflowY: "scroll",
+        // overflowY: "scroll",
         display: "block",
         paddingTop: "67px",
       }}
