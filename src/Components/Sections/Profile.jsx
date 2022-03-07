@@ -3,6 +3,8 @@ import { logout, updateUser } from "../../Service/AuthService";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Input, Modal, Button, Table } from "antd";
 import { getAllRequestByUser } from "../../redux/actions/request";
+import axios from "axios";
+import { api_base_url } from "../../Constants";
 export default function Profile() {
   const dispatch = useDispatch();
   const [columns, setColumns] = useState([
@@ -52,26 +54,25 @@ export default function Profile() {
       key: "hospital_state",
     },
   ]);
-  // const [details, setDetails] = useState({
-  //   name: "",
-  //   email: "",
-  //   phone: 0,
-  //   age: 0,
-  //   gender: "male",
-  //   address: "",
-  //   city: "",
-  //   state: "",
-  //   password: "",
-  //   blood_type: "",
-  // });
-  const data = useSelector((state) => state.requests.usersRequest);
+
+  const [data, setData] = useState([]);
   const [details, setDetails] = useState(
     JSON.parse(localStorage.getItem("userDetails"))
   );
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("token") == null) window.location.hash = "home";
-    else dispatch(getAllRequestByUser());
+    else {
+      axios
+        .post(`${api_base_url}/getAllRequest`, {
+          id: details.id,
+        })
+        .then((res) => {
+          console.log("saransh", res.data);
+          setData(res.data.requestData);
+        });
+      // data && data.status == "success" && setData(data.requestData);
+    }
   }, []);
   const handleDetails = (e) => {
     let object = {};
@@ -89,7 +90,7 @@ export default function Profile() {
       id="profile"
       class="pt-page pt-page-6 pt-5"
       data-id="profile"
-      style={{ overflowY: "scroll", paddingTop: "67px" }}
+      style={{ overflowY: "scroll", paddingTop: "67px", display: "block" }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">

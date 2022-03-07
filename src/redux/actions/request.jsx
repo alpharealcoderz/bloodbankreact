@@ -44,10 +44,10 @@ export const deleteRequest = (id) => {
     }
   };
 };
-export const getAllRequestByUser = () => {
+export const getAllRequestByUser = (data) => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(`${api_base_url}/getAllRequest`);
+      let { data } = await axios.post(`${api_base_url}/getAllRequest`, data);
 
       data.status == "success" &&
         dispatch({
