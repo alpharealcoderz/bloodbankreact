@@ -1,4 +1,4 @@
-export const api_base_url = "https://frontendbloodbank.herokuapp.com/api";
+export const api_base_url = "https://bloodbankreal.herokuapp.com/api";
 export const state = [
   "Andhra Pradesh",
   "Arunachal Pradesh",

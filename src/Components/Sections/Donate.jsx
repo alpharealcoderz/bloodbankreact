@@ -16,8 +16,7 @@ export const Donate = (props) => {
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
 
-  const [am, setAm] = useState();
-  const [ad, setAd] = useState();
+
 
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
@@ -66,7 +65,7 @@ export const Donate = (props) => {
     const d = new Date(da);
     const ay = d.getFullYear();
     setAy(cy - ay);
-    // console.log('gulshan',ay);
+    
   };
 
   const handleDetails = (e) => {
@@ -133,22 +132,31 @@ export const Donate = (props) => {
         'Authorization':`Bearer ${res.data.data.token}`
       }})}
         } else {
-          message.error(
-            "your form is not submitted,Please fill all the details correctly ",
-            6
-          );
+          message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
         }
       })
-      .catch(() =>
-        message.error(
-          "your form is not submitted,Please fill all details correctly",
-          6
-        )
-      );
+      
 
-    
-    // type == "register" && setDetails({ ...details, is_donor_active: 0 });
-    // registerDonor(details);
+    axios.post(api_base_url + "/beuserregister", data).then((res) => {
+      setResult(res.data.data.token)
+      if(res.status=='200'){
+        // axios.post(api_base_url + "/email/verification-notification")
+        fetch(api_base_url + "/email/verification-notification", {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization':`Bearer ${result}`
+  },
+
+})
+
+      
+      message.success("Register successfully",10)}else{
+        message.error("your form is not submitted,Please fill all the details correctly ",6)
+      };
+    }).catch(()=> message.error("your form is not submitted,Please fill all details correctly",6))
+
+  
   };
   const handleStateChange = (e) => {
     let temp = st.find((el) => {
@@ -697,7 +705,7 @@ export const Donate = (props) => {
                   <div class="form-group">
                     <p>Do you own a vehicle ?</p>
                     <div class="row">
-                      <div class="col-lg-3">
+                      <div class="col-lg-5">
                         <input
                           type="radio"
                           id="yes"
@@ -715,7 +723,7 @@ export const Donate = (props) => {
                       </div>
 
                       <br></br>
-                      <div class="col-lg-3">
+                      <div class="col-lg-6">
                         <input
                           type="radio"
                           id="yes"

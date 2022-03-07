@@ -124,7 +124,7 @@ export const Requests = ({ feeds }) => {
         Add New Request
       </Button>
       <Modal
-        title="Add New User"
+        title="Add New Request"
         visible={visible}
         onOk={(e) => addNew(e)}
         onCancel={() => setVisible(false)}

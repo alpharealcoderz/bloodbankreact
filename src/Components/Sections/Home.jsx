@@ -12,9 +12,7 @@ import {
 export const Home = ({
   updateDonorsData,
   bloodType,
-  states,
-  city,
-  getAllCityByStates,
+
 }) => {
   const [searchParameters, setSearchParameters] = useState({
     blood_type: "All",
@@ -50,14 +48,7 @@ const [ct,setCt]=useState([])
       setCt(res.data))
   
     };
-  // const handleCity = (e) => {
-  //   let filter = states.find((name) => {
-  //     return name.name == e.target.value;
-  //   });
-  //   filter && getAllCityByStates(filter.id);
-  //   console.log(filter);
-  // };
-
+  
   const searchDonors = async () => {
     await updateDonorsData(searchParameters);
     window.location.hash = "#donors";
@@ -104,19 +95,19 @@ const [ct,setCt]=useState([])
                 those in need of blood on to a common platform. Through this
                 website, we seek donors who are willing to donate blood, as well
                 as provide the timeliest support to those in frantic need of it.
-                <a
+                {/* <a
                   href="javascript:void(0);"
                   data-text="Read More"
                   class="btn btn-link"
                 >
                   Read More
-                </a>
+                </a> */}
               </p>
 
               <form class="contact-form" id="contact-form-data">
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
-                    <label>Blood Type</label>
+                    <label class="font-weight-bold">Blood Type</label>
                   </div>
                   <div class="col-sm-6">
                     <select
@@ -135,7 +126,7 @@ const [ct,setCt]=useState([])
                 </div>
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
-                    <label>State</label>
+                    <label class="font-weight-bold">State</label>
                   </div>
                   <div class="col-sm-6">
                     <select
@@ -156,7 +147,7 @@ const [ct,setCt]=useState([])
                 </div>
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
-                    <label>District</label>
+                    <label class="font-weight-bold">District</label>
                   </div>
                   <div class="col-sm-6">
                     <select
@@ -178,7 +169,7 @@ const [ct,setCt]=useState([])
                 </div>
                 <div class="row">
                   <div class="col-sm-4" style={{ marginTop: "6px" }}>
-                    <label>City</label>
+                    <label class="font-weight-bold">City</label>
                   </div>
                   <div class="col-sm-6">
                     <select
