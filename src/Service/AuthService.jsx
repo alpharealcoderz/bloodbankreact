@@ -8,7 +8,8 @@ export const loginHandler = (email, password) => {
       password,
     })
     .then((res) => {
-      if (res.data.status == "success") {
+      if (res.data.status == "success" && res.data.loginData.email_verified_at!=null) {
+
         res.data.loginData.role !== "admin"
           ? window.location.reload()
           : (window.location.pathname = "/admin/users");
@@ -17,7 +18,7 @@ export const loginHandler = (email, password) => {
         localStorage.setItem("userDetails", JSON.stringify(res.data.loginData));
         localStorage.setItem("token", res.data.loginData.token);
       } else if (res.data.status == "failure") {
-        message.warning(res.data.error);
+        message.warning("Something Went Wrong");
       }
     });
 };

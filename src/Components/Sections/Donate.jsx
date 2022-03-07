@@ -121,8 +121,17 @@ export const Donate = (props) => {
     axios
       .post(api_base_url + "/beuserregister", data)
       .then((res) => {
-        if (res.status == "201") {
+        if (res.status == "200") {
           message.success("Register successfully", 10);
+          setResult(res.data.data.token)
+          localStorage.setItem('registerToken',res.data.data.token)
+          if(res.status=='200'){
+            fetch(api_base_url + "/email/verification-notification", {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Bearer ${res.data.data.token}`
+      }})}
         } else {
           message.error(
             "your form is not submitted,Please fill all the details correctly ",
@@ -137,25 +146,7 @@ export const Donate = (props) => {
         )
       );
 
-    axios.post(api_base_url + "/beuserregister", data).then((res) => {
-      setResult(res.data.data.token)
-      if(res.status=='200'){
-        // axios.post(api_base_url + "/email/verification-notification")
-        fetch(api_base_url + "/email/verification-notification", {
-  method: 'POST', // or 'PUT'
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization':`Bearer ${result}`
-  },
-
-})
-
-        // localStorage.setItem('registerToken',res.data.data.token)
-      message.success("Register successfully",10)}else{
-        message.error("your form is not submitted,Please fill all the details correctly ",6)
-      };
-    }).catch(()=> message.error("your form is not submitted,Please fill all details correctly",6))
-
+    
     // type == "register" && setDetails({ ...details, is_donor_active: 0 });
     // registerDonor(details);
   };
@@ -196,11 +187,7 @@ export const Donate = (props) => {
   }, []);
 
 
-  useEffect(() => {
-    console.log('saransh',window.location.href)
-    var url = new URL(window.location.href);
-url && axios.get(url)
-    }, [])
+
 
 
   

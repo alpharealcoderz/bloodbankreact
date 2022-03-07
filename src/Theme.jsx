@@ -24,11 +24,28 @@ import VisionMission from "./Components/Sections/VisionMission";
 import PrivacyPolicy from "./Components/Sections/PrivacyPolicy";
 import Register from "./Components/Sections/Register";
 import Footer from "./Components/Admin/layout/Footer";
+import axios from "axios";
+import { api_base_url } from "./Constants";
+import { message } from "antd";
 export const Theme = ({ getBloodType, getAllStates }) => {
   useEffect(() => {
     getBloodType();
     getAllStates();
+    
   }, []);
+  useEffect(() => {
+
+       window.location.hash.length>100&& fetch(window.location.hash.substring(24), {
+method: 'GET', 
+headers: {
+  'Content-Type': 'application/json',
+  'Authorization':`Bearer ${localStorage.getItem('registerToken')}`
+      }}).then(()=>          message.success("Verified successfully", 10))
+      .catch(()=>message.success('Verifiction Failed',10))
+
+
+
+    }, []);
   const toggler = [
     <svg
       width="20"
