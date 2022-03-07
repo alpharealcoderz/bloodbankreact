@@ -14,6 +14,7 @@ export const Donate = (props) => {
   const [gard, setGard] = useState(false);
   const [ct, setCt] = useState([]);
   const [da, setDa] = useState();
+  const [ay, setAy] = useState();
   const [details, setDetails] = useState({
     name: "",
     wodoso: "",
@@ -52,6 +53,13 @@ export const Donate = (props) => {
     password:""
 
   });
+  const fd = () => {
+    const cd = new Date().getFullYear()
+    const d = new Date(da);
+    const ad = d.getFullYear()
+    setAy(cd-ad);
+    console.log('gulshan',ay);
+  }
  
   const handleDetails = (e) => {
     let object = {};
@@ -97,8 +105,9 @@ export const Donate = (props) => {
       type_do_rdp: details.DoRDP,
       type_do_wbc: details.DoWBC,
     };
-    console.log(new Date().getFullYear())
-    console.log('gulshan',da.getFullYear())
+   
+    // console.log('gulshan',cd-ad);
+    // console.log('gulshan',da.getFullYear())
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
       if(res.status=='201'){
       message.success("Register successfully",10)}else{
@@ -246,6 +255,7 @@ export const Donate = (props) => {
                       onChange={(e) => {
                         handleDetails(e);
                         setDa(e.target.value)
+                        fd(); 
                       }}
                       onMouseEnter={() => setDateofbirth(true)}
                       onMouseLeave={() =>setDateofbirth(false)}
@@ -264,9 +274,11 @@ export const Donate = (props) => {
                       min={11}
                       max={99}
                       placeholder="Age"
-                      name="age"           
+                      name="age"
+                      value={ay}           
                       onChange={(e) => {
                         handleDetails(e);
+
                       }}
                     />
                   </div>
