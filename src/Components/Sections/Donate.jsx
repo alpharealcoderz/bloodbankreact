@@ -15,6 +15,9 @@ export const Donate = (props) => {
   const [ct, setCt] = useState([]);
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
+  const [result, setResult] = useState();
+  const [url, setUrl] = useState();
+  console.log(url)
   const [details, setDetails] = useState({
     name: "",
     wodoso: "",
@@ -109,7 +112,19 @@ export const Donate = (props) => {
     // console.log('gulshan',cd-ad);
     // console.log('gulshan',da.getFullYear())
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
-      if(res.status=='201'){
+      setResult(res.data.data.token)
+      if(res.status=='200'){
+        // axios.post(api_base_url + "/email/verification-notification")
+        fetch(api_base_url + "/email/verification-notification", {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization':`Bearer ${result}`
+  },
+
+})
+
+        // localStorage.setItem('registerToken',res.data.data.token)
       message.success("Register successfully",10)}else{
         message.error("your form is not submitted,Please fill all the details correctly ",6)
       };
@@ -134,12 +149,30 @@ export const Donate = (props) => {
       .then((res) => setCt(res.data));
   };
 
+  const handleVerifyEmail = (e) => {
+    let temp=  district.find(el=>{return el.district_title==e.target.value})
+    axios.post(api_base_url + "/getAllCityByDistrict", {
+        districtid: temp.districtid,
+      })
+      .then((res) => setCt(res.data));
+  };
+
   useEffect(() => {
     axios.post(api_base_url + "/getAllStates").then((res) => {
       const st = res.data;
       setSt(st);
     });
   }, []);
+
+  useEffect(() => {
+    console.log('saransh',window.location.href)
+    var url = new URL(window.location.href);
+url && axios.get(url)
+    }, [])
+
+
+  
+    
   
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
