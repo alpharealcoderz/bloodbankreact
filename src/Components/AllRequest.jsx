@@ -354,7 +354,7 @@ export const AllRequest = () => {
         onCancel={() => setDistance(0)}
       >
         Your Distance From Your city {city?.city} to Hospital City{" "}
-        {hospitalCity} is {distance}
+        {hospitalCity} is {distance} km
       </Modal>
     </section>
   );
