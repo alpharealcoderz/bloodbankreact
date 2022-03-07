@@ -50,7 +50,7 @@ export const AllRequest = () => {
       dataIndex: "phone",
       key: "phone",
     },
-   
+
     {
       title: "City",
       dataIndex: "city",
@@ -348,7 +348,7 @@ export const AllRequest = () => {
         </div>
       </div>
       <Modal
-        title="Add New User"
+        title="Distance"
         visible={distance != 0}
         onOk={() => setDistance(0)}
         onCancel={() => setDistance(0)}
