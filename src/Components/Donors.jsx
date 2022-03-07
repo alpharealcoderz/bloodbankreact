@@ -52,7 +52,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       key: "blood_type",
     },
     {
-      title: "No of donation",
+      title: "No of times donated",
       dataIndex: "no_times_do",
       key: "no_times_do",
     },

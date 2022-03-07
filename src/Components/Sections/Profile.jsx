@@ -96,9 +96,10 @@ export default function Profile() {
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
           <div class="heading-area">
+            <h3>Welcome {details.name},</h3>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h2 class="title">Your Request</h2>
-              <div>
+              <h3 class="font-weight-normal mt-4">Your Request</h3>
+              <div>               
                 <Button type="danger" onClick={() => setVisible(true)}>
                   Edit Profile
                 </Button>

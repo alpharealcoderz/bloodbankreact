@@ -16,8 +16,7 @@ export const Donate = (props) => {
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
 
-  const [am, setAm] = useState();
-  const [ad, setAd] = useState();
+
 
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
@@ -66,7 +65,7 @@ export const Donate = (props) => {
     const d = new Date(da);
     const ay = d.getFullYear();
     setAy(cy - ay);
-    // console.log('gulshan',ay);
+    
   };
 
   const handleDetails = (e) => {
@@ -124,18 +123,10 @@ export const Donate = (props) => {
         if (res.status == "201") {
           message.success("Register successfully", 10);
         } else {
-          message.error(
-            "your form is not submitted,Please fill all the details correctly ",
-            6
-          );
+          message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
         }
       })
-      .catch(() =>
-        message.error(
-          "your form is not submitted,Please fill all details correctly",
-          6
-        )
-      );
+      
 
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
       setResult(res.data.data.token)
@@ -150,14 +141,13 @@ export const Donate = (props) => {
 
 })
 
-        // localStorage.setItem('registerToken',res.data.data.token)
+      
       message.success("Register successfully",10)}else{
         message.error("your form is not submitted,Please fill all the details correctly ",6)
       };
     }).catch(()=> message.error("your form is not submitted,Please fill all details correctly",6))
 
-    // type == "register" && setDetails({ ...details, is_donor_active: 0 });
-    // registerDonor(details);
+  
   };
   const handleStateChange = (e) => {
     let temp = st.find((el) => {
@@ -710,7 +700,7 @@ url && axios.get(url)
                   <div class="form-group">
                     <p>Do you own a vehicle ?</p>
                     <div class="row">
-                      <div class="col-lg-3">
+                      <div class="col-lg-5">
                         <input
                           type="radio"
                           id="yes"
@@ -728,7 +718,7 @@ url && axios.get(url)
                       </div>
 
                       <br></br>
-                      <div class="col-lg-3">
+                      <div class="col-lg-6">
                         <input
                           type="radio"
                           id="yes"
