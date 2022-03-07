@@ -26,15 +26,16 @@ export const getAllStates = () => {
   };
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(
-        `${api_base_url}/getAllStatesByCountry`,
-        payload
-      );
-      data &&
-        dispatch({
-          type: GET_ALL_STATES_INDIA,
-          payload: data,
-        });
+      console.log("country");
+      // let { data } = await axios.post(
+      //   `${api_base_url}/getAllStatesByCountry`,
+      //   payload
+      // );
+      // data &&
+      //   dispatch({
+      //     type: GET_ALL_STATES_INDIA,
+      //     payload: data,
+      //   });
     } catch (error) {
       console.log("error", error);
     }
