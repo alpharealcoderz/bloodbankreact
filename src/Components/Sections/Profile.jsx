@@ -4,6 +4,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { Input, Modal, Button, Table } from "antd";
 import { getAllRequestByUser } from "../../redux/actions/request";
 import axios from "axios";
+import Footer from "../Admin/layout/Footer";
 import { api_base_url } from "../../Constants";
 export default function Profile() {
   const dispatch = useDispatch();
@@ -86,13 +87,14 @@ export default function Profile() {
   };
   if (localStorage.getItem("token") == null) return <></>;
   return (
+    <>
     <section
       id="profile"
       class="pt-page pt-page-6 pt-5"
       data-id="profile"
-      style={{ overflowY: "scroll", paddingTop: "67px", display: "block" }}
+      style={{ paddingTop: "67px", display: "block" }}
     >
-      <div class="container">
+      <div style={{marginTop:'2%'}} class="container">
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
           <div class="heading-area">
@@ -277,7 +279,9 @@ export default function Profile() {
           <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
         </div>
       </div>
-      {/* </div> */}
+      {/* <Footer/> */}
     </section>
+  
+    </>
   );
 }

@@ -8,7 +8,7 @@ export default function Clients() {
       data-id="clients"
       style={{ paddingTop: "67px" }}
     >
-      <div style={{marginTop:'-25%'}} class="container">
+      <div style={{marginTop:'-10%'}} class="container">
         <div class="row d-flex align-content-lg-center min-height-100vh">
           <div class="col-lg-4 pr-lg-5 p-0">
             <div class="heading-area">

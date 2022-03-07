@@ -87,11 +87,6 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       key: "convt_time_int",
     },
     {
-      title: "Distance",
-      dataIndex: "",
-      key: "",
-    },
-    {
       title: "Availability",
       dataIndex: "",
       key: "",
