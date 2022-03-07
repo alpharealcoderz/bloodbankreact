@@ -115,15 +115,27 @@ export const Donate = (props) => {
     // console.log('gulshan',cd-ad);
     // console.log('gulshan',da.getFullYear())
 
-    // axios
-    //   .post(api_base_url + "/beuserregister", data)
-    //   .then((res) => {
-    //     if (res.status == "201") {
-    //       message.success("Register successfully", 10);
-    //     } else {
-    //       message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
-    //     }
-    //   })
+
+    axios
+      .post(api_base_url + "/beuserregister", data)
+      .then((res) => {
+        if (res.status == "200") {
+          message.success("Register successfully", 10);
+          setResult(res.data.data.token)
+          localStorage.setItem('registerToken',res.data.data.token)
+          if(res.status=='200'){
+            fetch(api_base_url + "/email/verification-notification", {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Bearer ${res.data.data.token}`
+      }})}
+        } else {
+          message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
+        }
+      })
+      
+
 
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
       setResult(res.data.data.token)
@@ -186,6 +198,7 @@ export const Donate = (props) => {
     var url = new URL(window.location.href);
     url && axios.get(url);
   }, []);
+
 
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">

@@ -94,25 +94,56 @@ export default function Profile() {
       data-id="profile"
       style={{ paddingTop: "67px", display: "block" }}
     >
+
       <div style={{marginTop:'2%'}} class="container">
+
+      <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7">
+            <div class="card p-3 py-4">
+              <div class="text-center">
+                {" "}
+                <img
+                  src="https://img.favpng.com/6/14/19/computer-icons-user-profile-icon-design-png-favpng-vcvaCZNwnpxfkKNYzX3fYz7h2.jpg"
+                  width="100"
+                  class="rounded-circle"
+                />{" "}
+              </div>
+              <div class="text-center mt-3">
+                {" "}
+                <span class="bg-secondary p-1 px-4 rounded text-white">
+                  {details.is_donor_active == 1 ? "Donor" : "User"}
+                </span>
+                <h5 class="mt-2 mb-0">Hi, {details.name}</h5>{" "}
+                <div class="buttons" style={{ marginTop: "15px" }}>
+                  <button
+                    class="btn btn-outline-primary px-4"
+                    onClick={() => setVisible(true)}
+                  >
+                    Edit Profile
+                  </button>
+                  <button
+                    onClick={() => logout()}
+                    class="btn btn-primary px-4 ms-3"
+                    style={{ marginLeft: "15px" }}
+                  >
+                    Logout
+                  </button>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
           <div class="heading-area">
-            <h3>Welcome {details.name},</h3>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h3 class="font-weight-normal mt-4">Your Request</h3>
-              <div>               
-                <Button type="danger" onClick={() => setVisible(true)}>
-                  Edit Profile
-                </Button>
-                <Button
-                  type="danger"
-                  onClick={() => logout()}
-                  style={{ marginLeft: "10px" }}
-                >
-                  Logout
-                </Button>
-              </div>
+              <h2 class="title">Your Request</h2>
+              <div></div>
             </div>
             <h6 class="sub-title main-color">Omniscient BloodBank</h6>
           </div>
