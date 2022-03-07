@@ -19,7 +19,7 @@ function Footer() {
   return (
     <div className="main-footer">
       <div className="container">
-        <div className="row">
+        {/* <div className="row">
           <div style={{ textAlign:"center"}} className="col ">
           <div style={{marginBottom:'-10px'}} className="mt-5 ">
             <i style={{width:'30px',height:'30px'}} class="lni lni-facebook-filled mr-2"></i>
@@ -32,11 +32,15 @@ function Footer() {
           </div>
           
         </div>
-        <hr />
-        <div className="row">
-        <p style={{ textAlign:"center"}} className="col-sm pb-3">
-            &copy;{new Date().getFullYear()} Omniscient IT Solutions Pvt Ltd. All rights reserved.Terms and Conditions Privacy Policy Resources
-          </p>
+        <hr /> */}
+        <div style={{height:"70px"}} className="row col-sm p-4">
+        <p style={{ marginLeft:'25px', textAlign:"center", fontSize:'17px'}} >
+          Copyright  &copy;{new Date().getFullYear()} Design and Develop Maintenance by Omniscient IT Solutions P(Ltd).
+        </p>
+          <a  href="#privacypolicy" style={{ color:"White",marginLeft:'25px' , fontSize:'17px' }}>PRIVACY POLICY</a>
+          {/* <a href="#privacypolicy"  style={{color:"White", marginLeft:'25px' , fontSize:'17px' }}>TERMS OF USE</a> */}
+          <img className="mt-1" style={{width:'55px',borderRadius:'5px', marginLeft:'25px',height:'17px'}} src={playstore}></img> <img className="mt-1" style={{width:'55px',borderRadius:'5px', marginLeft:'25px',height:'17px'}} src={apple}></img>
+
         </div>
       </div>
     </div>

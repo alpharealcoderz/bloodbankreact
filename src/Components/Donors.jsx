@@ -31,11 +31,35 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       key: "name",
     },
     {
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+      key: "sex",
+    },
+    {
       title: "Blood Type",
       dataIndex: "blood_type",
       key: "blood_type",
     },
-
+    {
+      title: "No of donation",
+      dataIndex: "no_times_do",
+      key: "no_times_do",
+    },
+    {
+      title: "Last donation date",
+      dataIndex: "last_do_date",
+      key: "last_do_date",
+    },
+    {
+      title: "Last donation place",
+      dataIndex: "last_do_place",
+      key: "last_do_place",
+    },
     {
       title: "State",
       dataIndex: "state",
@@ -52,15 +76,30 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       key: "city",
     },
     {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
+      title: "time of contact",
+      dataIndex: "convt_time_int",
+      key: "convt_time_int",
     },
     {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
+      title: "Distance",
+      dataIndex: "",
+      key: "",
     },
+    {
+      title: "Availability",
+      dataIndex: "",
+      key: "",
+    }
+    // {
+    //   title: "Email",
+    //   dataIndex: "email",
+    //   key: "email",
+    // },
+    // {
+    //   title: "Phone",
+    //   dataIndex: "phone",
+    //   key: "phone",
+    // },
   ]);
 
   const handleStateChange = (e) => {
@@ -371,7 +410,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
             </div>
             <div>
               <div></div>{" "}
-              <Button style={{ marginTop: "20px",marginLeft: "20px" }} type="primary" onClick={search}>
+              <Button style={{ marginTop: "20px",marginLeft: "20px" }} type="danger" onClick={search}>
                 {" "}
                 Search
               </Button>
