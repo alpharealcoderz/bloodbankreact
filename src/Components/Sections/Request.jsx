@@ -116,7 +116,7 @@ export const Request = (props) => {
 
   return (
     <section id="request" class="pt-page pt-page-6" data-id="request">
-      <div style={{ marginTop: "-22%" }} class="container">
+      <div style={{ marginTop: "-17%" }} class="container">
         <div class="row align-items-lg-center">
           <div class="col-6">
             <div class="heading-area">

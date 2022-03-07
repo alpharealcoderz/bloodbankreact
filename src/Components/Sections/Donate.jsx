@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { message, Button } from "antd";
+import { message, Button, Modal } from "antd";
 import axios from "axios";
 import { api_base_url } from "../../Constants";
 import { toBeEmpty } from "@testing-library/jest-dom/dist/matchers";
 export const Donate = (props) => {
   const bloodType = useSelector((state) => state.donors.bloodType);
   const [st, setSt] = useState([]);
+  const [visible, setVisible] = useState(false);
   const [district, setDistrict] = useState([]);
   const [vehicle, setVehicle] = useState(false);
   const [volunteer, setVolunteer] = useState(false);
@@ -16,11 +17,9 @@ export const Donate = (props) => {
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
 
-
-
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
-  console.log(url)
+  console.log(url);
 
   const [details, setDetails] = useState({
     name: "",
@@ -58,14 +57,13 @@ export const Donate = (props) => {
     is_donor_active: "",
     is_volunteer_active: "",
     password: "",
-    no_times_do:'',
+    no_times_do: "",
   });
   const fd = () => {
     const cy = new Date().getFullYear();
     const d = new Date(da);
     const ay = d.getFullYear();
     setAy(cy - ay);
-    
   };
 
   const handleDetails = (e) => {
@@ -117,6 +115,7 @@ export const Donate = (props) => {
     // console.log('gulshan',cd-ad);
     // console.log('gulshan',da.getFullYear())
 
+
     axios
       .post(api_base_url + "/beuserregister", data)
       .then((res) => {
@@ -137,6 +136,7 @@ export const Donate = (props) => {
       })
       
 
+
     axios.post(api_base_url + "/beuserregister", data).then((res) => {
       setResult(res.data.data.token)
       if(res.status=='200'){
@@ -148,15 +148,11 @@ export const Donate = (props) => {
     'Authorization':`Bearer ${result}`
   },
 
-})
-
-      
+})  
       message.success("Register successfully",10)}else{
         message.error("your form is not submitted,Please fill all the details correctly ",6)
       };
     }).catch(()=> message.error("your form is not submitted,Please fill all details correctly",6))
-
-  
   };
   const handleStateChange = (e) => {
     let temp = st.find((el) => {
@@ -180,8 +176,11 @@ export const Donate = (props) => {
   };
 
   const handleVerifyEmail = (e) => {
-    let temp=  district.find(el=>{return el.district_title==e.target.value})
-    axios.post(api_base_url + "/getAllCityByDistrict", {
+    let temp = district.find((el) => {
+      return el.district_title == e.target.value;
+    });
+    axios
+      .post(api_base_url + "/getAllCityByDistrict", {
         districtid: temp.districtid,
       })
       .then((res) => setCt(res.data));
@@ -194,12 +193,12 @@ export const Donate = (props) => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log("saransh", window.location.href);
+    var url = new URL(window.location.href);
+    url && axios.get(url);
+  }, []);
 
-
-
-
-  
-    
 
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
@@ -215,7 +214,8 @@ export const Donate = (props) => {
               class="contact-form"
               id="contact-form-data"
               onSubmit={(e) => {
-                handleSubmit(e, "donate");
+                e.preventDefault();
+                setVisible(true);
               }}
             >
               <div class="row">
@@ -956,7 +956,8 @@ export const Donate = (props) => {
                     type="button"
                     id="submit_btn"
                     onClick={(e) => {
-                      handleSubmit(e, "register");
+                      e.preventDefault();
+                      setVisible(true);
                     }}
                     class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
                   >
@@ -1012,6 +1013,18 @@ export const Donate = (props) => {
           </div>
         </div>
       </div>
+      <Modal
+        title="DECLARATION"
+        visible={visible}
+        onOk={(e) => handleSubmit(e, "register")}
+        onCancel={() => setVisible(false)}
+      >
+        <p>
+          i <b> {details.name} </b> hereby declare that the information given
+          here is correct to my knowledge and i will be responsible for any
+          discrepancy.
+        </p>
+      </Modal>
     </section>
   );
 };

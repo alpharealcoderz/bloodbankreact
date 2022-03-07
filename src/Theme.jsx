@@ -97,8 +97,8 @@ headers: {
             {localStorage.getItem("token") == null ?<> <Login /><Register /></>:<><Profile /><Profile/></>}
           </div>
         </div>
-      </div>
-      <Footer />
+        <Footer />
+      </div>   
       <div
         style={{
           position: "fixed",

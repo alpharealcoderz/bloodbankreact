@@ -7,7 +7,7 @@ export default function AboutUs() {
       data-id="about"
       style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >
-      <div class="container">
+      <div style={{marginTop:'5%'}} class="container">
         <div class=" align-items-lg-center dot-box">
           <iframe
             loading="lazy"
