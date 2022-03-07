@@ -135,6 +135,7 @@ export default function Profile() {
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
           <div class="heading-area">
+            <h3>Welcome {details.name},</h3>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h2 class="title">Your Request</h2>
               <div></div>
