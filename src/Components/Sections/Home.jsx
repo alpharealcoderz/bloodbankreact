@@ -79,7 +79,7 @@ const [ct,setCt]=useState([])
     >   
       <div  style={{marginLeft:'100px'}} class="container slider-container">
         <div class="row align-items-lg-center">
-          <div style={{ marginTop: "-15%" }} class="col-lg-7 order-lg-2 ">
+          <div style={{ marginTop: "-25%" }} class="col-lg-7 order-lg-2 ">
             <div class="">
               <img
                 src="https://i.pinimg.com/originals/0d/0f/85/0d0f85b1504a9ebe9a080b5b1dd95c0b.gif"
@@ -93,8 +93,8 @@ const [ct,setCt]=useState([])
             </div>
           </div>
 
-          <div style={{ marginTop: "-20%" }} class="col-lg-5 wow fadeInRight">
-            <img src={blood} />
+          <div style={{ marginTop: "-30%" }} class="col-lg-5 wow fadeInRight">
+            {/* <img src={blood} /> */}
             <div class="heading-box">
               <h3>
                 <span class="main-color">Post blood request</span>{" "}

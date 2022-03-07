@@ -93,29 +93,37 @@ export const Theme = ({ getBloodType, getAllStates }) => {
       >
         <a href="tel:+91-9819887086">
           <img
-            src="https://vnslogistics.com/images/callback.jpg"
-            width="71"
-            height="87"
+            src="https://thumbs.dreamstime.com/b/icon-support-customer-service-call-center-vector-icons-help-phone-contact-business-line-symbol-communication-telephone-technology-140921462.jpg"
+            width="60"
+            height="60"
             alt=""
+            style={{marginLeft:'16%'}}
           />
+            <p style={{fontSize:'10px', marginLeft:'35%',marginTop:'-15%',color:'black'}}>call back</p>
         </a>
 
         <a href="tel:+91-9819887086">
           <img
-            src="https://vnslogistics.com/images/contactus.jpg"
-            width="71"
-            height="87"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvWvDYZjEyaI7UeAsXCjeJBPojTq_a8OfF94bdqcacOQRCYCXC3AYM_e8yMC9nZ9zWr-8&usqp=CAU"
+            width="35"
+            height="35"
             alt=""
+            style={{marginLeft:'35%'}}
           />
+          <p style={{fontSize:'10px', marginLeft:'35%', color:'black'}}>call now</p>
+        
         </a>
-
+        
         <a href="https://api.whatsapp.com/send?phone=+91-0000000000">
           <img
-            src="https://vnslogistics.com/images/whatsappcall.jpg"
-            width="71"
-            height="87"
+            src="https://i.pinimg.com/originals/84/7a/34/847a34f8bc72a7f5223ec0f3aa227796.png"
+            width="30px"
+            height="30px"
+            style={{marginLeft:'38%'}}
+           
             alt=""
           />
+          <p style={{fontSize:'10px', marginLeft:'30%',color:'black'}}>whatsapp</p>
         </a>
       </div>
     </div>

@@ -15,10 +15,12 @@ export const Donate = (props) => {
   const [ct, setCt] = useState([]);
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
+  const [am, setAm] = useState();
+  const [ad, setAd] = useState();
   const [details, setDetails] = useState({
     name: "",
     wodoso: "",
-    wod:"",
+    wod: "",
     phone: "",
     email: "",
     dob: "",
@@ -48,19 +50,19 @@ export const Donate = (props) => {
     volunteer_admin: "",
     volunteer_pick: "",
     volunteer_other: "",
-    is_donor_active:"",
-    is_volunteer_active:"",
-    password:""
-
+    is_donor_active: "",
+    is_volunteer_active: "",
+    password: "",
+    no_times_do:'',
   });
   const fd = () => {
-    const cd = new Date().getFullYear()
+    const cy = new Date().getFullYear();
     const d = new Date(da);
-    const ad = d.getFullYear()
-    setAy(cd-ad);
-    console.log('gulshan',ay);
-  }
- 
+    const ay = d.getFullYear();
+    setAy(cy - ay);
+    // console.log('gulshan',ay);
+  };
+
   const handleDetails = (e) => {
     let object = {};
     object[e.target.name] = e.target.value;
@@ -68,13 +70,13 @@ export const Donate = (props) => {
   };
   const handleSubmit = (e, type) => {
     e.preventDefault();
-   
+
     const data = {
       is_donor_active: details.is_donor_active,
-      is_volunteer_active:details.is_volunteer_active,
-      password:details.password,
+      is_volunteer_active: details.is_volunteer_active,
+      password: details.password,
       name: details.name,
-      wo_do_so:  details.wod +details.wodoso,
+      wo_do_so: details.wod + details.wodoso,
       email: details.email,
       phone: details.phone,
       dob: details.dob,
@@ -104,22 +106,36 @@ export const Donate = (props) => {
       type_do_ffp: details.DoFFP,
       type_do_rdp: details.DoRDP,
       type_do_wbc: details.DoWBC,
+      no_times_do: details.no_times_do,
     };
-   
+
     // console.log('gulshan',cd-ad);
     // console.log('gulshan',da.getFullYear())
-    axios.post(api_base_url + "/beuserregister", data).then((res) => {
-      if(res.status=='201'){
-      message.success("Register successfully",10)}else{
-        message.error("your form is not submitted,Please fill all the details correctly ",6)
-      };
-    }).catch(()=> message.error("your form is not submitted,Please fill all details correctly",6))
+    axios
+      .post(api_base_url + "/beuserregister", data)
+      .then((res) => {
+        if (res.status == "201") {
+          message.success("Register successfully", 10);
+        } else {
+          message.error(
+            "your form is not submitted,Please fill all the details correctly ",
+            6
+          );
+        }
+      })
+      .catch(() =>
+        message.error(
+          "your form is not submitted,Please fill all details correctly",
+          6
+        )
+      );
     // type == "register" && setDetails({ ...details, is_donor_active: 0 });
     // registerDonor(details);
-    
   };
   const handleStateChange = (e) => {
-  let temp= st.find(el=>{return el.state_title==e.target.value})
+    let temp = st.find((el) => {
+      return el.state_title == e.target.value;
+    });
     axios
       .post(api_base_url + "/getAllDistrictByStates", {
         state_id: temp.state_id,
@@ -127,8 +143,11 @@ export const Donate = (props) => {
       .then((res) => setDistrict(res.data));
   };
   const handleDistrictChange = (e) => {
-    let temp=  district.find(el=>{return el.district_title==e.target.value})
-    axios.post(api_base_url + "/getAllCityByDistrict", {
+    let temp = district.find((el) => {
+      return el.district_title == e.target.value;
+    });
+    axios
+      .post(api_base_url + "/getAllCityByDistrict", {
         districtid: temp.districtid,
       })
       .then((res) => setCt(res.data));
@@ -140,7 +159,7 @@ export const Donate = (props) => {
       setSt(st);
     });
   }, []);
-  
+
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
       <div style={{ marginTop: "-11%" }} class="container">
@@ -181,33 +200,39 @@ export const Donate = (props) => {
                       name="wod"
                       onChange={(e) => {
                         handleDetails(e);
-                        setGard(true)
+                        setGard(true);
                       }}
                     >
                       <option>Select</option>
-                      <option name='wod' value='so-'>Son of</option>
-                      <option name='wod' value='wo-'>Wife of</option>
-                      <option name='wod' value='do-'>Daughter of</option>
+                      <option name="wod" value="so-">
+                        Son of
+                      </option>
+                      <option name="wod" value="wo-">
+                        Wife of
+                      </option>
+                      <option name="wod" value="do-">
+                        Daughter of
+                      </option>
                     </select>
                   </div>
                 </div>
                 <>
-                      {gard && (
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <input
-                      class="form-control"
-                      type="text"
-                      placeholder="Guardian"
-                      name="wodoso"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                    />
-                  </div>
-                </div>
-                      )}
-                      </>
+                  {gard && (
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="Guardian"
+                          name="wodoso"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </>
               </div>
 
               <div class="row">
@@ -217,8 +242,8 @@ export const Donate = (props) => {
                     <input
                       class="form-control"
                       type="number"
-                    min={1111111111}
-                    max={9999999999}
+                      min={1111111111}
+                      max={9999999999}
                       placeholder="Phone"
                       name="phone"
                       onChange={(e) => {
@@ -248,21 +273,21 @@ export const Donate = (props) => {
                     <input
                       class="form-control"
                       type="date"
-                      min={'1975-01-02'}
-                       max={'2006-01-02'}
+                      min={"1975-01-02"}
+                      max={"2006-01-02"}
                       placeholder="Dob"
                       name="dob"
                       onChange={(e) => {
                         handleDetails(e);
-                        setDa(e.target.value)
-                        fd(); 
+                        setDa(e.target.value);
+                        fd();
                       }}
                       onMouseEnter={() => setDateofbirth(true)}
-                      onMouseLeave={() =>setDateofbirth(false)}
+                      onMouseLeave={() => setDateofbirth(false)}
                     />
                     {dateofbirth && (
-                      <label style={{color:'red'}}>date of birth</label>
-                     )}
+                      <label style={{ color: "red" }}>date of birth</label>
+                    )}
                   </div>
                 </div>
 
@@ -275,10 +300,9 @@ export const Donate = (props) => {
                       max={99}
                       placeholder="Age"
                       name="age"
-                      value={ay}           
+                      value={ay}
                       onChange={(e) => {
                         handleDetails(e);
-
                       }}
                     />
                   </div>
@@ -326,7 +350,10 @@ export const Donate = (props) => {
                       <option>State</option>
                       {st.map((stt) => {
                         return (
-                          <option value={stt.state_title}name={stt.state_id+'state'}>
+                          <option
+                            value={stt.state_title}
+                            name={stt.state_id + "state"}
+                          >
                             {stt.state_title}
                           </option>
                         );
@@ -350,7 +377,10 @@ export const Donate = (props) => {
                       <option>District</option>
                       {district.map((dt) => {
                         return (
-                          <option value={dt.district_title}name={dt.districtid+'district'}>
+                          <option
+                            value={dt.district_title}
+                            name={dt.districtid + "district"}
+                          >
                             {dt.district_title}
                           </option>
                         );
@@ -372,7 +402,11 @@ export const Donate = (props) => {
                     >
                       <option>City</option>
                       {ct.map((ctt) => {
-                        return <option value={ctt.name}name={ctt.id}>{ctt.name}</option>;
+                        return (
+                          <option value={ctt.name} name={ctt.id}>
+                            {ctt.name}
+                          </option>
+                        );
                       })}
                     </select>
                   </div>
@@ -393,22 +427,21 @@ export const Donate = (props) => {
                         return <option>{st}</option>;
                       })}
                     </select>
-                    </div>
                   </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <input
-                        class="form-control"
-                        type="Password"
-                        placeholder="Create password"
-                        name="password"
-                        onChange={(e) => {
-                          handleDetails(e);
-                        }}
-                      />
-                    </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="Password"
+                      placeholder="Create password"
+                      name="password"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
                   </div>
-                
+                </div>
               </div>
               <br></br>
               <div class="row">
@@ -611,42 +644,17 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <p>Do you want to donate?</p>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <input
-                          type="radio"
-                          id="yes"
-                          onChange={(e) => {
-                            handleDetails(e);
-                            
-                          }}
-                          name="is_donor_active"
-                          value="1"
-                        />
-                        <label class="ml-2" for="Yes">
-                          
-                          Yes
-                        </label>
-                      </div>
-
-                      <br></br>
-                      <div class="col-lg-6">
-                        <input
-                          type="radio"
-                          id="no"
-                          onChange={(e) => {
-                            handleDetails(e);
-                            
-                          }}
-                          name="is_donor_active"
-                          value="0"
-                        />
-                        <label class="ml-2" for="bike">
-                          No
-                        </label>
-                      </div>
-                    </div>
+                    <p>Number of times donated</p>
+                    <input
+                      class="form-control"
+                      type="number"
+                      min={0}
+                      placeholder="times"
+                      name="no_times_do"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -702,7 +710,6 @@ export const Donate = (props) => {
                               value="1"
                               onChange={(e) => {
                                 handleDetails(e);
-                                
                               }}
                             />
                             <label class="ml-2" for="Car">
@@ -730,9 +737,9 @@ export const Donate = (props) => {
                     <br></br>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                   <div class="form-group">
-                    <p>What is your convenient time to interact ?</p>
+                    <p>time to interact ?</p>
                     <input
                       class="form-control"
                       type="time"
@@ -741,6 +748,43 @@ export const Donate = (props) => {
                         handleDetails(e);
                       }}
                     />
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <p>Do you want to donate?</p>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <input
+                          type="radio"
+                          id="yes"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
+                          name="is_donor_active"
+                          value="1"
+                        />
+                        <label class="ml-2" for="Yes">
+                          Yes
+                        </label>
+                      </div>
+
+                      <br></br>
+                      <div class="col-lg-6">
+                        <input
+                          type="radio"
+                          id="no"
+                          onChange={(e) => {
+                            handleDetails(e);
+                          }}
+                          name="is_donor_active"
+                          value="0"
+                        />
+                        <label class="ml-2" for="bike">
+                          No
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -895,7 +939,10 @@ export const Donate = (props) => {
                 <i class="lni-apartment main-color"></i>
                 <div class="content">
                   <h6 class="main-color m-0">Address</h6>
-                  <p>Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block 4, WEA, Karol Bagh, New Delhi, Delhi 110005</p>
+                  <p>
+                    Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block
+                    4, WEA, Karol Bagh, New Delhi, Delhi 110005
+                  </p>
                 </div>
               </li>
 
@@ -904,7 +951,9 @@ export const Donate = (props) => {
                 <div class="content">
                   <h6 class="main-color m-0">Email:</h6>
                   <p>
-                    <a href="mailto:info@omniscientitsolutions.com">info@omniscientitsolutions</a>
+                    <a href="mailto:info@omniscientitsolutions.com">
+                      info@omniscientitsolutions
+                    </a>
                   </p>
                 </div>
               </li>
