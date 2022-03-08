@@ -129,28 +129,28 @@ const Donate = () => {
       no_times_do: details.no_times_do,
     };
 
-    axios.post(api_base_url + "/beuserregister", data).then((res) => {
-      if (res.status == "200") {
-        message.success("Register successfully", 10);
-        setResult(res.data.data.token);
-        localStorage.setItem("registerToken", res.data.data.token);
-        if (res.status == "200") {
-          fetch(api_base_url + "/email/verification-notification", {
-            method: "POST", // or 'PUT'
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${res.data.data.token}`,
-            },
-          });
-        }
-      } else {
-        message.error(
-          "your form is not submitted,Please fill all the details correctly ",
-          6
-        );
-      }
-    });
-  };
+
+
+
+   
+      axios.post(api_base_url + "/beuserregister", data)
+      .then((res) => {
+console.log('saransh',res.data)
+          message.success("Register successfully", 10);
+          setResult(res.data.data.token)
+          localStorage.setItem('registerToken',res.data.data.token)
+            fetch(api_base_url + "/email/verification-notification", {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Bearer ${res.data.data.token}`
+      }})
+        // } else {
+        //   message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
+        // }
+      })
+      };
+
   const handleStateChange = (e) => {
     let temp = st.find((el) => {
       return el.state_title == e.target.value;
