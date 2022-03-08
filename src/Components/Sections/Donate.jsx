@@ -1,10 +1,28 @@
+import { Form, Input, Steps, Modal, Button, message } from "antd";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { message, Button, Modal,Steps } from "antd";
 import axios from "axios";
 import { api_base_url } from "../../Constants";
-import jsPDF from 'jspdf';
-export const Donate = (props) => {
+import jsPDF from "jspdf";
+
+const { Step } = Steps;
+
+const steps = [
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "Second",
+    content: "Second-content",
+  },
+  {
+    title: "Last",
+    content: "Last-content",
+  },
+];
+
+const Donate = () => {
   const bloodType = useSelector((state) => state.donors.bloodType);
   const [st, setSt] = useState([]);
   const [visible, setVisible] = useState(false);
@@ -19,7 +37,6 @@ export const Donate = (props) => {
 
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
-  console.log(url);
 
   const [details, setDetails] = useState({
     name: "",
@@ -83,7 +100,7 @@ export const Donate = (props) => {
       email: details.email,
       phone: details.phone,
       dob: details.dob,
-      age: details.age!=''?details.age:ay,
+      age: details.age != "" ? details.age : ay,
       gender: details.gender,
       city: details.city,
       district: details.district,
@@ -112,25 +129,28 @@ export const Donate = (props) => {
       no_times_do: details.no_times_do,
     };
 
-    axios
-      .post(api_base_url + "/beuserregister", data)
-      .then((res) => {
+    axios.post(api_base_url + "/beuserregister", data).then((res) => {
+      if (res.status == "200") {
+        message.success("Register successfully", 10);
+        setResult(res.data.data.token);
+        localStorage.setItem("registerToken", res.data.data.token);
         if (res.status == "200") {
-          message.success("Register successfully", 10);
-          setResult(res.data.data.token)
-          localStorage.setItem('registerToken',res.data.data.token)
-          if(res.status=='200'){
-            fetch(api_base_url + "/email/verification-notification", {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization':`Bearer ${res.data.data.token}`
-      }})}
-        } else {
-          message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
+          fetch(api_base_url + "/email/verification-notification", {
+            method: "POST", // or 'PUT'
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${res.data.data.token}`,
+            },
+          });
         }
-      })
-      };
+      } else {
+        message.error(
+          "your form is not submitted,Please fill all the details correctly ",
+          6
+        );
+      }
+    });
+  };
   const handleStateChange = (e) => {
     let temp = st.find((el) => {
       return el.state_title == e.target.value;
@@ -176,33 +196,57 @@ export const Donate = (props) => {
     url && axios.get(url);
   }, []);
   const PdfGenerate = () => {
-    var doc = new jsPDF('p', 'pt', [2000, 7000]);
-    doc.html(document.querySelector('#content'), {
-        callback: function (pdf) {
-            pdf.save(details.name+'omnicent.pdf')
-        }
-    })
-}
+    var doc = new jsPDF("p", "pt", [2000, 7000]);
+    doc.html(document.querySelector("#content"), {
+      callback: function (pdf) {
+        pdf.save(details.name + "omnicent.pdf");
+      },
+    });
+  };
 
+  const [current, setCurrent] = React.useState(0);
+
+  const next = () => {
+    setCurrent(current + 1);
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
-      <div style={{ marginTop: "-11%" }} class="container" id='content'>
-        <div class="row align-items-lg-center">
-          <div class="col-7">
-            <div class="heading-area">
-              <h2 class="title">Register</h2>
-              <h6 class="sub-title main-color">Please fill All Details.</h6>
-            </div>
+    <div style={{ marginTop: "-25%" }} class="container" id='content'>
+      <div class="row align-items-lg-center">
+        <div class="col-7">
+          <div class="heading-area">
+            <h2 class="title">Register</h2>
+            <h6 class="sub-title main-color">Please fill All Details.</h6>
+          </div>
 
+          <Steps current={current}>
+          {steps.map((item) => (
+            <Step key={item.title} title={item.title} />
+          ))}
+        </Steps>
+
+        {current + 1 == 1 && (
+          <>
             <form
-              class="contact-form"
+              class=""
               id="contact-form-data"
               onSubmit={(e) => {
                 e.preventDefault();
                 setVisible(true);
               }}
             >
-              <div class="row">
+              <div class="row mt-4">
                 <div class="col-sm-12" id="result"></div>
                 <div class="col-lg-6">
                   <div class="form-group">
@@ -467,11 +511,25 @@ export const Donate = (props) => {
                   </div>
                 </div>
               </div>
-              <br></br>
-              <div class="row">
+            </form>
+          </>
+        )}
+        {current + 1 == 2 && (
+          <>
+            <form
+              class=""
+              id="contact-form-data"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setVisible(true);
+              }}
+            >
+              <div class="row mt-4">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <p>Donation availability ?</p>
+                    <p >
+                      <b>Donation availability ?</b>
+                    </p>
                     <div class="row">
                       <div class="col-sm-3">
                         <input
@@ -545,10 +603,13 @@ export const Donate = (props) => {
                     </div>
                   </div>
                 </div>
+
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <p>Last Donated date</p>
-                    <input
+                    <p style={{marginLeft:'-20px'}}>
+                      <b>Last Donated date</b>
+                    </p>
+                    <input style={{marginLeft:'-20px'}}
                       class="form-control"
                       type="Date"
                       placeholder="date"
@@ -561,7 +622,9 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <p>Donated Place</p>
+                    <p>
+                      <b>Donated Place</b>
+                    </p>
                     <input
                       class="form-control"
                       type="text"
@@ -577,7 +640,9 @@ export const Donate = (props) => {
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <p>Type of donation?</p>
+                    <p >
+                      <b>Type of donation?</b>
+                    </p>
                     <div class="row">
                       <div class="col-sm-3">
                         <input
@@ -653,8 +718,11 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <p>what distance you can travel to donate blood?</p>
+                    <p style={{ marginLeft: "-22%" }}>
+                      <b>what distance you can travel?</b>
+                    </p>
                     <input
+                    style={{marginLeft: "-15%" }}
                       class="form-control"
                       type="number"
                       min={0}
@@ -668,7 +736,9 @@ export const Donate = (props) => {
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <p>Number of times donated</p>
+                    <p>
+                      <b>Number of times donated</b>
+                    </p>
                     <input
                       class="form-control"
                       type="number"
@@ -682,12 +752,26 @@ export const Donate = (props) => {
                   </div>
                 </div>
               </div>
-              <br></br>
-              <div class="row">
-                <div class="col-lg-6">
+            </form>
+          </>
+        )}
+        {current + 1 == 3 && (
+          <>
+            <form
+              class=""
+              id="contact-form-data"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setVisible(true);
+              }}
+            >
+              <div class="row mt-4">
+                <div class="col-lg-5">
                   <div class="form-group">
-                    <p>Do you own a vehicle ?</p>
-                    <div class="row">
+                    <p >
+                      <b>Do you own a vehicle ?</b>
+                    </p>
+                    <div class="row ">
                       <div class="col-lg-5">
                         <input
                           type="radio"
@@ -706,7 +790,7 @@ export const Donate = (props) => {
                       </div>
 
                       <br></br>
-                      <div class="col-lg-6">
+                      <div class="col-lg-3">
                         <input
                           type="radio"
                           id="yes"
@@ -726,7 +810,7 @@ export const Donate = (props) => {
                     <>
                       {vehicle && (
                         <div class="row">
-                          <div class="col-lg-3">
+                          <div class="col-lg-5">
                             <input
                               type="checkbox"
                               id="Car"
@@ -740,7 +824,7 @@ export const Donate = (props) => {
                               Car
                             </label>
                           </div>
-                          <div class="col-lg-3">
+                          <div class="col-lg-4">
                             <input
                               type="checkbox"
                               id="bike"
@@ -761,24 +845,14 @@ export const Donate = (props) => {
                     <br></br>
                   </div>
                 </div>
-                <div class="col-sm-3">
+
+                <div class="col-sm-4">
                   <div class="form-group">
-                    <p>time to interact ?</p>
-                    <input
-                      class="form-control"
-                      type="time"
-                      name="convtime"
-                      onChange={(e) => {
-                        handleDetails(e);
-                      }}
-                    />
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <p>Do you want to donate?</p>
-                    <div class="row">
-                      <div class="col-lg-6">
+                    <p style={{ marginLeft: "-5%" }}>
+                      <b>Do you want to donate?</b>
+                    </p>
+                    <div class="row ">
+                      <div class="col-lg-4">
                         <input
                           type="radio"
                           id="yes"
@@ -794,7 +868,7 @@ export const Donate = (props) => {
                       </div>
 
                       <br></br>
-                      <div class="col-lg-6">
+                      <div class="col-lg-5">
                         <input
                           type="radio"
                           id="no"
@@ -811,12 +885,29 @@ export const Donate = (props) => {
                     </div>
                   </div>
                 </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <p>
+                      <b>time to interact ?</b>
+                    </p>
+                    <input
+                      class="form-control"
+                      type="time"
+                      name="convtime"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <p>Are you interested to work as a volunteer also?</p>
-                    <div class="row">
+                    <p>
+                      <b>Are you interested to work as a volunteer also?</b>
+                    </p>
+                    <div class="row ">
                       <div class="col-lg-5">
                         <input
                           type="radio"
@@ -881,7 +972,7 @@ export const Donate = (props) => {
                               Admin
                             </label>
                           </div>
-                          <div class="col-lg-6">
+                          <div class="col-lg-6 ">
                             <input
                               class="form-control"
                               type="text"
@@ -898,9 +989,11 @@ export const Donate = (props) => {
                   </div>
                 </div>
                 <div class="col-lg-6">
-                  <p>Are you ready to support in emergency</p>
-                  <div class="row">
-                    <div class="col-lg-3">
+                  <p style={{ marginLeft: "5%" }}>
+                    <b>Are you ready to support in emergency</b>
+                  </p>
+                  <div class="row ml-2 ">
+                    <div class="col-lg-6">
                       <input
                         type="radio"
                         id="yes"
@@ -932,85 +1025,92 @@ export const Donate = (props) => {
                   </div>
                 </div>
               </div>
-
-              <div style={{ marginLeft: "45%" }}>
-                <div class="form-group">
-                  <button
-                    type="button"
-                    id="submit_btn"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setVisible(true);
-                    }}
-                    class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
-                  >
-                    <i
-                      class="fa fa-spinner fa-spin mr-2 d-none"
-                      aria-hidden="true"
-                    ></i>
-                    Register
-                  </button>
-                </div>
-              </div>
             </form>
-          </div>
-          <div class="col-5">
-            <ul class="address-item">
-              <li class="w-100 mb-4">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
-              </li>
+          </>
+        )}
 
-              <li class="w-100 mb-4">
-                <i class="lni-apartment main-color"></i>
-                <div class="content">
-                  <h6 class="main-color m-0">Address</h6>
-                  <p>
-                    Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block
-                    4, WEA, Karol Bagh, New Delhi, Delhi 110005
-                  </p>
-                </div>
-              </li>
+        <div className="steps-content"></div>
+        <div className="steps-action">
+          {current < steps.length - 1 && (
+            <Button type="danger" onClick={() => next()}>
+              Next
+            </Button>
+          )}
+          {current === steps.length - 1 && (
+            <Button
+              type="danger"
+              onClick={() => {
+                setVisible(true);
+                message.success("Processing");
+              }}
+            >
+              Submit
+            </Button>
+          )}
+          {current > 0 && (
+            <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+              Previous
+            </Button>
+          )}
+        </div>
+        </div>
+        <div class="col-5">
+          <ul class="address-item">
+            <li class="w-100 mb-4">
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+            </li>
 
-              <li class="pr-1">
-                <i class="lni-comment-reply main-color"></i>
-                <div class="content">
-                  <h6 class="main-color m-0">Email:</h6>
-                  <p>
-                    <a href="mailto:info@omniscientitsolutions.com">
-                      info@omniscientitsolutions
-                    </a>
-                  </p>
-                </div>
-              </li>
+            <li class="w-100 mb-4">
+              <i class="lni-apartment main-color"></i>
+              <div class="content">
+                <h6 class="main-color m-0">Address</h6>
+                <p>
+                  Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block
+                  4, WEA, Karol Bagh, New Delhi, Delhi 110005
+                </p>
+              </div>
+            </li>
 
-              <li>
-                <i class="lni-phone-handset main-color"></i>
-                <div class="content">
-                  <h6 class="main-color m-0">Contact</h6>
-                  <p>
-                    <a href="tel:+91-9811027310">+91-9811027310</a>
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <li class="pr-1">
+              <i class="lni-comment-reply main-color"></i>
+              <div class="content">
+                <h6 class="main-color m-0">Email:</h6>
+                <p>
+                  <a href="mailto:info@omniscientitsolutions.com">
+                    info@omniscientitsolutions
+                  </a>
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <i class="lni-phone-handset main-color"></i>
+              <div class="content">
+                <h6 class="main-color m-0">Contact</h6>
+                <p>
+                  <a href="tel:+91-9811027310">+91-9811027310</a>
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <Modal
+    </div>
+    <Modal
+    
+      title="DECLARATION"
+      visible={visible}
+      onOk={(e) => {PdfGenerate(); handleSubmit(e,"register");setVisible(false)}}
+      onCancel={() => setVisible(false)}
       
-        title="DECLARATION"
-        visible={visible}
-        onOk={(e) => {PdfGenerate(); handleSubmit(e,"register");setVisible(false)}}
-        onCancel={() => setVisible(false)}
-        
-      >
-        <p>
-          i <b> {details.name} </b> hereby declare that the information given
-          here is correct to my knowledge and i will be responsible for any
-          discrepancy.
-        </p>
-      </Modal>
-    </section>
+    >
+      <p>
+        i <b> {details.name} </b> hereby declare that the information given
+        here is correct to my knowledge and i will be responsible for any
+        discrepancy.
+      </p>
+    </Modal>
+  </section>
   );
 };
 export default Donate;
