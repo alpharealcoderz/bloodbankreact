@@ -310,8 +310,11 @@ export default function Profile() {
           <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
         </div>
       </div>
+      </div>
       {/* <Footer/> */}
     </section>
+
+
   
     </>
   );
