@@ -90,6 +90,14 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       title: "Availability",
       dataIndex: "",
       key: "",
+      render: (text, record) =>
+      (<>{record.do_av_blood=="BLOOD"&&'blood,'}
+      {record.do_av_sdp=="SDP"&&'sdp,'}
+      {record.do_av_ffp=="FFP"&&'ffp,'}
+      {record.do_av_rdp=="RDP"&&'rdp,'}
+      {record.do_av_wbc=="WBC"&&'wbc'}
+  </>
+    ),
     },
     {
       title: "Distance",
@@ -339,10 +347,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       id="donors"
       class="pt-page pt-page-6 pt-5"
       data-id="donors"
-      style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
+      style={{ overflow:'scroll', paddingTop: "67px",minHeight:'1500px' ,display:'block'}}
     >
-      <div class="container">
+      <div class="container mt-4" id='content'>
         <div class=" align-items-lg-center dot-box">
+          
           {/* <div class="col-6"> */}
           <div class="heading-area">
             <h2 class="title">Donor's Data</h2>
@@ -358,7 +367,9 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                   handleStateChange(e);
                   handleStateFilter(e);
                 }}
+                value={localStorage.getItem('state')}
               >
+                
                 <option>All</option>;
                 {st.map((stt) => {
                   return (
@@ -379,6 +390,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                   handleDistrictFilter(e);
                 }}
               >
+                       {localStorage.getItem('district')&&         <option selected disabled>{localStorage.getItem('district')}</option>}
                 <option>All</option>;
                 {district.map((dt) => {
                   return (
@@ -400,7 +412,9 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 onChange={(e) => {
                   handleCityFilter(e);
                 }}
-              >
+
+              >    {localStorage.getItem('city')&& <option selected disabled>{localStorage.getItem('city')}</option>}
+               
                 <option>All</option>;
                 {ct.map((ctt) => {
                   return (
@@ -419,6 +433,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 onChange={(e) => {
                   handleBloodFilter(e);
                 }}
+                value={localStorage.getItem('blood_type')}
               >
                 <option>All</option>;
                 {bloodType.map((st) => {
