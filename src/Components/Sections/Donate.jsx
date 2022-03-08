@@ -134,26 +134,7 @@ export const Donate = (props) => {
           message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
         }
       })
-      
-
-
-    axios.post(api_base_url + "/beuserregister", data).then((res) => {
-      setResult(res.data.data.token)
-      if(res.status=='200'){
-        // axios.post(api_base_url + "/email/verification-notification")
-        fetch(api_base_url + "/email/verification-notification", {
-  method: 'POST', // or 'PUT'
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization':`Bearer ${result}`
-  },
-
-})  
-      message.success("Register successfully",10)}else{
-        message.error("your form is not submitted,Please fill all the details correctly ",6)
       };
-    }).catch(()=> message.error("your form is not submitted,Please fill all details correctly",6))
-  };
   const handleStateChange = (e) => {
     let temp = st.find((el) => {
       return el.state_title == e.target.value;
