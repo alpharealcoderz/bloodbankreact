@@ -28,6 +28,7 @@ const [ct,setCt]=useState([])
     let name = e.target.name;
     let value = e.target.value;
     payload[name] = value;
+    localStorage.setItem(name, value)
     setSearchParameters({ ...searchParameters, ...payload });
   };
   const handleSearchParams = (e,type) => {
@@ -35,6 +36,12 @@ const [ct,setCt]=useState([])
     let name = type;
     let value=document.getElementById(e.target.value+type).innerText
     payload[name] = value;
+
+    if(name=='district'||'city'){
+      localStorage.setItem(name, value)
+    }else{
+      localStorage.setItem(name, e.target.value)
+    }
     setSearchParameters({ ...searchParameters, ...payload });
   };
   
