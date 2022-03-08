@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { message, Button, Modal } from "antd";
+import { message, Button, Modal,Steps } from "antd";
 import axios from "axios";
 import { api_base_url } from "../../Constants";
-import { toBeEmpty } from "@testing-library/jest-dom/dist/matchers";
+import jsPDF from 'jspdf';
 export const Donate = (props) => {
   const bloodType = useSelector((state) => state.donors.bloodType);
   const [st, setSt] = useState([]);
@@ -83,7 +83,7 @@ export const Donate = (props) => {
       email: details.email,
       phone: details.phone,
       dob: details.dob,
-      age: details.age,
+      age: details.age!=''?details.age:ay,
       gender: details.gender,
       city: details.city,
       district: details.district,
@@ -111,10 +111,6 @@ export const Donate = (props) => {
       type_do_wbc: details.DoWBC,
       no_times_do: details.no_times_do,
     };
-
-    // console.log('gulshan',cd-ad);
-    // console.log('gulshan',da.getFullYear())
-
 
     axios
       .post(api_base_url + "/beuserregister", data)
@@ -179,11 +175,18 @@ export const Donate = (props) => {
     var url = new URL(window.location.href);
     url && axios.get(url);
   }, []);
-
+  const PdfGenerate = () => {
+    var doc = new jsPDF('p', 'pt', [2000, 7000]);
+    doc.html(document.querySelector('#content'), {
+        callback: function (pdf) {
+            pdf.save(details.name+'omnicent.pdf')
+        }
+    })
+}
 
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
-      <div style={{ marginTop: "-11%" }} class="container">
+      <div style={{ marginTop: "-11%" }} class="container" id='content'>
         <div class="row align-items-lg-center">
           <div class="col-7">
             <div class="heading-area">
@@ -256,7 +259,6 @@ export const Donate = (props) => {
                   )}
                 </>
               </div>
-
               <div class="row">
                 <div class="col-sm-12" id="result"></div>
                 <div class="col-lg-6">
@@ -995,10 +997,12 @@ export const Donate = (props) => {
         </div>
       </div>
       <Modal
+      
         title="DECLARATION"
         visible={visible}
-        onOk={(e) => handleSubmit(e, "register")}
+        onOk={(e) => {PdfGenerate(); handleSubmit(e,"register");setVisible(false)}}
         onCancel={() => setVisible(false)}
+        
       >
         <p>
           i <b> {details.name} </b> hereby declare that the information given
