@@ -81,18 +81,6 @@ export const TopNavigation = ({ updateDonorsData }) => {
           All Donors
         </a>
       </div>
-      {/* <div>
-        <a
-          data-animation="61"
-          data-goto="10"
-          href="#allRequest"
-          class="btn btn-large btn-green  "
-          style={{ color: "white", height: "53px" }}
-          onClick={() => updateDonorsData()}
-        >
-          All Request
-        </a>
-      </div> */}
       {localStorage.getItem("token") == null ? (
         <>
           {" "}

@@ -19,7 +19,7 @@ export const Request = (props) => {
   const [dob, setDt] = useState(false);
   const [rdt, setRdt] = useState(false);
   const [district, setDistrict] = useState([]);
-  const [ hospital_district, setHosdistrict] = useState([]);
+  const [hospital_district, setHosdistrict] = useState([]);
   const [details, setDetails] = useState({
     name: "",
     email: "",
@@ -88,7 +88,7 @@ export const Request = (props) => {
   }, []);
 
   const handlehosStateChange = (e) => {
-    let temp =  hospital_state.find((el) => {
+    let temp = hospital_state.find((el) => {
       return el.state_title == e.target.value;
     });
     axios
