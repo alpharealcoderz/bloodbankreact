@@ -72,7 +72,7 @@ export default function Login() {
                 <img src={tlogo}></img>
               </li>
               <li class="w-100 mb-4">
-                <img style={{height:'300px',marginleft: '54px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+                <img style={{height:'300px',marginLeft: '54px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
               </li>
 
               <li class="w-100 mb-4">

@@ -187,7 +187,7 @@ const [ct,setCt]=useState([])
         </a>
       </form>
            </div>
-           <div className="col-6" style={{marginTop:'50px',marginLeft:'-5%'}}>
+           <div className="col-6" style={{marginTop:'50px',marginLeft:'-11%'}}>
            <div class="">
       <img
         src="https://i.pinimg.com/originals/0d/0f/85/0d0f85b1504a9ebe9a080b5b1dd95c0b.gif"
