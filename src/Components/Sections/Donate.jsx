@@ -235,7 +235,7 @@ console.log('saransh',res.data)
     <section id="donate" class="pt-page pt-page-6" data-id="request">
     <div style={{ marginTop: "-25%" }} class="container" id='content'>
       <div class="row align-items-lg-center makeWrap">
-        <div style={{width:'60%'}} className="wrapWidth">
+        <div style={{width:'60%',marginLeft:'-41px',marginRight:'41px'}} className="wrapWidth">
           <div class="heading-area">
             <h2 class="title">Register</h2>
             <div class='mb-2' style={{marginTop:"-2%"}}>
@@ -1119,13 +1119,13 @@ console.log('saransh',res.data)
           
         </div>
         </div>
-        <div style={{width:'40%'}} className="wrapWidth">
+        <div style={{width:'40%'}} className="wrapWidth mt-4">
           <ul class="address-item">
           <li class="w-100 mb-4">
                 <img src={tlogo}></img>
               </li>
-            <li class="w-100 mb-4">
-              <img style={{height:'300px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+            <li class="w-100 mb-4 ">
+              <img style={{height:'300px',marginleft: '54px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
             </li>
 
             <li class="w-100 mb-4">

@@ -4,7 +4,7 @@ import { message } from "antd";
 import { addRequest } from "../../redux/actions/request";
 import { api_base_url } from "../../Constants";
 import axios from "axios";
-import tlogo from './tname.png';
+import tlogo from "./tname.png";
 
 export const Request = (props) => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export const Request = (props) => {
     email: "",
     age: 0,
     gender: "",
-    address:"",
+    address: "",
     district: "",
     city: "",
     state: "",
@@ -119,7 +119,10 @@ export const Request = (props) => {
     <section id="request" class="pt-page pt-page-6" data-id="request">
       <div style={{ marginTop: "-17%" }} class="container">
         <div class="row align-items-lg-center makeWrap">
-          <div style={{width:'50%'}} className="wrapWidth">
+          <div
+            style={{ width: "50%", marginLeft: "-41px", marginRight: "41px" }}
+            className="wrapWidth"
+          >
             <div class="heading-area">
               <h2 class="title">Post Blood Request!</h2>
               <h6 class="sub-title main-color">
@@ -229,9 +232,12 @@ export const Request = (props) => {
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-12">
-                  <div class="form-group" style={{marginLeft:'-14px',marginRight:'-14px'}}>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div
+                    class="form-group"
+                    
+                  >
                     <input
                       class="form-control"
                       type="text"
@@ -240,8 +246,8 @@ export const Request = (props) => {
                       onChange={(e) => handleDetails(e)}
                     />
                   </div>
-               </div>
-
+                </div>
+              </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
@@ -475,13 +481,16 @@ export const Request = (props) => {
               </div>
             </form>
           </div>
-          <div style={{width:'50%'}} className="wrapWidth">
+          <div style={{ width: "50%" }} className="wrapWidth">
             <ul class="address-item">
               <li class="w-100 mb-4">
                 <img src={tlogo}></img>
               </li>
               <li class="w-100 mb-4">
-                <img style={{height:'300px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+                <img
+                  style={{ height: "300px",marginleft: '54px' }}
+                  src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif"
+                />
               </li>
 
               <li class="w-100 mb-4">

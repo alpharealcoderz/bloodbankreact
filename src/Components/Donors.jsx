@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Modal } from "antd";
+import { Table, Button, Modal, Progress, Steps } from "antd";
 import "antd/dist/antd.css";
 import { api_base_url } from "../Constants";
 import axios from "axios";
@@ -7,6 +7,7 @@ import "../style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import { updateDonorsData } from "../redux/actions/donors";
+const { Step } = Steps;
 export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
   const [data, setData] = useState([]);
   const [permanent, setPermanent] = useState([]);
@@ -95,14 +96,15 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       title: "Availability",
       dataIndex: "",
       key: "",
-      render: (text, record) =>
-      (<>{record.do_av_blood=="BLOOD"&&'blood,'}
-      {record.do_av_sdp=="SDP"&&'sdp,'}
-      {record.do_av_ffp=="FFP"&&'ffp,'}
-      {record.do_av_rdp=="RDP"&&'rdp,'}
-      {record.do_av_wbc=="WBC"&&'wbc'}
-  </>
-    ),
+      render: (text, record) => (
+        <>
+          {record.do_av_blood == "BLOOD" && "blood,"}
+          {record.do_av_sdp == "SDP" && "sdp,"}
+          {record.do_av_ffp == "FFP" && "ffp,"}
+          {record.do_av_rdp == "RDP" && "rdp,"}
+          {record.do_av_wbc == "WBC" && "wbc"}
+        </>
+      ),
     },
     {
       title: "Distance",
@@ -352,11 +354,15 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       id="donors"
       class="pt-page pt-page-6 pt-5"
       data-id="donors"
-      style={{ overflow:'scroll', paddingTop: "67px",minHeight:'1500px' ,display:'block'}}
+      style={{
+        overflow: "scroll",
+        paddingTop: "67px",
+        minHeight: "1500px",
+        display: "block",
+      }}
     >
-      <div class="container mt-4" id='content'>
+      <div class="container mt-4" id="content">
         <div class=" align-items-lg-center dot-box">
-          
           {/* <div class="col-6"> */}
           <div class="heading-area">
             <h2 class="title">Donor's Data</h2>
@@ -372,9 +378,8 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                   handleStateChange(e);
                   handleStateFilter(e);
                 }}
-                value={localStorage.getItem('state')}
+                // value={localStorage.getItem("state")}
               >
-                
                 <option>All</option>;
                 {st.map((stt) => {
                   return (
@@ -395,7 +400,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                   handleDistrictFilter(e);
                 }}
               >
-                       {localStorage.getItem('district')&&         <option selected disabled>{localStorage.getItem('district')}</option>}
+                {/* {localStorage.getItem("district") && (
+                  <option selected disabled>
+                    {localStorage.getItem("district")}
+                  </option>
+                )} */}
                 <option>All</option>;
                 {district.map((dt) => {
                   return (
@@ -417,9 +426,13 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 onChange={(e) => {
                   handleCityFilter(e);
                 }}
-
-              >    {localStorage.getItem('city')&& <option selected disabled>{localStorage.getItem('city')}</option>}
-               
+              >
+                {" "}
+                {/* {localStorage.getItem("city") && (
+                  <option selected disabled>
+                    {localStorage.getItem("city")}
+                  </option>
+                )} */}
                 <option>All</option>;
                 {ct.map((ctt) => {
                   return (
@@ -438,7 +451,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 onChange={(e) => {
                   handleBloodFilter(e);
                 }}
-                value={localStorage.getItem('blood_type')}
+                // value={localStorage.getItem("blood_type")}
               >
                 <option>All</option>;
                 {bloodType.map((st) => {
@@ -458,6 +471,14 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
               </Button>
             </div>
           </div>
+          <br></br>
+          <Steps size="small" current={4}>
+              <Step title={localStorage.getItem("blood_type")} />
+              <Step title={localStorage.getItem("state")} />
+              <Step title={localStorage.getItem("district")} />
+              <Step title={localStorage.getItem("city")} />
+            </Steps>
+            <br></br>
           <Table dataSource={data} columns={columns} scroll={{ x: 600 }} />;
         </div>
       </div>
