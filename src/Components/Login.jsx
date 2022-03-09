@@ -19,7 +19,7 @@ export default function Login() {
     <section id="login" class="pt-page pt-page-6" data-id="login">
       <div style={{ marginTop: "-25%" }} class="container">
         <div class="row align-items-lg-center dot-box makeWrap">
-          <div style={{width:'50%'}} className="wrapWidth">
+          <div style={{width:'50%', marginLeft:'-41px',marginRight:'41px'}} className="wrapWidth">
             <div class="heading-area">
               <h2 class="title">Login</h2>
               <h6 class="sub-title main-color">
@@ -72,7 +72,7 @@ export default function Login() {
                 <img src={tlogo}></img>
               </li>
               <li class="w-100 mb-4">
-                <img style={{height:'300px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+                <img style={{height:'300px',marginleft: '54px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
               </li>
 
               <li class="w-100 mb-4">
