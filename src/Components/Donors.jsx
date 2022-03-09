@@ -472,7 +472,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
             </div>
           </div>
           <br></br>
-          <Steps size="small" current={4}>
+          <Steps  size="small" current={4}>
               <Step title={localStorage.getItem("blood_type")} />
               <Step title={localStorage.getItem("state")} />
               <Step title={localStorage.getItem("district")} />
