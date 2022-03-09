@@ -107,3 +107,34 @@ body {
   > .ant-steps-item-tail::after {
   background-color: red !important;
 }
+
+.ant-table-thead > tr > th{
+  color: black !important;
+  font-weight: 'bold' !important;
+}
+.anticon svg {
+  display: inline-block !important;
+  margin-top: -11px !important;
+}
+.ant-steps-item-icon .ant-steps-icon {
+  margin-top: -1.5px !important;
+}
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+  background-color: red; 
+}
+.ant-btn:hover, .ant-btn:focus {
+  color: Red !important;
+  border-color: red !important;
+  background: #fff;
+}
+@media screen and (max-width: 786px) {
+  .makeWrap{
+   flex-direction: column;
+  }
+.wrapWidth{
+width:100% !important
+}}
+.ant-btn-primary{
+  background-color:#ed2d34;
+  border-color: red;
+}

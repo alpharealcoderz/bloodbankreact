@@ -2,6 +2,7 @@ import { Form, Input, Steps, Modal, Button, message } from "antd";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import tlogo from './tname.png';
 import { api_base_url } from "../../Constants";
 import jsPDF from "jspdf";
 
@@ -129,9 +130,6 @@ const Donate = () => {
       no_times_do: details.no_times_do,
     };
 
-
-
-
    
       axios.post(api_base_url + "/beuserregister", data)
       .then((res) => {
@@ -223,10 +221,13 @@ console.log('saransh',res.data)
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
     <div style={{ marginTop: "-25%" }} class="container" id='content'>
-      <div class="row align-items-lg-center">
-        <div class="col-7">
+      <div class="row align-items-lg-center makeWrap">
+        <div style={{width:'60%'}} className="wrapWidth">
           <div class="heading-area">
             <h2 class="title">Register</h2>
+            <div class='mb-2' style={{marginTop:"-2%"}}>
+            <a   style={{color:'#ed2d34',fontWeight: 'bold',}} href="#login">Click to login ?</a>
+            </div>
             <h6 class="sub-title main-color">Please fill All Details.</h6>
           </div>
 
@@ -255,6 +256,7 @@ console.log('saransh',res.data)
                       type="text"
                       placeholder="Full Name"
                       name="name"
+                      defaultValue={details.name}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -267,19 +269,20 @@ console.log('saransh',res.data)
                       class="form-control"
                       type=""
                       name="wod"
+                      defaultValue={details.wod}
                       onChange={(e) => {
                         handleDetails(e);
                         setGard(true);
                       }}
                     >
                       <option>Select</option>
-                      <option name="wod" value="so-">
+                      <option name="wod"  value="so-">
                         Son of
                       </option>
-                      <option name="wod" value="wo-">
+                      <option name="wod"  value="wo-">
                         Wife of
                       </option>
-                      <option name="wod" value="do-">
+                      <option name="wod"  value="do-">
                         Daughter of
                       </option>
                     </select>
@@ -294,6 +297,7 @@ console.log('saransh',res.data)
                           type="text"
                           placeholder="Guardian"
                           name="wodoso"
+                          defaultValue={details.wodoso}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -313,6 +317,7 @@ console.log('saransh',res.data)
                       min={1111111111}
                       max={9999999999}
                       placeholder="Phone"
+                      defaultValue={details.phone}
                       name="phone"
                       onChange={(e) => {
                         handleDetails(e);
@@ -326,6 +331,7 @@ console.log('saransh',res.data)
                       class="form-control"
                       type="email"
                       placeholder="Email"
+                      defaultValue={details.email}
                       name="email"
                       onChange={(e) => {
                         handleDetails(e);
@@ -345,6 +351,7 @@ console.log('saransh',res.data)
                       max={"2006-01-02"}
                       placeholder="Dob"
                       name="dob"
+                      defaultValue={details.dob}
                       onChange={(e) => {
                         handleDetails(e);
                         setDa(e.target.value);
@@ -367,6 +374,7 @@ console.log('saransh',res.data)
                       min={11}
                       max={99}
                       placeholder="Age"
+                      defaultValue={details.age}
                       name="age"
                       value={ay}
                       onChange={(e) => {
@@ -381,6 +389,7 @@ console.log('saransh',res.data)
                       class="form-control"
                       placeholder="Gender"
                       name="gender"
+                      defaultValue={details.gender}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -409,6 +418,7 @@ console.log('saransh',res.data)
                       class="form-control"
                       type=""
                       placeholder="State"
+                      defaultValue={details.st}
                       name="st"
                       onChange={(e) => {
                         handleDetails(e);
@@ -437,6 +447,7 @@ console.log('saransh',res.data)
                       type=""
                       placeholder="district"
                       name="district"
+                      defaultValue={details.district}
                       onChange={(e) => {
                         handleDetails(e);
                         handleDistrictChange(e);
@@ -462,6 +473,7 @@ console.log('saransh',res.data)
                     <select
                       class="form-control"
                       type=""
+                      defaultValue={details.city}
                       placeholder="City"
                       name="city"
                       onChange={(e) => {
@@ -486,6 +498,7 @@ console.log('saransh',res.data)
                     <select
                       class="form-control"
                       name="blood_type"
+                      defaultValue={details.blood_type}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -503,6 +516,7 @@ console.log('saransh',res.data)
                       class="form-control"
                       type="Password"
                       placeholder="Create password"
+                      defaultValue={details.password}
                       name="password"
                       onChange={(e) => {
                         handleDetails(e);
@@ -537,6 +551,7 @@ console.log('saransh',res.data)
                           id="SDP"
                           name="SDP"
                           value="SDP"
+                          defaultChecked={details.SDP}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -551,6 +566,7 @@ console.log('saransh',res.data)
                           id="FFP"
                           name="FFP"
                           value="FFP"
+                          defaultChecked={details.FFP}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -565,6 +581,7 @@ console.log('saransh',res.data)
                           id="RDP"
                           name="RDP"
                           value="RDP"
+                          defaultChecked={details.RDP}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -578,6 +595,7 @@ console.log('saransh',res.data)
                           id="WBC"
                           name="WBC"
                           value="WBC"
+                          defaultChecked={details.WBC}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -592,6 +610,7 @@ console.log('saransh',res.data)
                           id="Blood"
                           name="BLOOD"
                           value="Blood"
+                          defaultChecked={details.BLOOD}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -614,6 +633,7 @@ console.log('saransh',res.data)
                       type="Date"
                       placeholder="date"
                       name="lastdonateddate"
+                      defaultValue={details.lastdonateddate}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -630,6 +650,7 @@ console.log('saransh',res.data)
                       type="text"
                       placeholder="Place"
                       name="lastdonatedplace"
+                      defaultValue={details.lastdonatedplace}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -650,6 +671,7 @@ console.log('saransh',res.data)
                           id="SDP"
                           name="DoSDP"
                           value="SDP"
+                          defaultChecked={details.DoSDP}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -664,6 +686,7 @@ console.log('saransh',res.data)
                           id="FFP"
                           name="DoFFP"
                           value="FFP"
+                          defaultChecked={details.DoFFP}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -675,6 +698,7 @@ console.log('saransh',res.data)
                       <div class="col-sm-3">
                         <input
                           type="checkbox"
+                          defaultChecked={details.DoRDP}
                           id="RDP"
                           name="DoRDP"
                           value="RDP"
@@ -691,6 +715,7 @@ console.log('saransh',res.data)
                           id="WBC"
                           name="DoWBC"
                           value="WBC"
+                          defaultChecked={details.DoWBC}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -705,6 +730,7 @@ console.log('saransh',res.data)
                           id="Blood"
                           name="DoBLOOD"
                           value="Blood"
+                          defaultChecked={details.DoBLOOD}
                           onChange={(e) => {
                             handleDetails(e);
                           }}
@@ -728,6 +754,7 @@ console.log('saransh',res.data)
                       min={0}
                       placeholder="in km"
                       name="distancetravel"
+                      defaultValue={details.distancetravel}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -745,6 +772,7 @@ console.log('saransh',res.data)
                       min={0}
                       placeholder="times"
                       name="no_times_do"
+                      defaultValue={details.no_times_do}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -816,6 +844,7 @@ console.log('saransh',res.data)
                               id="Car"
                               name="vehicle_car"
                               value="1"
+                              defaultChecked={details.vehicle_car}
                               onChange={(e) => {
                                 handleDetails(e);
                               }}
@@ -829,6 +858,7 @@ console.log('saransh',res.data)
                               type="checkbox"
                               id="bike"
                               name="vehicle_bike"
+                              defaultChecked={details.vehicle_bike}
                               value="1"
                               onChange={(e) => {
                                 handleDetails(e);
@@ -894,6 +924,7 @@ console.log('saransh',res.data)
                       class="form-control"
                       type="time"
                       name="convtime"
+                      defaultValue={details.convtime}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
@@ -948,6 +979,7 @@ console.log('saransh',res.data)
                             <input
                               type="checkbox"
                               id="pick"
+                              defaultChecked={details.volunteer_pick}
                               name="volunteer_pick"
                               value="1"
                               onChange={(e) => {
@@ -964,6 +996,7 @@ console.log('saransh',res.data)
                               id="admin"
                               name="volunteer_admin"
                               value="0"
+                              defaultChecked={details.volunteer_admin}
                               onChange={(e) => {
                                 handleDetails(e);
                               }}
@@ -977,6 +1010,7 @@ console.log('saransh',res.data)
                               class="form-control"
                               type="text"
                               name="volunteer_other"
+                              defaultChecked={details.volunteer_other}
                               placeholder="Other"
                               onChange={(e) => {
                                 handleDetails(e);
@@ -1031,6 +1065,11 @@ console.log('saransh',res.data)
 
         <div className="steps-content"></div>
         <div className="steps-action">
+        {current > 0 && (
+            <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+              Previous
+            </Button>
+          )}
           {current < steps.length - 1 && (
             <Button type="danger" onClick={() => next()}>
               Next
@@ -1047,17 +1086,16 @@ console.log('saransh',res.data)
               Submit
             </Button>
           )}
-          {current > 0 && (
-            <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-              Previous
-            </Button>
-          )}
+          
         </div>
         </div>
-        <div class="col-5">
+        <div style={{width:'40%'}} className="wrapWidth">
           <ul class="address-item">
+          <li class="w-100 mb-4">
+                <img src={tlogo}></img>
+              </li>
             <li class="w-100 mb-4">
-              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+              <img style={{height:'300px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
             </li>
 
             <li class="w-100 mb-4">
@@ -1100,12 +1138,12 @@ console.log('saransh',res.data)
     
       title="DECLARATION"
       visible={visible}
-      onOk={(e) => {PdfGenerate(); handleSubmit(e,"register");setVisible(false)}}
+      onOk={(e) => {handleSubmit(e,"register");setVisible(false)}}
       onCancel={() => setVisible(false)}
       
     >
       <p>
-        i <b> {details.name} </b> hereby declare that the information given
+        I <b> {details.name} </b> hereby declare that the information given
         here is correct to my knowledge and i will be responsible for any
         discrepancy.
       </p>

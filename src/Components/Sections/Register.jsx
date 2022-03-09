@@ -3,6 +3,7 @@ import { state } from "../../Constants";
 import { getAllCityByStates } from "../../redux/actions/constants";
 import { registerDonor } from "../../Service/DonorService";
 import { useSelector, useDispatch } from "react-redux";
+import tlogo from './tname.png'
 export const Register = (props) => {
   const dispatch = useDispatch();
   const bloodType = useSelector((state) => state.donors.bloodType);
@@ -67,8 +68,8 @@ export const Register = (props) => {
   return (
     <section id="register" class="pt-page pt-page-6" data-id="register">
       <div style={{marginTop:'-20%'}} class="container">
-        <div class="row align-items-lg-center">
-          <div class="col-6">
+        <div class="row align-items-lg-center makeWrap">
+          <div style={{width:'50%'}} className="wrapWidth">
             <div class="heading-area">
               <h2 class="title">Register</h2>
               <h6 class="sub-title main-color">Please fill All Details.</h6>
@@ -431,10 +432,13 @@ export const Register = (props) => {
               </button>
             </form>
           </div>
-          <div class="col-6">
+          <div style={{width:'50%'}} className="wrapWidth">
             <ul class="address-item">
+            <li class="w-100 mb-4">
+                <img src={tlogo}></img>
+              </li>
               <li class="w-100 mb-4">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+                <img style={{height:'300px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
               </li>
 
               <li class="w-100 mb-4">

@@ -114,9 +114,9 @@ headers: {
             width="60"
             height="60"
             alt=""
-            style={{marginLeft:'16%',marginTop:'20%'}}
+            style={{marginLeft:'5%',marginTop:'20%'}}
           />
-            <p style={{fontSize:'10px', marginLeft:'35%',marginTop:'-17%',color:'black'}}>call back</p>
+            <p style={{fontSize:'10px', marginLeft:'23%',marginTop:'-17%',color:'black'}}>call back</p>
         </a>
 
         <a href="tel:+91-9819887086">
@@ -125,9 +125,9 @@ headers: {
             width="35"
             height="35"
             alt=""
-            style={{marginLeft:'35%',marginTop:'15%'}}
+            style={{marginLeft:'27%',marginTop:'15%'}}
           />
-          <p style={{fontSize:'10px', marginLeft:'35%', color:'black'}}>call now</p>
+          <p style={{fontSize:'10px', marginLeft:'27%', color:'black'}}>call now</p>
         
         </a>
         
@@ -136,11 +136,11 @@ headers: {
             src="https://i.pinimg.com/originals/84/7a/34/847a34f8bc72a7f5223ec0f3aa227796.png"
             width="30px"
             height="30px"
-            style={{marginLeft:'38%',marginTop:'15%'}}
+            style={{marginLeft:'31%',marginTop:'15%'}}
            
             alt=""
           />
-          <p style={{fontSize:'10px', marginLeft:'30%',color:'black',marginTop:'5%'}}>whatsapp</p>
+          <p style={{fontSize:'10px', marginLeft:'20%',color:'black',marginTop:'5%'}}>whatsapp</p>
         </a>
       </div>
     </div>
