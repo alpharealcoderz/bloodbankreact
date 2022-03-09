@@ -38,12 +38,14 @@ const Donate = () => {
 
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
+  const [otp, setOtp] = useState();
 
   const [details, setDetails] = useState({
     name: "",
     wodoso: "",
     wod: "",
     phone: "",
+    address:"",
     email: "",
     dob: "",
     age: "",
@@ -76,6 +78,7 @@ const Donate = () => {
     is_volunteer_active: "",
     password: "",
     no_times_do: "",
+    votp:"",
   });
   const fd = () => {
     const cy = new Date().getFullYear();
@@ -83,7 +86,8 @@ const Donate = () => {
     const ay = d.getFullYear();
     setAy(cy - ay);
   };
-
+  
+console.log(details.votp)
   const handleDetails = (e) => {
     let object = {};
     object[e.target.name] = e.target.value;
@@ -103,6 +107,7 @@ const Donate = () => {
       dob: details.dob,
       age: details.age != "" ? details.age : ay,
       gender: details.gender,
+      address:details.address,
       city: details.city,
       district: details.district,
       state: details.st,
@@ -133,6 +138,7 @@ const Donate = () => {
    
       axios.post(api_base_url + "/beuserregister", data)
       .then((res) => {
+        window.location.hash = "#login";
 console.log('saransh',res.data)
           message.success("Register successfully", 10);
           setResult(res.data.data.token)
@@ -148,6 +154,13 @@ console.log('saransh',res.data)
         // }
       })
       };
+
+  const handleOtpChange = (e) => {
+      axios.post(api_base_url + "/otp", {phone:details.phone,}).then((res)=>{
+        console.log('phone',res.data.otp)
+        setOtp(res.data.otp)
+      }
+       )}    
 
   const handleStateChange = (e) => {
     let temp = st.find((el) => {
@@ -244,6 +257,7 @@ console.log('saransh',res.data)
               id="contact-form-data"
               onSubmit={(e) => {
                 e.preventDefault();
+              //  handleOtpChange()
                 setVisible(true);
               }}
             >
@@ -295,7 +309,7 @@ console.log('saransh',res.data)
                         <input
                           class="form-control"
                           type="text"
-                          placeholder="Guardian"
+                          placeholder="Name"
                           name="wodoso"
                           defaultValue={details.wodoso}
                           onChange={(e) => {
@@ -410,6 +424,21 @@ console.log('saransh',res.data)
                   </div>
                 </div>
               </div>
+
+              <div class="col-sm-12" id="result"></div>
+               
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Address"
+                      name="address"
+                      onChange={(e) => {
+                        handleDetails(e);
+                      }}
+                    />
+                 
+                </div>
 
               <div class="row">
                 <div class="col-lg-6">
@@ -1080,6 +1109,7 @@ console.log('saransh',res.data)
               type="danger"
               onClick={() => {
                 setVisible(true);
+                handleOtpChange()
                 message.success("Processing");
               }}
             >
@@ -1138,7 +1168,8 @@ console.log('saransh',res.data)
     
       title="DECLARATION"
       visible={visible}
-      onOk={(e) => {handleSubmit(e,"register");setVisible(false)}}
+
+      onOk={(e) => ( details.votp==otp?[handleSubmit(e,"register"),setVisible(false)]:'')}
       onCancel={() => setVisible(false)}
       
     >
@@ -1147,6 +1178,8 @@ console.log('saransh',res.data)
         here is correct to my knowledge and i will be responsible for any
         discrepancy.
       </p>
+          <label for="fname">Enter Otp:</label><br/>
+         <input type="text"  onChange={(e)=>{handleDetails(e)}} placeholder="Enter otp sent on phone" id="otp" name="votp"/>
     </Modal>
   </section>
   );

@@ -8,8 +8,9 @@ export const loginHandler = (email, password) => {
       password,
     })
     .then((res) => {
-      if (res.data.status == "success" && res.data.loginData.email_verified_at!=null) {
-
+      // if (res.data.status == "success" && res.data.loginData.email_verified_at!=null) {
+      if (res.data.status == "success") {
+          
         res.data.loginData.role !== "admin"
           ? window.location.reload()
           : (window.location.pathname = "/admin/users");

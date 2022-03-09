@@ -18,12 +18,14 @@ export const Request = (props) => {
   const [dob, setDt] = useState(false);
   const [rdt, setRdt] = useState(false);
   const [district, setDistrict] = useState([]);
+  const [address, setAddress] = useState([]);
   const [hospital_district, setHosdistrict] = useState([]);
   const [details, setDetails] = useState({
     name: "",
     email: "",
     age: 0,
     gender: "",
+    address:"",
     district: "",
     city: "",
     state: "",
@@ -227,6 +229,19 @@ export const Request = (props) => {
                   </div>
                 </div>
               </div>
+
+              <div class="col-lg-12">
+                  <div class="form-group" style={{marginLeft:'-14px',marginRight:'-14px'}}>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Address"
+                      name="address"
+                      onChange={(e) => handleDetails(e)}
+                    />
+                  </div>
+               </div>
+
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">

@@ -67,6 +67,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
       key: "last_do_place",
     },
     {
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+    },
+    {
       title: "State",
       dataIndex: "state",
       key: "state",
