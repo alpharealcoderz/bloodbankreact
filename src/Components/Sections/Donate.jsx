@@ -433,6 +433,7 @@ console.log('saransh',res.data)
                       type="text"
                       placeholder="Address"
                       name="address"
+                      defaultValue={details.address}
                       onChange={(e) => {
                         handleDetails(e);
                       }}

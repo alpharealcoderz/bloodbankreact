@@ -8,7 +8,7 @@ export default function Clients() {
       data-id="clients"
       style={{ paddingTop: "67px" }}
     >
-      <div style={{marginTop:'-10%'}} class="container">
+      <div style={{marginTop:'-20%'}} class="container">
         <div class="row d-flex align-content-lg-center min-height-100vh">
           <div class="col-lg-4 pr-lg-5 p-0">
             <div class="heading-area">
@@ -21,7 +21,7 @@ export default function Clients() {
             <div id="client-nav"></div>
           </div>
 
-          <div class="col-lg-8">
+          <div class="col-lg-8" style={{marginRight: '-87px'}}>
             <div id="owl-client" class="owl-carousel owl-theme">
               <div class="client-box">
                 <i class="lni-quotation q-icon"></i>

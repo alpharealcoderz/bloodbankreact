@@ -142,3 +142,9 @@ text-align: center !important;
 /* .ant-steps-item-icon{
   display: none;
 } */
+
+@media screen and (max-width: 486px) {
+  .nav{
+  display: none;
+  }
+}
