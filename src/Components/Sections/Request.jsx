@@ -4,7 +4,8 @@ import { message } from "antd";
 import { addRequest } from "../../redux/actions/request";
 import { api_base_url } from "../../Constants";
 import axios from "axios";
-import tlogo from "./tname.png";
+import tlogo from './tname.png';
+import { Form, Button, Input } from 'antd';
 
 export const Request = (props) => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export const Request = (props) => {
     email: "",
     age: 0,
     gender: "",
-    address: "",
+    address:"",
     district: "",
     city: "",
     state: "",
@@ -41,7 +42,6 @@ export const Request = (props) => {
     id: JSON.parse(localStorage.getItem("userDetails"))?.id,
   });
   const addRequests = (e) => {
-    e.preventDefault();
     if (localStorage.getItem("token") == null)
       message.success("Please Login To Post Request");
     //  console.log('saransh',JSON.parse(localStorage.getItem('userDetails').id));
@@ -119,18 +119,17 @@ export const Request = (props) => {
     <section id="request" class="pt-page pt-page-6" data-id="request">
       <div style={{ marginTop: "-17%" }} class="container">
         <div class="row align-items-lg-center makeWrap">
-          <div
-            style={{ width: "50%"}}
-            className="wrapWidth"
-          >
+          <div style={{width:'50%'}} className="wrapWidth">
             <div class="heading-area">
               <h2 class="title">Post Blood Request!</h2>
               <h6 class="sub-title main-color">
                 Please fill Patient's Details.
               </h6>
             </div>
-            <form
-              onSubmit={(e) => addRequests(e)}
+            <Form
+              name="basicform"
+              onFinish={addRequests}
+              initialValues={{ remember: true }}
               class="contact-form"
               id="contact-form-data"
             >
@@ -138,37 +137,41 @@ export const Request = (props) => {
                 <div class="col-sm-12" id="result"></div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                     rules={[{ required: true, message: 'Please enter username' }]}
                       class="form-control"
-                      type="text"
-                      placeholder="Patient's Name"
                       name="name"
+                      type="text"
                       onChange={(e) => handleDetails(e)}
-                    />
+                    >
+                      <Input class="form-control" name="name" placeholder="Patient's Name"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
-                      class="form-control"
+                    <Form.Item
+                      rules={[{ required: true, message: 'Please enter Email' }]}
                       type="email"
-                      placeholder="Email"
                       name="email"
                       onChange={(e) => handleDetails(e)}
-                    />
+                    >
+                    <Input name="email" class="form-control" placeholder="Email"/>
+                    </Form.Item>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
-                      class="form-control"
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter Phone Number' }]}
                       type="number"
-                      placeholder="Phone"
                       name="phone"
                       onChange={(e) => handleDetails(e)}
-                    />
+                    >
+                      <Input name="phone" class="form-control" placeholder="Phone Number"/>
+                    </Form.Item>
                   </div>
                 </div>
 
@@ -191,13 +194,15 @@ export const Request = (props) => {
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <input
-                      class="form-control"
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter age' }]}
                       type="number"
-                      placeholder="Age"
                       name="age"
                       onChange={(e) => handleDetails(e)}
-                    />
+                    >
+                      <Input class="form-control" name="age" placeholder="Patient's age"/>
+                      </Form.Item>
+
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -232,22 +237,21 @@ export const Request = (props) => {
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div
-                    class="form-group"
-                    
-                  >
-                    <input
-                      class="form-control"
+
+              <div class="col-lg-12">
+                  <div class="form-group" style={{marginLeft:'-14px',marginRight:'-14px'}}>
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter Address' }]}
                       type="text"
-                      placeholder="Address"
                       name="address"
                       onChange={(e) => handleDetails(e)}
-                    />
+                    >
+                      <Input class="form-control" name="address" placeholder="Address"/>
+                      </Form.Item>
+
                   </div>
-                </div>
-              </div>
+               </div>
+
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
@@ -333,25 +337,28 @@ export const Request = (props) => {
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <input
-                      class="form-control"
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter Hospital name' }]}
                       type="text"
-                      placeholder="Hospital name"
                       name="hospital_name"
                       onChange={(e) => handleDetails(e)}
-                    />
+                    >
+                      <Input class="form-control" name="hospital_name" placeholder = "Hospital's Name"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
-                      class="form-control"
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter phone number' }]}
                       min={1111111111}
                       max={9999999999}
                       name="hospital_phone"
                       placeholder="Hospital phone number"
                       onChange={(e) => handleDetails(e)}
-                    />
+                    >
+                      <Input name="hospital_phone" class="form-control" placeholder = 'Phone Number'/>
+                      </Form.Item>
                   </div>
                 </div>
               </div>
@@ -435,14 +442,13 @@ export const Request = (props) => {
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <input
-                      class="form-control"
-                      type="number"
-                      min={0}
-                      placeholder="How much unit blood needed"
-                      name="unit"
-                      onChange={(e) => handleDetails(e)}
-                    />
+                    <Form.Item
+                    name="unit"
+                    rules={[{ required: true, message: 'Blood Unit Required' }]}
+                     onChange={(e) => handleDetails(e)}
+                    >
+                      <Input name="unit"  type="number" min={0} placeholder="How much unit blood needed"/>
+                    </Form.Item>
                   </div>
                 </div>
 
@@ -465,32 +471,28 @@ export const Request = (props) => {
                   </div>
                 </div>
               </div>
-
+                      
               <div style={{ align: "right" }}>
-                <button
-                  type="submit"
-                  id="submit_btn"
-                  class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn "
-                >
+              
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                  <button class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"  htmlType="submit">
                   <i
                     class="fa fa-spinner fa-spin mr-2 d-none"
                     aria-hidden="true"
                   ></i>
-                  Submit Request
-                </button>
+                    Submit Request
+                  </button>
+                </Form.Item>
               </div>
-            </form>
+            </Form>
           </div>
-          <div style={{ width: "50%" }} className="wrapWidth">
+          <div style={{width:'50%'}} className="wrapWidth">
             <ul class="address-item">
               <li class="w-100 mb-4">
                 <img src={tlogo}></img>
               </li>
               <li class="w-100 mb-4">
-                <img
-                  style={{ height: "300px",marginLeft: '54px' }}
-                  src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif"
-                />
+                <img style={{height:'300px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
               </li>
 
               <li class="w-100 mb-4">
