@@ -430,6 +430,7 @@ console.log(details.votp)
                       type="text"
                       placeholder="Address"
                       name="address"
+                      defaultValue={details.address}
                       onChange={(e) => {
                         handleDetails(e);
                       }}
