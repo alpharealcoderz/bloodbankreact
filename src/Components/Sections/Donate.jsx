@@ -235,7 +235,7 @@ console.log('saransh',res.data)
     <section id="donate" class="pt-page pt-page-6" data-id="request">
     <div style={{ marginTop: "-25%" }} class="container" id='content'>
       <div class="row align-items-lg-center makeWrap">
-        <div style={{width:'60%',marginLeft:'-41px',marginRight:'41px'}} className="wrapWidth">
+        <div style={{width:'60%'}} className="wrapWidth">
           <div class="heading-area">
             <h2 class="title">Register</h2>
             <div class='mb-2' style={{marginTop:"-2%"}}>
@@ -252,7 +252,7 @@ console.log('saransh',res.data)
 
         {current + 1 == 1 && (
           <>
-            <form
+            <Form
               class=""
               id="contact-form-data"
               onSubmit={(e) => {
@@ -554,7 +554,7 @@ console.log('saransh',res.data)
                   </div>
                 </div>
               </div>
-            </form>
+            </Form>
           </>
         )}
         {current + 1 == 2 && (
@@ -567,6 +567,7 @@ console.log('saransh',res.data)
                 setVisible(true);
               }}
             >
+              
               <div class="row mt-4">
                 <div class="col-sm-6">
                   <div class="form-group">

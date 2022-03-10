@@ -120,7 +120,7 @@ export const Request = (props) => {
       <div style={{ marginTop: "-17%" }} class="container">
         <div class="row align-items-lg-center makeWrap">
           <div
-            style={{ width: "50%", marginLeft: "-41px", marginRight: "41px" }}
+            style={{ width: "50%"}}
             className="wrapWidth"
           >
             <div class="heading-area">

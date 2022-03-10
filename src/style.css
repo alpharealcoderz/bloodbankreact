@@ -132,7 +132,8 @@ body {
    flex-direction: column;
   }
 .wrapWidth{
-width:100% !important
+width:100% !important;
+text-align: center !important;
 }}
 .ant-btn-primary{
   background-color:#ed2d34;

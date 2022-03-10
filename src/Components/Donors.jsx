@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Modal, Progress, Steps } from "antd";
+import { Table, Button, Modal, Progress, Steps  } from "antd";
 import "antd/dist/antd.css";
 import { api_base_url } from "../Constants";
 import axios from "axios";
@@ -474,7 +474,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
           <br></br>
           <Steps  size="small" current={4}>
               <Step title={localStorage.getItem("blood_type")} />
-              <Step title={localStorage.getItem("state")} />
+              <Step  title={localStorage.getItem("state")} />
               <Step title={localStorage.getItem("district")} />
               <Step title={localStorage.getItem("city")} />
             </Steps>
