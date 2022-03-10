@@ -142,3 +142,7 @@ text-align: center !important;
 /* .ant-steps-item-icon{
   display: none;
 } */
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}

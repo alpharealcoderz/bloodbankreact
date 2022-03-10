@@ -139,7 +139,6 @@ console.log(details.votp)
       axios.post(api_base_url + "/beuserregister", data)
       .then((res) => {
         window.location.hash = "#login";
-console.log('saransh',res.data)
           message.success("Register successfully", 10);
           setResult(res.data.data.token)
           localStorage.setItem('registerToken',res.data.data.token)
@@ -149,15 +148,13 @@ console.log('saransh',res.data)
         'Content-Type': 'application/json',
         'Authorization':`Bearer ${res.data.data.token}`
       }})
-        // } else {
-        //   message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
-        // }
+        
       })
       };
 
   const handleOtpChange = (e) => {
       axios.post(api_base_url + "/otp", {phone:details.phone,}).then((res)=>{
-        console.log('phone',res.data.otp)
+        message.success('Otp has been sent to your number', 10);
         setOtp(res.data.otp)
       }
        )}    

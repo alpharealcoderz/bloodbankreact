@@ -5,6 +5,7 @@ import { addRequest } from "../../redux/actions/request";
 import { api_base_url } from "../../Constants";
 import axios from "axios";
 import tlogo from './tname.png';
+import blood from './bloodgif.gif';
 import { Form, Button, Input } from 'antd';
 
 export const Request = (props) => {
@@ -144,7 +145,7 @@ export const Request = (props) => {
                       type="text"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input class="form-control" name="name" placeholder="Patient's Name"/>
+                      <Input class="form-control" name="name" style={{fontWeight:'bold'}} placeholder="Patient's Name"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -170,7 +171,7 @@ export const Request = (props) => {
                       name="phone"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input name="phone" class="form-control" placeholder="Phone Number"/>
+                      <Input name="phone" class="form-control" type="number" min={1111111111} max={9999999999} placeholder="Phone Number"/>
                     </Form.Item>
                   </div>
                 </div>
@@ -200,7 +201,7 @@ export const Request = (props) => {
                       name="age"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input class="form-control" name="age" placeholder="Patient's age"/>
+                      <Input class="form-control" type="number" min={0} name="age" placeholder="Patient's age"/>
                       </Form.Item>
 
                   </div>
@@ -491,15 +492,15 @@ export const Request = (props) => {
               <li class="w-100 mb-4">
                 <img src={tlogo}></img>
               </li>
-              <li class="w-100 mb-4">
-                <img style={{height:'300px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
-              </li>
+              <li class="w-100 mb-4 ">
+              <img style={{height:'300px',marginLeft: '15px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+            </li>
 
               <li class="w-100 mb-4">
                 <i class="lni-apartment main-color"></i>
                 <div class="content">
                   <h6 class="main-color m-0">Address</h6>
-                  <p>
+                  <p style={{color:'black',fontWeight:'bold'}}>
                     Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block
                     4, WEA, Karol Bagh, New Delhi, Delhi 110005
                   </p>
@@ -510,8 +511,8 @@ export const Request = (props) => {
                 <i class="lni-comment-reply main-color"></i>
                 <div class="content">
                   <h6 class="main-color m-0">Email:</h6>
-                  <p>
-                    <a href="mailto:info@omniscientitsolutions.com">
+                  <p >
+                    <a style={{color:'black'}} href="mailto:info@omniscientitsolutions.com">
                       info@omniscientitsolutions
                     </a>
                   </p>
@@ -523,7 +524,7 @@ export const Request = (props) => {
                 <div class="content">
                   <h6 class="main-color m-0">Contact</h6>
                   <p>
-                    <a href="tel:+91-9811027310">+91-9811027310</a>
+                    <a style={{color:'black'}} href="tel:+91-9811027310">+91-9811027310</a>
                   </p>
                 </div>
               </li>
