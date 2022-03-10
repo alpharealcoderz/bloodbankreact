@@ -251,6 +251,8 @@ console.log(details.votp)
           <>
             <Form
               class=""
+              name="basicform"
+            onFinish={handleSubmit}
               id="contact-form-data"
               onSubmit={(e) => {
                 e.preventDefault();
@@ -262,7 +264,8 @@ console.log(details.votp)
                 <div class="col-sm-12" id="result"></div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                 rules={[{ required: true, message: 'Please enter username' }]}
                       class="form-control"
                       type="text"
                       placeholder="Full Name"
@@ -271,7 +274,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                    <Input class="form-control" name="name" placeholder="Full Name"/>
+                    </Form.Item> 
                   </div>
                 </div>
                 <div class="col-lg-3">
@@ -303,7 +308,8 @@ console.log(details.votp)
                   {gard && (
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <input
+                        <Form.Item
+                        rules={[{ required: true, message: 'Please enter wo/do/so' }]}
                           class="form-control"
                           type="text"
                           placeholder="Name"
@@ -312,7 +318,9 @@ console.log(details.votp)
                           onChange={(e) => {
                             handleDetails(e);
                           }}
-                        />
+                        >
+                        <Input class="form-control" name="wodoso" placeholder="Name"/>
+                        </Form.Item>  
                       </div>
                     </div>
                   )}
@@ -322,7 +330,8 @@ console.log(details.votp)
                 <div class="col-sm-12" id="result"></div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter number' }]}
                       class="form-control"
                       type="number"
                       min={1111111111}
@@ -333,12 +342,15 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input name="phone" class="form-control" placeholder="Phone"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter Email' }]}
                       class="form-control"
                       type="email"
                       placeholder="Email"
@@ -347,7 +359,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input name="email" class="form-control" placeholder="Email"/>
+                  </Form.Item>
                   </div>
                 </div>
               </div>
@@ -355,7 +369,8 @@ console.log(details.votp)
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter DOB' }]}
                       class="form-control"
                       type="date"
                       min={"1975-01-02"}
@@ -370,7 +385,9 @@ console.log(details.votp)
                       }}
                       onMouseEnter={() => setDateofbirth(true)}
                       onMouseLeave={() => setDateofbirth(false)}
-                    />
+                    >
+                      <Input type="date" name="dob" class="form-control" placeholder="Dob"/>
+                      </Form.Item>
                     {dateofbirth && (
                       <label style={{ color: "red" }}>date of birth</label>
                     )}
@@ -379,7 +396,8 @@ console.log(details.votp)
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter age' }]}
                       class="form-control"
                       type="number"
                       min={11}
@@ -391,7 +409,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input name="age" class="form-control" placeholder="enter age"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -425,7 +445,8 @@ console.log(details.votp)
               <div class="col-sm-12" id="result"></div>
                
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter address' }]}
                       class="form-control"
                       type="text"
                       placeholder="Address"
@@ -434,8 +455,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
-                 
+                    >
+                 <Input name="address" class="form-control" placeholder="enter address"/>
+                      </Form.Item> 
                 </div>
 
               <div class="row">
@@ -539,7 +561,8 @@ console.log(details.votp)
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter Password' }]}
                       class="form-control"
                       type="Password"
                       placeholder="Create password"
@@ -548,7 +571,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                     <Input name="password" type="Password" class="form-conrol" placeholder="enter password"/>
+                      </Form.Item> 
                   </div>
                 </div>
               </div>
@@ -557,7 +582,9 @@ console.log(details.votp)
         )}
         {current + 1 == 2 && (
           <>
-            <form
+            <Form
+            name="basicform"
+            onFinish={handleSubmit}
               class=""
               id="contact-form-data"
               onSubmit={(e) => {
@@ -656,7 +683,7 @@ console.log(details.votp)
                     <p style={{marginLeft:'-20px'}}>
                       <b>Last Donated date</b>
                     </p>
-                    <input style={{marginLeft:'-20px'}}
+                    <Form.Item style={{marginLeft:'-20px'}}
                       class="form-control"
                       type="Date"
                       placeholder="date"
@@ -665,7 +692,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                       <Input type="Date" placeholder="last donated date" name="lastdonateddate" class="form-control"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -673,7 +702,7 @@ console.log(details.votp)
                     <p>
                       <b>Donated Place</b>
                     </p>
-                    <input
+                    <Form.Item
                       class="form-control"
                       type="text"
                       placeholder="Place"
@@ -682,7 +711,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input placeholder="donted place" class="form-control" name="lastdonatedplace"/>
+                      </Form.Item>
                   </div>
                 </div>
               </div>
@@ -775,7 +806,8 @@ console.log(details.votp)
                     <p style={{ marginLeft: "-22%" }}>
                       <b>what distance you can travel?</b>
                     </p>
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'enter distance you can travel' }]}
                     style={{marginLeft: "-15%" }}
                       class="form-control"
                       type="number"
@@ -786,7 +818,9 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input name="distancetravel" class="form-control"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -794,7 +828,7 @@ console.log(details.votp)
                     <p>
                       <b>Number of times donated</b>
                     </p>
-                    <input
+                    <Form.Item
                       class="form-control"
                       type="number"
                       min={0}
@@ -804,11 +838,13 @@ console.log(details.votp)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input name="no_times_do" class="form-control"/>
+                      </Form.Item>
                   </div>
                 </div>
               </div>
-            </form>
+            </Form>
           </>
         )}
         {current + 1 == 3 && (
