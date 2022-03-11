@@ -145,7 +145,7 @@ export const Request = (props) => {
                       type="text"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input class="form-control" name="name" style={{fontWeight:'bold'}} placeholder="Patient's Name"/>
+                      <Input type="text" class="form-control" name="name" style={{fontWeight:'bold'}} placeholder="Patient's Name"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export const Request = (props) => {
                       name="email"
                       onChange={(e) => handleDetails(e)}
                     >
-                    <Input name="email" class="form-control" placeholder="Email"/>
+                    <Input type="email" name="email" class="form-control" placeholder="Email"/>
                     </Form.Item>
                   </div>
                 </div>
@@ -247,7 +247,7 @@ export const Request = (props) => {
                       name="address"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input class="form-control" name="address" placeholder="Address"/>
+                      <Input type="text" class="form-control" name="address" placeholder="Address"/>
                       </Form.Item>
 
                   </div>
@@ -344,7 +344,7 @@ export const Request = (props) => {
                       name="hospital_name"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input class="form-control" name="hospital_name" placeholder = "Hospital's Name"/>
+                      <Input type="text" class="form-control" name="hospital_name" placeholder = "Hospital's Name"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -358,7 +358,7 @@ export const Request = (props) => {
                       placeholder="Hospital phone number"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input name="hospital_phone" class="form-control" placeholder = 'Phone Number'/>
+                      <Input min={1111111111} max={9999999999} name="hospital_phone" class="form-control" placeholder = 'Hospital Phone Number'/>
                       </Form.Item>
                   </div>
                 </div>
