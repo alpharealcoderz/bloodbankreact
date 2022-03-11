@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { loginHandler } from "../Service/AuthService";
-import tlogo from './Sections/tname.png';
-import blood from './Sections/blood.gif';
+import tlogo from './Sections/tname.jpg';
+import blood from './Sections/./bloodgif.gif';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ export default function Login() {
   };
   return (
     <section id="login" class="pt-page pt-page-6" data-id="login">
-      <div style={{ marginTop: "-15%",marginLeft:'15%' }} class="container">
+      <div style={{ marginTop: "-50%",marginLeft:'15%' }} class="container">
         <div class="row align-items-lg-center dot-box makeWrap">
           <div style={{width:'50%',marginTop:'-15%'}} className="wrapWidth">
             <div class="heading-area">
@@ -67,7 +67,7 @@ export default function Login() {
               </div>
             </form>
           </div>
-          <div style={{width:'50%' ,marginTop:'10%'}} className="wrapWidth">
+          <div style={{width:'50%' ,marginTop:'10%',background:'white'}} className="wrapWidth">
             <ul class="address-item">
             <li class="w-100 mb-4">
                 <img src={tlogo}></img>

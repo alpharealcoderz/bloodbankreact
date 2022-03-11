@@ -2,10 +2,10 @@ import { Form, Input, Steps, Modal, Button, message } from "antd";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import tlogo from './tname.png';
+import tlogo from './tname.jpg';
 import { api_base_url } from "../../Constants";
 import jsPDF from "jspdf";
-import blood from './blood.gif';
+import blood from './bloodgif.gif';
 
 const { Step } = Steps;
 
@@ -231,7 +231,7 @@ console.log(details.votp)
   };
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
-    <div style={{ marginTop: "-5%" ,marginLeft:'15%' }} class="container" id='content'>
+    <div style={{ marginTop: "-37%" ,marginLeft:'15%'}} class="container" id='content'>
       <div class="row align-items-lg-center makeWrap">
         <div style={{width:'60%'}} className="wrapWidth">
           <div class="heading-area">
@@ -1157,7 +1157,7 @@ console.log(details.votp)
           
         </div>
         </div>
-        <div style={{width:'40%',height:'30%'}} className="wrapWidth mt-4">
+        <div style={{width:'40%',height:'30%', backgroundColor:'white'}} className="wrapWidth mt-4 ">
           <ul class="address-item">
           <li class="w-100 mb-4">
                 <img src={tlogo}></img>

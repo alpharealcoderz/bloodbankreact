@@ -4,7 +4,7 @@ import { message } from "antd";
 import { addRequest } from "../../redux/actions/request";
 import { api_base_url } from "../../Constants";
 import axios from "axios";
-import tlogo from './tname.png';
+import tlogo from './tname.jpg';
 import blood from './bloodgif.gif';
 import { Form, Button, Input } from 'antd';
 
@@ -118,7 +118,7 @@ export const Request = (props) => {
 
   return (
     <section id="request" class="pt-page pt-page-6" data-id="request">
-      <div style={{ marginTop: "3%",marginLeft:'15%' }} class="container">
+      <div style={{ marginTop: "-30%",marginLeft:'15%' }} class="container">
         <div class="row align-items-lg-center makeWrap">
           <div style={{width:'50%'}} className="wrapWidth">
             <div class="heading-area">
