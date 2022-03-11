@@ -66,7 +66,7 @@ export default function Login() {
               </div>
             </form>
           </div>
-          <div style={{width:'50%',height:'30%'}} className="wrapWidth">
+          <div style={{width:'50%' ,marginTop:'10%'}} className="wrapWidth">
             <ul class="address-item">
             <li class="w-100 mb-4">
                 <img src={tlogo}></img>
