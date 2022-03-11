@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
       id="privacypolicy"
       class="pt-page pt-page-6 pt-5"
       data-id="privacypolicy"
-      style={{ overflowY: "scroll",  paddingTop: "67px" }}
+      style={{ overflowY: "scroll",marginTop:'-23%' }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">
