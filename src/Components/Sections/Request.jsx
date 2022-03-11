@@ -118,7 +118,7 @@ export const Request = (props) => {
 
   return (
     <section id="request" class="pt-page pt-page-6" data-id="request">
-      <div style={{ marginTop: "-17%" }} class="container">
+      <div style={{ marginTop: "3%",marginLeft:'15%' }} class="container">
         <div class="row align-items-lg-center makeWrap">
           <div style={{width:'50%'}} className="wrapWidth">
             <div class="heading-area">
@@ -487,13 +487,13 @@ export const Request = (props) => {
               </div>
             </Form>
           </div>
-          <div style={{width:'50%'}} className="wrapWidth">
+          <div style={{width:'50%',marginTop:'-15%'}} className="wrapWidth">
             <ul class="address-item">
               <li class="w-100 mb-4">
                 <img src={tlogo}></img>
               </li>
               <li class="w-100 mb-4 ">
-              <img style={{height:'300px',marginLeft: '15px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+              <img style={{height:'300px',width:'100%'}} src={blood} />
             </li>
 
               <li class="w-100 mb-4">

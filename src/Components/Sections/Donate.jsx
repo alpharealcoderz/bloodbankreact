@@ -5,6 +5,7 @@ import axios from "axios";
 import tlogo from './tname.png';
 import { api_base_url } from "../../Constants";
 import jsPDF from "jspdf";
+import blood from './blood.gif';
 
 const { Step } = Steps;
 
@@ -1162,14 +1163,14 @@ console.log(details.votp)
                 <img src={tlogo}></img>
               </li>
             <li class="w-100 mb-4 ">
-              <img style={{height:'300px',marginLeft: '5px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+              <img style={{height:'300px'}} src={ blood} />
             </li>
 
             <li class="w-100 mb-4">
               <i class="lni-apartment main-color"></i>
               <div class="content">
                 <h6 class="main-color m-0">Address</h6>
-                <p>
+                <p style={{color:'black',fontWeight:'bold'}}>
                   Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block
                   4, WEA, Karol Bagh, New Delhi, Delhi 110005
                 </p>
@@ -1181,7 +1182,7 @@ console.log(details.votp)
               <div class="content">
                 <h6 class="main-color m-0">Email:</h6>
                 <p>
-                  <a href="mailto:info@omniscientitsolutions.com">
+                  <a style={{color:'black'}} href="mailto:info@omniscientitsolutions.com">
                     info@omniscientitsolutions
                   </a>
                 </p>
@@ -1193,7 +1194,7 @@ console.log(details.votp)
               <div class="content">
                 <h6 class="main-color m-0">Contact</h6>
                 <p>
-                  <a href="tel:+91-9811027310">+91-9811027310</a>
+                  <a style={{color:'black'}} href="tel:+91-9811027310">+91-9811027310</a>
                 </p>
               </div>
             </li>

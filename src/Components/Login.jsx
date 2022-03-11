@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loginHandler } from "../Service/AuthService";
-import tlogo from './Sections/tname.png'
+import tlogo from './Sections/tname.png';
+import blood from './Sections/blood.gif';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -72,14 +73,14 @@ export default function Login() {
                 <img src={tlogo}></img>
               </li>
               <li class="w-100 mb-4">
-                <img style={{height:'300px',marginLeft: '54px'}} src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f6a3343917833.58013379b6c7f.gif" />
+                <img style={{height:'300px',width:"1000px"}} src={ blood} />
               </li>
 
               <li class="w-100 mb-4">
                 <i class="lni-apartment main-color"></i>
                 <div class="content">
                   <h6 class="main-color m-0">Address</h6>
-                  <p>
+                  <p style={{color:'black',fontWeight:'bold'}}>
                     Omniscient IT Solutions Pvt Ltd, 4/28, Saraswati Marg, Block
                     4, WEA, Karol Bagh, New Delhi, Delhi 110005
                   </p>
@@ -91,7 +92,7 @@ export default function Login() {
                 <div class="content">
                   <h6 class="main-color m-0">Email:</h6>
                   <p>
-                    <a href="mailto:info@omniscientitsolutions.com">
+                    <a  style={{color:'black'}} href="mailto:info@omniscientitsolutions.com">
                       info@omniscientitsolutions
                     </a>
                   </p>
@@ -103,7 +104,7 @@ export default function Login() {
                 <div class="content">
                   <h6 class="main-color m-0">Contact</h6>
                   <p>
-                    <a href="tel:+91-9811027310">+91-9811027310</a>
+                    <a style={{color:'black'}} href="tel:+91-9811027310">+91-9811027310</a>
                   </p>
                 </div>
               </li>
