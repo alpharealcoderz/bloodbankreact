@@ -230,7 +230,7 @@ console.log(details.votp)
   };
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
-    <div style={{ marginTop: "-25%" }} class="container" id='content'>
+    <div style={{ marginTop: "-5%" ,marginLeft:'15%' }} class="container" id='content'>
       <div class="row align-items-lg-center makeWrap">
         <div style={{width:'60%'}} className="wrapWidth">
           <div class="heading-area">
@@ -1156,7 +1156,7 @@ console.log(details.votp)
           
         </div>
         </div>
-        <div style={{width:'40%'}} className="wrapWidth mt-4">
+        <div style={{width:'40%',height:'30%'}} className="wrapWidth mt-4">
           <ul class="address-item">
           <li class="w-100 mb-4">
                 <img src={tlogo}></img>

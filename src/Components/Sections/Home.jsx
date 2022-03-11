@@ -81,7 +81,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
       }}
     >
       <div
-        style={{ marginTop: "7%", alignItems: "center" }}
+        style={{ marginTop: "6%", alignItems: "center",marginLeft:'20%' }}
         className="container"
       >
         <div className="row">
