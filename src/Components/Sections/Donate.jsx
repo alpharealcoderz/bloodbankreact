@@ -35,7 +35,7 @@ const Donate = () => {
   const [ct, setCt] = useState([]);
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
-
+  console.log('shiv',ay)
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
   const [otp, setOtp] = useState();
@@ -139,7 +139,6 @@ console.log(details.votp)
       axios.post(api_base_url + "/beuserregister", data)
       .then((res) => {
         window.location.hash = "#login";
-console.log('saransh',res.data)
           message.success("Register successfully", 10);
           setResult(res.data.data.token)
           localStorage.setItem('registerToken',res.data.data.token)
@@ -149,15 +148,13 @@ console.log('saransh',res.data)
         'Content-Type': 'application/json',
         'Authorization':`Bearer ${res.data.data.token}`
       }})
-        // } else {
-        //   message.error( "your form is not submitted,Please fill all the details correctly ", 6 );
-        // }
+        
       })
       };
 
   const handleOtpChange = (e) => {
       axios.post(api_base_url + "/otp", {phone:details.phone,}).then((res)=>{
-        console.log('phone',res.data.otp)
+        message.success('Otp has been sent to your number', 10);
         setOtp(res.data.otp)
       }
        )}    
@@ -254,6 +251,8 @@ console.log('saransh',res.data)
           <>
             <Form
               class=""
+              name="basicform"
+            onFinish={handleSubmit}
               id="contact-form-data"
               onSubmit={(e) => {
                 e.preventDefault();
@@ -265,7 +264,8 @@ console.log('saransh',res.data)
                 <div class="col-sm-12" id="result"></div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                 rules={[{ required: true, message: 'Please enter username' }]}
                       class="form-control"
                       type="text"
                       placeholder="Full Name"
@@ -274,7 +274,9 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                    <Input type="text" defaultValue={details.name} class="form-control" name="name" placeholder="Full Name"/>
+                    </Form.Item> 
                   </div>
                 </div>
                 <div class="col-lg-3">
@@ -306,7 +308,8 @@ console.log('saransh',res.data)
                   {gard && (
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <input
+                        <Form.Item
+                        rules={[{ required: true, message: 'Please enter wo/do/so' }]}
                           class="form-control"
                           type="text"
                           placeholder="Name"
@@ -315,7 +318,9 @@ console.log('saransh',res.data)
                           onChange={(e) => {
                             handleDetails(e);
                           }}
-                        />
+                        >
+                        <Input type="text" defaultValue={details.wodoso} class="form-control" name="wodoso" placeholder="Name"/>
+                        </Form.Item>  
                       </div>
                     </div>
                   )}
@@ -325,7 +330,8 @@ console.log('saransh',res.data)
                 <div class="col-sm-12" id="result"></div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter number' }]}
                       class="form-control"
                       type="number"
                       min={1111111111}
@@ -336,12 +342,15 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input type="number" defaultValue={details.phone} min={1111111111} max={9999999999} name="phone" class="form-control" placeholder="Phone"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter Email' }]}
                       class="form-control"
                       type="email"
                       placeholder="Email"
@@ -350,7 +359,9 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input name="email" defaultValue={details.email} type="email" class="form-control" placeholder="Email"/>
+                  </Form.Item>
                   </div>
                 </div>
               </div>
@@ -358,7 +369,8 @@ console.log('saransh',res.data)
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter DOB' }]}
                       class="form-control"
                       type="date"
                       min={"1975-01-02"}
@@ -373,7 +385,9 @@ console.log('saransh',res.data)
                       }}
                       onMouseEnter={() => setDateofbirth(true)}
                       onMouseLeave={() => setDateofbirth(false)}
-                    />
+                    >
+                      <Input defaultValue={details.dob} type="date"  min={"1975-01-02"}  max={"2006-01-02"} name="dob" class="form-control" placeholder="Dob"/>
+                      </Form.Item>
                     {dateofbirth && (
                       <label style={{ color: "red" }}>date of birth</label>
                     )}
@@ -383,6 +397,7 @@ console.log('saransh',res.data)
                 <div class="col-sm-3">
                   <div class="form-group">
                     <input
+                    rules={[{ required: true, message: 'Please enter age' }]}
                       class="form-control"
                       type="number"
                       min={11}
@@ -394,7 +409,11 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      {/* <Input min={11} max={99} value={ay}  onChange={(e) => {
+                        handleDetails(e);
+                      }} defaultValue={details.age} type="number" name="age" class="form-control" placeholder="enter age"/> */}
+                      </input>
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -428,7 +447,8 @@ console.log('saransh',res.data)
               <div class="col-sm-12" id="result"></div>
                
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter address' }]}
                       class="form-control"
                       type="text"
                       placeholder="Address"
@@ -437,8 +457,9 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
-                 
+                    >
+                 <Input type="text" defaultValue={details.address} name="address" class="form-control" placeholder="enter address"/>
+                      </Form.Item> 
                 </div>
 
               <div class="row">
@@ -542,7 +563,8 @@ console.log('saransh',res.data)
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'Please enter Password' }]}
                       class="form-control"
                       type="Password"
                       placeholder="Create password"
@@ -551,7 +573,9 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                     <Input name="password" defaultValue={details.password} type="Password" class="form-conrol" placeholder="enter password"/>
+                      </Form.Item> 
                   </div>
                 </div>
               </div>
@@ -560,7 +584,9 @@ console.log('saransh',res.data)
         )}
         {current + 1 == 2 && (
           <>
-            <form
+            <Form
+            name="basicform"
+            onFinish={handleSubmit}
               class=""
               id="contact-form-data"
               onSubmit={(e) => {
@@ -659,7 +685,7 @@ console.log('saransh',res.data)
                     <p style={{marginLeft:'-20px'}}>
                       <b>Last Donated date</b>
                     </p>
-                    <input style={{marginLeft:'-20px'}}
+                    <Form.Item style={{marginLeft:'-20px'}}
                       class="form-control"
                       type="Date"
                       placeholder="date"
@@ -668,7 +694,9 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                       <Input defaultValue={details.lastdonateddate} type="Date" placeholder="last donated date" name="lastdonateddate" class="form-control"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -676,7 +704,7 @@ console.log('saransh',res.data)
                     <p>
                       <b>Donated Place</b>
                     </p>
-                    <input
+                    <Form.Item
                       class="form-control"
                       type="text"
                       placeholder="Place"
@@ -685,7 +713,9 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input type="text" defaultValue={details.lastdonatedplace} placeholder="donted place" class="form-control" name="lastdonatedplace"/>
+                      </Form.Item>
                   </div>
                 </div>
               </div>
@@ -778,7 +808,8 @@ console.log('saransh',res.data)
                     <p style={{ marginLeft: "-22%" }}>
                       <b>what distance you can travel?</b>
                     </p>
-                    <input
+                    <Form.Item
+                    rules={[{ required: true, message: 'enter distance you can travel' }]}
                     style={{marginLeft: "-15%" }}
                       class="form-control"
                       type="number"
@@ -789,7 +820,9 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input type="number" min={0} placeholder="in km" defaultValue={details.distancetravel} name="distancetravel" class="form-control"/>
+                      </Form.Item>
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -797,7 +830,7 @@ console.log('saransh',res.data)
                     <p>
                       <b>Number of times donated</b>
                     </p>
-                    <input
+                    <Form.Item
                       class="form-control"
                       type="number"
                       min={0}
@@ -807,11 +840,13 @@ console.log('saransh',res.data)
                       onChange={(e) => {
                         handleDetails(e);
                       }}
-                    />
+                    >
+                      <Input type="number" defaultValue={details.no_times_do} min={0} placeholder="times"  name="no_times_do" class="form-control"/>
+                      </Form.Item>
                   </div>
                 </div>
               </div>
-            </form>
+            </Form>
           </>
         )}
         {current + 1 == 3 && (
@@ -1171,7 +1206,7 @@ console.log('saransh',res.data)
       title="DECLARATION"
       visible={visible}
 
-      onOk={(e) => ( details.votp==otp?[handleSubmit(e,"register"),setVisible(false)]:'')}
+      onOk={(e) => ( details.votp==otp?[handleSubmit(e,"register"),setVisible(false)] : message.error('wrong otp'))}
       onCancel={() => setVisible(false)}
       
     >
