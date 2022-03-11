@@ -3,7 +3,7 @@ import { state } from "../../Constants";
 import { getAllCityByStates } from "../../redux/actions/constants";
 import { registerDonor } from "../../Service/DonorService";
 import { useSelector, useDispatch } from "react-redux";
-import tlogo from './tname.png'
+import tlogo from './tname.jpg'
 export const Register = (props) => {
   const dispatch = useDispatch();
   const bloodType = useSelector((state) => state.donors.bloodType);

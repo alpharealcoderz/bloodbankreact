@@ -812,7 +812,7 @@ blockquote > cite {
   top: auto;
   left: 0;
   display: flex;
-  min-height: 120vh;
+  min-height: 200vh;
   align-items: center;
   background-color: #fff;
   visibility: hidden;
@@ -832,7 +832,7 @@ blockquote > cite {
   visibility: visible;
   z-index: 90;
   opacity: 1;
-  min-height: 135vh;
+  min-height: 200vh;
 }
 
 
@@ -1375,7 +1375,7 @@ blockquote > cite {
   margin: 0;
   margin-top: 40px;
   text-align: left;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   position: relative;
   display: inline-block;
   width: 100%;
