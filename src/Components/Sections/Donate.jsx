@@ -35,7 +35,7 @@ const Donate = () => {
   const [ct, setCt] = useState([]);
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
-
+  console.log('shiv',ay)
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
   const [otp, setOtp] = useState();
@@ -275,7 +275,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                    <Input class="form-control" name="name" placeholder="Full Name"/>
+                    <Input type="text" defaultValue={details.name} class="form-control" name="name" placeholder="Full Name"/>
                     </Form.Item> 
                   </div>
                 </div>
@@ -319,7 +319,7 @@ console.log(details.votp)
                             handleDetails(e);
                           }}
                         >
-                        <Input class="form-control" name="wodoso" placeholder="Name"/>
+                        <Input type="text" defaultValue={details.wodoso} class="form-control" name="wodoso" placeholder="Name"/>
                         </Form.Item>  
                       </div>
                     </div>
@@ -343,7 +343,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                      <Input name="phone" class="form-control" placeholder="Phone"/>
+                      <Input type="number" defaultValue={details.phone} min={1111111111} max={9999999999} name="phone" class="form-control" placeholder="Phone"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -360,7 +360,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                      <Input name="email" class="form-control" placeholder="Email"/>
+                      <Input name="email" defaultValue={details.email} type="email" class="form-control" placeholder="Email"/>
                   </Form.Item>
                   </div>
                 </div>
@@ -386,7 +386,7 @@ console.log(details.votp)
                       onMouseEnter={() => setDateofbirth(true)}
                       onMouseLeave={() => setDateofbirth(false)}
                     >
-                      <Input type="date" name="dob" class="form-control" placeholder="Dob"/>
+                      <Input defaultValue={details.dob} type="date"  min={"1975-01-02"}  max={"2006-01-02"} name="dob" class="form-control" placeholder="Dob"/>
                       </Form.Item>
                     {dateofbirth && (
                       <label style={{ color: "red" }}>date of birth</label>
@@ -396,7 +396,7 @@ console.log(details.votp)
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <Form.Item
+                    <input
                     rules={[{ required: true, message: 'Please enter age' }]}
                       class="form-control"
                       type="number"
@@ -410,8 +410,10 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                      <Input name="age" class="form-control" placeholder="enter age"/>
-                      </Form.Item>
+                      {/* <Input min={11} max={99} value={ay}  onChange={(e) => {
+                        handleDetails(e);
+                      }} defaultValue={details.age} type="number" name="age" class="form-control" placeholder="enter age"/> */}
+                      </input>
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -456,7 +458,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                 <Input name="address" class="form-control" placeholder="enter address"/>
+                 <Input type="text" defaultValue={details.address} name="address" class="form-control" placeholder="enter address"/>
                       </Form.Item> 
                 </div>
 
@@ -572,7 +574,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                     <Input name="password" type="Password" class="form-conrol" placeholder="enter password"/>
+                     <Input name="password" defaultValue={details.password} type="Password" class="form-conrol" placeholder="enter password"/>
                       </Form.Item> 
                   </div>
                 </div>
@@ -693,7 +695,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                       <Input type="Date" placeholder="last donated date" name="lastdonateddate" class="form-control"/>
+                       <Input defaultValue={details.lastdonateddate} type="Date" placeholder="last donated date" name="lastdonateddate" class="form-control"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -712,7 +714,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                      <Input placeholder="donted place" class="form-control" name="lastdonatedplace"/>
+                      <Input type="text" defaultValue={details.lastdonatedplace} placeholder="donted place" class="form-control" name="lastdonatedplace"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -819,7 +821,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                      <Input name="distancetravel" class="form-control"/>
+                      <Input type="number" min={0} placeholder="in km" defaultValue={details.distancetravel} name="distancetravel" class="form-control"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -839,7 +841,7 @@ console.log(details.votp)
                         handleDetails(e);
                       }}
                     >
-                      <Input name="no_times_do" class="form-control"/>
+                      <Input type="number" defaultValue={details.no_times_do} min={0} placeholder="times"  name="no_times_do" class="form-control"/>
                       </Form.Item>
                   </div>
                 </div>
@@ -1204,7 +1206,7 @@ console.log(details.votp)
       title="DECLARATION"
       visible={visible}
 
-      onOk={(e) => ( details.votp==otp?[handleSubmit(e,"register"),setVisible(false)]:'')}
+      onOk={(e) => ( details.votp==otp?[handleSubmit(e,"register"),setVisible(false)] : message.error('wrong otp'))}
       onCancel={() => setVisible(false)}
       
     >
