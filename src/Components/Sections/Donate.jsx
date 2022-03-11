@@ -231,7 +231,7 @@ console.log(details.votp)
   };
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
-    <div style={{ marginTop: "-37%" ,marginLeft:'15%'}} class="container" id='content'>
+    <div style={{ marginTop: "-47%" ,marginLeft:'15%'}} class="container" id='content'>
       <div class="row align-items-lg-center makeWrap">
         <div style={{width:'60%'}} className="wrapWidth">
           <div class="heading-area">

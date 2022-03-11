@@ -17,7 +17,7 @@ export default function Login() {
     setPass(e.target.value);
   };
   return (
-    <section id="login" class="pt-page pt-page-6" data-id="login">
+    <section  id="login" class="pt-page pt-page-6" data-id="login">
       <div style={{ marginTop: "-50%",marginLeft:'15%' }} class="container">
         <div class="row align-items-lg-center dot-box makeWrap">
           <div style={{width:'50%',marginTop:'-15%'}} className="wrapWidth">
