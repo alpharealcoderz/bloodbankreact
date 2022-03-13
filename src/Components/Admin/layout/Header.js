@@ -167,30 +167,18 @@ const data = [
 
 const menu = (
   <List
-    min-width="100%"
-    className="header-notifications-dropdown "
-    itemLayout="horizontal"
-    dataSource={data}
-    renderItem={(item) => (
-      <List.Item>
-        <List.Item.Meta
-          avatar={<Avatar shape="square" src={item.avatar} />}
-          title={item.title}
-          description={item.description}
-        />
-      </List.Item>
-    )}
+   
   />
 );
 
 const logsetting = [
   <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    key={0}
+    // width="20"
+    // height="20"
+    // viewBox="0 0 20 20"
+    // fill="none"
+    // xmlns="http://www.w3.org/2000/svg"
+    // key={0}
   >
     <path
       fillRule="evenodd"
@@ -284,7 +272,7 @@ function Header({
           </div>
         </Col>
         <Col span={24} md={18} className="header-control">
-          <Badge size="small" count={4}>
+          {/* <Badge size="small" count={4}>
             <Dropdown overlay={menu} trigger={["click"]}>
               <a
                 href="#pablo"
@@ -297,25 +285,25 @@ function Header({
           </Badge>
           <Button type="link" onClick={showDrawer}>
             {logsetting}
-          </Button>
+          </Button> */}
 
-          <Drawer
+          {/* <Drawer
             className="settings-drawer"
             mask={true}
             width={360}
             onClose={hideDrawer}
             placement={placement}
             visible={visible}
-          ></Drawer>
+          ></Drawer> */}
           <a className="btn-sign-in">
             {profile}
             <span onClick={logouts}>Logout</span>
           </a>
-          <Input
+          {/* <Input
             className="header-search"
             placeholder="Type here..."
             prefix={<SearchOutlined />}
-          />
+          /> */}
         </Col>
       </Row>
     </>
