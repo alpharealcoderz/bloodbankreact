@@ -5,6 +5,7 @@ import {
   addRequest,
   deleteRequest,
 } from "../../../redux/actions/request";
+import Main from ".././layout/Main";
 import { Table, Modal, Button, Input } from "antd";
 
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
@@ -119,7 +120,7 @@ export const Requests = ({ feeds }) => {
     dispatch(addRequest(details));
   };
   return (
-    <div>
+    <Main>
       <Button type="primary" onClick={() => setVisible(true)}>
         Add New Request
       </Button>
@@ -303,7 +304,7 @@ export const Requests = ({ feeds }) => {
         </form>
       </Modal>
       <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
-    </div>
+      </Main>
   );
 };
 
