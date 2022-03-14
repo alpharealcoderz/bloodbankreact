@@ -469,6 +469,14 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 {" "}
                 Search
               </Button>
+              <Button
+                style={{ marginTop: "20px", marginLeft: "20px" }}
+                type="danger"
+                onClick={window.location.hash = "request"}
+              >
+                {" "}
+                Request donar
+              </Button>
             </div>
           </div>
           <br></br>
