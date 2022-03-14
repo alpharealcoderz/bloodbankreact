@@ -201,7 +201,7 @@ export const Request = (props) => {
                       name="age"
                       onChange={(e) => handleDetails(e)}
                     >
-                      <Input class="form-control" type="number" min={0} name="age" placeholder="Patient's age"/>
+                      <Input class="form-control" type="number" min={0} max={100} name="age" placeholder="Patient's age"/>
                       </Form.Item>
 
                   </div>
