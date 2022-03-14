@@ -226,14 +226,14 @@ export default function Profile() {
                     <select
                       class="form-control"
                       placeholder="Gender"
-                      value={details?.gender}
+                      defaultValue={details?.gender}                    
                       name="gender"
                       onChange={(e) => {
                         handleDetails(e);
                       }}
                     >
-                      <option>Male</option>
-                      <option>Female</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
                     </select>
                   </div>
                 </div>

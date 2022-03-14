@@ -87,7 +87,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
         <div className="row">
           <div style={{ width: "50%", marginTop: "5%" }} className="wrapWidth">
             <h3>
-              <span class="main-color">Post blood request</span>{" "}
+              <span class="main-color">Quickly Search Donar </span>{" "}
             </h3>
             <p>
               This is an organization that brings voluntary blood donors and
