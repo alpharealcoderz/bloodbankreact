@@ -152,7 +152,7 @@ export const User = ({
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group">
-                <p>Are you Donar?</p>
+                <p>Assign Donar.</p>
                 <div class="row">
                   <div class="col-lg-6">
                     <input
@@ -188,7 +188,7 @@ export const User = ({
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <p>Are you Volunteer?</p>
+                <p>Assign Volunteer.</p>
                 <div class="row">
                   <div class="col-lg-6">
                     <input

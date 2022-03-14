@@ -146,3 +146,13 @@ text-align: center !important;
   color: red;
   opacity: 1; /* Firefox */
 }
+.layout-dashboard .ant-layout-sider.sider-primary.ant-layout-sider-primary .ant-menu-item.ant-menu-item-selected .active .icon, .layout-dashboard .ant-layout-sider.sider-primary.ant-layout-sider-primary .ant-menu-item .active .icon {
+    background-color: #ed2d34 !important;
+}
+.ant-modal-header{
+  background-color: #ed2d34 !important;
+}
+.ant-modal-title{
+  color: white !important;
+  text-align: center !important;
+}
