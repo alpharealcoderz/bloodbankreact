@@ -89,13 +89,13 @@ export const Notification = ({}) => {
           style={{ marginBottom: "10px" }}
           onChange={(e) => handleDetails(e)}
         />
-        <Input
+        {/* <Input
           type="text"
           placeholder="image address"
           name="img"
           style={{ marginBottom: "10px" }}
           onChange={(e) => handleDetails(e)}
-        />
+        /> */}
         <Input.TextArea
           type="text"
           placeholder="Description"
