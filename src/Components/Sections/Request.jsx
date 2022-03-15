@@ -6,7 +6,7 @@ import { api_base_url } from "../../Constants";
 import axios from "axios";
 import tlogo from './tname.jpg';
 import blood from './bloodgif.gif';
-import { Form, Button, Input } from 'antd';
+import { Form,Input,Modal, Button  } from 'antd';
 
 export const Request = (props) => {
   const dispatch = useDispatch();
@@ -42,6 +42,29 @@ export const Request = (props) => {
     date_required: "",
     id: JSON.parse(localStorage.getItem("userDetails"))?.id,
   });
+
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const Checklogin = (e) => {
+  if (localStorage.getItem("token") == null){
+   showModal()
+  // message.success("Please Login To Post Request",10);
+  }
+}
+
   const addRequests = (e) => {
     if (localStorage.getItem("token") == null)
       message.success("Please Login To Post Request");
@@ -122,11 +145,19 @@ export const Request = (props) => {
         <div class="row align-items-lg-center makeWrap">
           <div style={{width:'50%'}} className="wrapWidth">
             <div class="heading-area">
-              <h2 class="title">Post Blood Request!</h2>
+              <h5 class="title">Post Blood Request!</h5>
+              <p style={{marginTop:'-15px'}}class="sub-title main-color">
+                Make sure you are login before you fill this form.*
+              </p>
               <h6 class="sub-title main-color">
                 Please fill Patient's Details.
               </h6>
+              
             </div>
+            <Modal title="You have not logged in" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <h5 style={{textAlign:'center'}}>Please login before fill this form.</h5>
+      </Modal>
+
             <Form
               name="basicform"
               onFinish={addRequests}
@@ -143,7 +174,8 @@ export const Request = (props) => {
                       class="form-control"
                       name="name"
                       type="text"
-                      onChange={(e) => handleDetails(e)}
+                      onClick ={(e)=>Checklogin(e)}
+                      onChange={(e) =>handleDetails(e)}
                     >
                       <Input type="text" class="form-control" name="name" style={{fontWeight:'bold'}} placeholder="Patient's Name"/>
                       </Form.Item>
