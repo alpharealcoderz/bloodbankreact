@@ -51,7 +51,8 @@ export const Request = (props) => {
   };
 
   const handleOk = () => {
-    setIsModalVisible(false);
+    window.location.hash = "login";
+    setIsModalVisible(true);
   };
 
   const handleCancel = () => {
@@ -154,7 +155,7 @@ export const Request = (props) => {
               </h6>
               
             </div>
-            <Modal title="You have not logged in" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            <Modal title="You have not logged in" visible={isModalVisible} onOk={(e)=>[handleOk(),setIsModalVisible(false)]} onCancel={handleCancel}>
         <h5 style={{textAlign:'center'}}>Please login before fill this form.</h5>
       </Modal>
 
