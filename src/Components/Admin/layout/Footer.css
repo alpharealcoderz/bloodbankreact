@@ -1,9 +1,10 @@
 .main-footer {
     color: white;
     background-color: #ed2d34;
-    position: fixed;
-    /* bottom: 0%; */
+    position:absolute;
+    /* bottom: 0; */
     width: 100%;
-    bottom: 0;
+    bottom: -100%;
     
   }
+  

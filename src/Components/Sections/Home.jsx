@@ -3,12 +3,29 @@ import { connect } from "react-redux";
 import blood from "./bloodlogo.jpg";
 import { api_base_url } from "../../Constants";
 import axios from "axios";
-
+import { Carousel } from "antd";
 import { updateDonorsData } from "../../redux/actions/donors";
 import {
   getBloodType,
   getAllCityByStates,
 } from "../../redux/actions/constants";
+
+import img1 from "./press/img1.jpeg";
+import img2 from "./press/img2.jpeg";
+import img3 from "./press/img3.jpeg";
+import img4 from "./press/img4.jpeg";
+import img5 from "./press/img5.jpeg";
+import img6 from "./press/img6.jpeg";
+import img7 from "./press/img7.jpeg";
+import img8 from "./press/img8.jpeg";
+import img9 from "./press/img9.jpeg";
+import img10 from "./press/img10.jpeg";
+import img11 from "./press/img11.jpeg";
+import img12 from "./press/img12.jpeg";
+import img13 from "./press/img13.jpeg";
+import img14 from "./press/img15.jpeg";
+import img15 from "./press/img15.jpeg";
+
 export const Home = ({ updateDonorsData, bloodType }) => {
   const [searchParameters, setSearchParameters] = useState({
     blood_type: "All",
@@ -66,8 +83,21 @@ export const Home = ({ updateDonorsData, bloodType }) => {
       setSt(st);
     });
   }, []);
-  console.log(st);
-  console.log(st);
+
+  const contentStyle = {
+    height: "320px",
+    color: "#fff",
+    lineHeight: "160px",
+    width: "100%",
+    background: "#364d79",
+    // marginLeft: "25%",
+  };
+  const headstyle = {
+    borderStyle: "solid",
+    borderColor: "rgb(237, 45, 52)",
+    marginTop: "0%",
+  };
+
   return (
     <section
       id="home"
@@ -81,7 +111,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
       }}
     >
       <div
-        style={{ marginTop: "6%", alignItems: "center",marginLeft:'20%' }}
+        style={{ marginTop: "6%", alignItems: "center", marginLeft: "15%" }}
         className="container"
       >
         <div className="row">
@@ -89,7 +119,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
             <h3>
               <span class="main-color">Quickly Search Donar </span>{" "}
             </h3>
-            <p>
+            <p style={{ fontSize: "16px" }}>
               This is an organization that brings voluntary blood donors and
               those in need of blood on to a common platform. Through this
               website, we seek donors who are willing to donate blood, as well
@@ -195,7 +225,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
                   {/* </div> */}
                 </div>
               </div>
-
+              <br />
               <a
                 onClick={() => searchDonors()}
                 data-animation="61"
@@ -226,6 +256,215 @@ export const Home = ({ updateDonorsData, bloodType }) => {
                   // marginLeft: "190px",
                 }}
               />
+            </div>
+          </div>
+        </div>
+        <br></br>
+        <div className="row  " style={{ backgroundColor: "#edf0f2" }}>
+          <div class="col-md-8 col-sm-12 text-left mb-4">
+            <h2 className="pt-4">WE ARE HELPING PEOPLE FROM 10 YEARS</h2>
+            <p style={{ fontSize: "16px" }}>
+              You can donate blood at any of our blood donation venues all over
+              the country. We have total various donor centers and visit
+              thousands of other venues on various occasions.
+            </p>
+          </div>
+          <div class="col-md-4 col-sm-12 " style={{ marginTop: "3%" }}>
+            <a
+              onClick={() => (window.location.hash = "#donate")}
+              data-animation="61"
+              data-goto="11"
+              style={{ color: "white" }}
+              id="submit_btn"
+              class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn"
+            >
+              <i
+                class="fa fa-spinner fa-spin mr-2 d-none"
+                aria-hidden="true"
+              ></i>
+              REGISTER
+            </a>
+          </div>
+        </div>
+
+        <div style={{ marginTop: "80px" }}>
+          <h2 style={{ marginLeft: "35%" }}>DONATION CAMPAIGNS</h2>
+          <div style={{ marginLeft: "42%", marginTop: "-2%" }}>
+            <img
+              src="https://wp.bwlthemes.com/wp_reddrop_buddies/wp-content/themes/reddrop-buddies/images/separator.png"
+              alt=""
+            ></img>
+            <p style={{fontSize:'22px',marginLeft:'-40%',fontFamily:'Dosis'}}>
+              Campaigns to encourage new donors to join and existing to continue
+              to give blood.
+            </p>
+          </div>
+          <div class="col-md-12 col-sm-12 text-left mb-4 mt-4">
+            <div class=" align-items-lg-center dot-box">
+              <div style={headstyle}>
+                <Carousel autoplay>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img5}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img6}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img8}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img9}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img10}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img7}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img1}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img2}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img3}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img4}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img11}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img12}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img13}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img14}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 row">
+                      <div class="col-6">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img15}
+                        ></img>
+                      </div>
+                      <div class="col-6 ">
+                        <img
+                          style={contentStyle}
+                          height="50px"
+                          width="600px"
+                          src={img6}
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                </Carousel>
+              </div>
             </div>
           </div>
         </div>

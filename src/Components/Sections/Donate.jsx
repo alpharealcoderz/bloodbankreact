@@ -153,7 +153,10 @@ const Donate = () => {
       })
       .catch((err) => {
         // const er = err.response.data;
-        message.error('something went wrong .. please fill all details correctly!', 12);
+        message.error(
+          "something went wrong .. please fill all details correctly!",
+          12
+        );
       });
   };
 
@@ -236,7 +239,7 @@ const Donate = () => {
   return (
     <section id="donate" class="pt-page pt-page-6" data-id="request">
       <div
-        style={{ marginTop: "-47%", marginLeft: "15%" }}
+        style={{ marginTop: "-25%", marginLeft: "15%" }}
         class="container"
         id="content"
       >
@@ -1322,6 +1325,42 @@ const Donate = () => {
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+        <div
+          style={{
+            marginLeft: "-23%",
+            height: "400px",
+            width: "150%",
+            backgroundPosition: "center",
+            backgroundImage:
+              "url(https://wp.bwlthemes.com/wp_reddrop_buddies/wp-content/uploads/2017/06/cta_bg.jpg?id=2114)",
+          }}
+        >
+          <div class="row">
+            <div className="col-12">
+              <h1
+                style={{ marginLeft: "35%", marginTop: "7%", color: "white" }}
+              >
+                JOIN WITH US AND SAVE LIFE
+              </h1>
+              <div>
+                <a
+                  onClick={() => (window.location.hash = "#login")}
+                  data-animation="61"
+                  data-goto="11"
+                  style={{ color: "white", width: "20%", marginLeft: "40%" }}
+                  id="submit_btn"
+                  class="btn btn-large btn-rounded btn-green d-block mt-4 contact_btn mt-2"
+                >
+                  <i
+                    class="fa fa-spinner fa-spin mr-2 d-none"
+                    aria-hidden="true"
+                  ></i>
+                  Login
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
