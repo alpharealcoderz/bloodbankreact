@@ -59,6 +59,18 @@ export const User = ({
       key: "role",
     },
     {
+      title: "Registration date",
+      dataIndex: "created_at",
+      key: "created_at",
+      defaultSortOrder: 'descend',
+      sorter: {compare: (a, b) => a.created_at > b.created_at},
+      render: (text, record) => (
+       <div>
+        {text.substring(0, 10)}
+        </div>
+      ),
+    },
+    {
       title: "Delete",
       dataIndex: "",
       key: "x",

@@ -159,3 +159,7 @@ text-align: center !important;
 .ant-table-wrapper{
   margin-bottom: 7% !important;
 }
+.ant-table-wrapper{
+  width: 103% !important;
+  max-width: 103% !important;
+}
