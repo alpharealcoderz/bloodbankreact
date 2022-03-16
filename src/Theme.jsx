@@ -106,6 +106,7 @@ headers: {
           top: "35%",
           display: "flex",
           flexDirection: "column",
+          background:'white'
         }}
       >
         <a href="tel:+91-9819887086">

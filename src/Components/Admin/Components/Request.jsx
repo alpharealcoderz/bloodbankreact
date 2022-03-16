@@ -6,19 +6,26 @@ import {
   deleteRequest,
 } from "../../../redux/actions/request";
 import Main from ".././layout/Main";
-import { Table, Modal, Button, Input } from "antd";
-
+import { Table, Modal, Button, Input, Row, Col } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 export const Requests = ({ feeds }) => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.requests.requestData);
+  const [data,setData] = useState([]);
+  const origralData= useSelector((state) => state.requests.requestData)
   const bloodType = useSelector((state) => state.donors.bloodType);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
+setData(origralData)
+  }, [origralData]);
+  useEffect(() => {
     dispatch(getAllRequest());
-  }, []);
-
-  const [columns, setColumns] = useState([
+  }, [])
+  
+  const onSearch = (e) => {
+ setData(...origralData.filter(entry => Object.keys(entry).some(val => typeof val === e && val.includes())));
+  }
+ const [columns, setColumns] = useState([
     {
       title: "Name",
       dataIndex: "name",
@@ -64,7 +71,24 @@ export const Requests = ({ feeds }) => {
       dataIndex: "hospital_state",
       key: "hospital_state",
     },
-
+    {
+      title: "Requirement date",
+      dataIndex: "date_required",
+      key: "date_required",
+      sortOrder: "descend",
+    },
+    {
+      title: "Requested at",
+      dataIndex: "created_at",
+      key: "created_at",
+      defaultSortOrder: 'descend',
+      sorter: {compare: (a, b) => a.created_at > b.created_at},
+      render: (text, record) => (
+       <div>
+        {text.substring(0, 10)}
+        </div>
+      ),
+    }, 
     {
       title: "Delete",
       dataIndex: "",
@@ -121,9 +145,21 @@ export const Requests = ({ feeds }) => {
   };
   return (
     <Main>
-      <Button type="primary" onClick={() => setVisible(true)}>
-        Add New Request
-      </Button>
+      <Row style={{marginLeft:'22px'}}>
+        <Col span={24} md={2} className="header-control">
+          <Button type="primary" onClick={() => setVisible(true)}>
+            Add New Request
+          </Button>
+          </Col>
+          <Col  className="header-control">
+          <Input
+            className="header-search"
+            placeholder="Search..."
+            onChange={(e) => onSearch(e.target.value)}
+            prefix={<SearchOutlined />}
+          />
+        </Col>
+      </Row>
       <Modal
         title="Add New Request"
         visible={visible}
@@ -303,8 +339,9 @@ export const Requests = ({ feeds }) => {
           </div>
         </form>
       </Modal>
+      
       <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
-      </Main>
+    </Main>
   );
 };
 

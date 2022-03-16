@@ -368,9 +368,9 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
             <h2 class="title">Donor's Data</h2>
             <h6 class="sub-title main-color">Omniscient BloodBank</h6>
           </div>
-          <div style={{ display: "flex" }}>
+          <div className="p-4 " style={{ display: "flex" ,backgroundColor: ' #b7243a',width:'105%',marginLeft:'-2%',borderRadius:'4px'}}>
             <div>
-              <div>Select State</div>
+              <div style={{color:'white'}}>Select State</div>
               <select
                 class="form-control"
                 name="st"
@@ -380,6 +380,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 }}
                 // value={localStorage.getItem("state")}
               >
+                 {localStorage.getItem("state") && (
+                  <option selected disabled>
+                    {localStorage.getItem("state")}
+                  </option>
+                )}
                 <option>All</option>;
                 {st.map((stt) => {
                   return (
@@ -390,8 +395,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
+            <div style={{marginTop:'3%',marginLeft:'2%',color:'white'}}>
+            <i class="lni lni-angle-double-right"></i>
+            </div>
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
-              <div>Select District</div>
+              <div style={{color:'white'}}>Select District</div>
               <select
                 class="form-control"
                 name="District"
@@ -400,11 +408,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                   handleDistrictFilter(e);
                 }}
               >
-                {/* {localStorage.getItem("district") && (
+                {localStorage.getItem("district") && (
                   <option selected disabled>
                     {localStorage.getItem("district")}
                   </option>
-                )} */}
+                )}
                 <option>All</option>;
                 {district.map((dt) => {
                   return (
@@ -418,8 +426,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
+            <div style={{marginTop:'3%',marginLeft:'1%',marginRight:'1%',color:'white'}}>
+            <i class="lni lni-angle-double-right"></i>
+            </div>
             <div>
-              <div>Select City</div>
+              <div style={{color:'white'}}>Select City</div>
               <select
                 class="form-control"
                 name="city"
@@ -428,11 +439,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 }}
               >
                 {" "}
-                {/* {localStorage.getItem("city") && (
+                {localStorage.getItem("city") && (
                   <option selected disabled>
                     {localStorage.getItem("city")}
                   </option>
-                )} */}
+                )}
                 <option>All</option>;
                 {ct.map((ctt) => {
                   return (
@@ -443,15 +454,18 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
+            <div style={{marginTop:'3%',marginLeft:'2%',color:'white'}}>
+            <i class="lni lni-angle-double-right"></i>
+            </div>
             <div style={{ marginLeft: "20px" }}>
-              <div>Select Blood Type</div>
+              <div style={{color:'white'}}>Select Blood Type</div>
               <select
                 class="form-control"
                 name="blood_type"
                 onChange={(e) => {
                   handleBloodFilter(e);
                 }}
-                // value={localStorage.getItem("blood_type")}
+                value={localStorage.getItem("blood_type")}
               >
                 <option>All</option>;
                 {bloodType.map((st) => {
@@ -472,7 +486,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
               <Button
                 style={{ marginTop: "20px", marginLeft: "20px" }}
                 type="danger"
-                onClick={window.location.hash = "request"}
+                onClick={()=>window.location.hash = "request"}
               >
                 {" "}
                 Request donar
@@ -480,13 +494,13 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
             </div>
           </div>
           <br></br>
-          <Steps  size="small" current={4}>
+          {/* <Steps  size="small" current={4}>
               <Step title={localStorage.getItem("blood_type")} />
               <Step  title={localStorage.getItem("state")} />
               <Step title={localStorage.getItem("district")} />
               <Step title={localStorage.getItem("city")} />
             </Steps>
-            <br></br>
+            <br></br> */}
           <Table dataSource={data} columns={columns} scroll={{ x: 600 }} />;
         </div>
       </div>
