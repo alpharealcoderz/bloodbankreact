@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Modal, Progress, Steps  } from "antd";
+import { Table, Button, Modal, Progress, Steps } from "antd";
 import "antd/dist/antd.css";
 import { api_base_url } from "../Constants";
 import axios from "axios";
@@ -22,7 +22,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
   const [hospitalCity, setHospitalCity] = useState("");
   const bloodType = useSelector((state) => state.donors.bloodType);
   useEffect(() => {
-    console.log(donorsData.length);
+    // console.log(donorsData.length);
     if (canFetchDonors) {
       setData(donorsData);
       setPermanent(donorsData);
@@ -31,6 +31,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
     }
   }, [donorsData]);
   const [searchObj, setSearchObj] = useState({});
+  // console.log("gulshan", distance);
   const [columns, setColumns] = useState([
     {
       title: "Name",
@@ -124,6 +125,30 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
           </Button>
         ),
     },
+    {
+      title: "Send request",
+      dataIndex: "id",
+      key: "id",
+
+      render: (text, record) => (
+        <Button
+          type="danger"
+          onClick={() => {
+            const data = {
+              donor_id: record.id,
+              requester_id: JSON.parse(localStorage.getItem("userDetails")).id,
+              status: "0",
+            };
+            axios
+              .post(api_base_url + "/addraisedrequest", data)
+              .then((res) => console.log("gulshan"));
+          }}
+          style={{ marginLeft: "10px" }}
+        >
+          request
+        </Button>
+      ),
+    },
   ]);
   const getDistance = (record) => {
     fetch(
@@ -135,6 +160,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
         setHospitalCity(record);
       });
   };
+
+  const sendRequest = () => {
+    axios.post(api_base_url + "/addraisedrequest");
+  };
+
   const handleStateChange = (e) => {
     axios
       .post(api_base_url + "/getAllDistrictByStates", {
@@ -156,7 +186,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
     });
   }, []);
   const search = async () => {
-    console.log("saransh", searchObj);
+    // console.log("saransh", searchObj);
     let temp = [...permanent];
     if (
       searchObj.hasOwnProperty("state") &&
@@ -368,9 +398,18 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
             <h2 class="title">Donor's Data</h2>
             <h6 class="sub-title main-color">Omniscient BloodBank</h6>
           </div>
-          <div className="p-4 " style={{ display: "flex" ,backgroundColor: ' #b7243a',width:'105%',marginLeft:'-2%',borderRadius:'4px'}}>
+          <div
+            className="p-4 "
+            style={{
+              display: "flex",
+              backgroundColor: " #b7243a",
+              width: "105%",
+              marginLeft: "-2%",
+              borderRadius: "4px",
+            }}
+          >
             <div>
-              <div style={{color:'white'}}>Select State</div>
+              <div style={{ color: "white" }}>Select State</div>
               <select
                 class="form-control"
                 name="st"
@@ -380,7 +419,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 }}
                 // value={localStorage.getItem("state")}
               >
-                 {localStorage.getItem("state") && (
+                {localStorage.getItem("state") && (
                   <option selected disabled>
                     {localStorage.getItem("state")}
                   </option>
@@ -395,11 +434,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
-            <div style={{marginTop:'3%',marginLeft:'2%',color:'white'}}>
-            <i class="lni lni-angle-double-right"></i>
+            <div style={{ marginTop: "3%", marginLeft: "2%", color: "white" }}>
+              <i class="lni lni-angle-double-right"></i>
             </div>
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
-              <div style={{color:'white'}}>Select District</div>
+              <div style={{ color: "white" }}>Select District</div>
               <select
                 class="form-control"
                 name="District"
@@ -426,11 +465,18 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
-            <div style={{marginTop:'3%',marginLeft:'1%',marginRight:'1%',color:'white'}}>
-            <i class="lni lni-angle-double-right"></i>
+            <div
+              style={{
+                marginTop: "3%",
+                marginLeft: "1%",
+                marginRight: "1%",
+                color: "white",
+              }}
+            >
+              <i class="lni lni-angle-double-right"></i>
             </div>
             <div>
-              <div style={{color:'white'}}>Select City</div>
+              <div style={{ color: "white" }}>Select City</div>
               <select
                 class="form-control"
                 name="city"
@@ -454,11 +500,11 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
                 })}
               </select>
             </div>
-            <div style={{marginTop:'3%',marginLeft:'2%',color:'white'}}>
-            <i class="lni lni-angle-double-right"></i>
+            <div style={{ marginTop: "3%", marginLeft: "2%", color: "white" }}>
+              <i class="lni lni-angle-double-right"></i>
             </div>
             <div style={{ marginLeft: "20px" }}>
-              <div style={{color:'white'}}>Select Blood Type</div>
+              <div style={{ color: "white" }}>Select Blood Type</div>
               <select
                 class="form-control"
                 name="blood_type"
@@ -486,7 +532,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
               <Button
                 style={{ marginTop: "20px", marginLeft: "20px" }}
                 type="danger"
-                onClick={()=>window.location.hash = "request"}
+                onClick={() => (window.location.hash = "request")}
               >
                 {" "}
                 Request donar

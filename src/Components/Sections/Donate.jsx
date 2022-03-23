@@ -36,7 +36,6 @@ const Donate = () => {
   const [ct, setCt] = useState([]);
   const [da, setDa] = useState();
   const [ay, setAy] = useState();
-  console.log("shiv", ay);
   const [result, setResult] = useState();
   const [url, setUrl] = useState();
   const [otp, setOtp] = useState();

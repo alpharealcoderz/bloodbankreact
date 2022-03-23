@@ -14,20 +14,8 @@ import "./Footer.css";
 import playstore from "./app.png";
 import apple from "./apple.png";
 
-
 function Footer() {
   return (
-    // <div className="main-footer">
-    //   <div className="container">
-    //     <div style={{height:"53px"}} className="row col-sm p-2">
-    //     <p style={{ marginLeft:'25px', textAlign:"center", fontSize:'17px'}} >
-    //       Copyright  &copy;{new Date().getFullYear()} Design and Develop Maintenance by Omniscient IT Solutions P(Ltd).
-    //     </p>
-    //       <a  href="#privacypolicy" style={{ color:"White",marginLeft:'25px' , fontSize:'17px' }}>PRIVACY POLICY</a>
-    //       <img className="mt-1" style={{width:'55px',borderRadius:'5px', marginLeft:'25px',height:'17px'}} src={playstore}></img> <img className="mt-1" style={{width:'55px',borderRadius:'5px', marginLeft:'25px',height:'17px'}} src={apple}></img>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="main-footer">
       <div className="container">
        <div className="col-12 row p-3">
