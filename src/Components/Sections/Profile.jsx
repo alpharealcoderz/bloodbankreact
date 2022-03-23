@@ -371,7 +371,6 @@ console.log('abcd',requester)
             </form>
           </Modal>
           <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
-          <Table dataSource={requester} columns={columnss} scroll={{ x: 400 }} />;
         </div>
       </div>
       <div class="container">
@@ -545,7 +544,7 @@ console.log('abcd',requester)
               </div> */}
             </form>
           </Modal>
-          <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
+          <Table dataSource={requester} columns={columnss} scroll={{ x: 400 }} />;
         </div>
       </div>
      </div>
