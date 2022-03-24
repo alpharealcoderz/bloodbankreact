@@ -4,9 +4,10 @@ export default function Achivements() {
   return (
     <section
       id="achievements"
-      class="pt-page pt-page-3"
+      // class="pt-page pt-page-3"
+      className="my_section"
       data-id="achievements"
-      style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
+      style={{  }}
     >
       {/* <div class="container mt-5">
         <div class="align-items-lg-center">
@@ -99,11 +100,11 @@ export default function Achivements() {
           </div>
         </div>
       </div> */}
-      <div class="container" style={{ marginTop: "50px" }}>
+      <div class="container" style={{  }}>
         <div class=" align-items-lg-center dot-box">
           <iframe
             loading="lazy"
-            style={{ height: "100vh" }}
+            style={{ height: "100vh"}}
             src="https://bloodbankreal.herokuapp.com/htmls/Achievements.html"
           />
         </div>

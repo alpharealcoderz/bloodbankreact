@@ -3,11 +3,12 @@ export default function ProjectInprocess() {
   return (
     <section
       id="projectinprocess"
-      class="pt-page pt-page-6 pt-5"
+      // class="pt-page pt-page-6 pt-5"
+      className="my_section"
       data-id="projectinprocess"
-      style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
+      // style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >
-      <div style={{marginTop:'15px'}} class="container">
+      <div class="container">
         <div class=" align-items-lg-center dot-box">
           <iframe
             loading="lazy"

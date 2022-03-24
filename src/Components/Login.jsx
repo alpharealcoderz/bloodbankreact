@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { loginHandler } from "../Service/AuthService";
 import tlogo from './Sections/tname.jpg';
 import blood from './Sections/./bloodgif.gif';
+import { Input, Tag } from "antd";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     loginHandler(email, pass);
@@ -17,12 +21,14 @@ export default function Login() {
     setPass(e.target.value);
   };
   return (
-    <section  id="login" class="pt-page pt-page-6" data-id="login">
-      <div style={{ marginTop: "-30%",marginLeft:'15%' }} class="container">
-        <div class="row align-items-lg-center dot-box makeWrap">
-          <div style={{width:'50%',marginTop:'-15%'}} className="wrapWidth">
+    <section  id="login"  data-id="login" className="my_section">
+      <div style={{ marginLeft:'6%' }} class="container">
+        <div class="row dot-box makeWrap">
+          <div style={{width:'50%',marginTop:"10%",fontFamily:"lato"}} className="wrapWidth">
             <div class="heading-area">
-              <h2 class="title">Login</h2>
+              {/* <h2 class="title">Login</h2> */}
+            <p style={{paddingBottom:"12px"}}><Tag color="magenta" style={{border:"none",fontSize:"38px"}}>Login</Tag></p>
+
               <h6 class="sub-title main-color">
                 Please Enter You Registered Email And Password.
               </h6>
@@ -33,18 +39,24 @@ export default function Login() {
               class="contact-form"
               id="contact-form-data"
             >
-              <input
+              <label className="input_label">Email</label>
+              <Input
                 onChange={(e) => handleEmailChange(e)}
                 type="email"
-                class="form-control"
-                placeholder="email"
-              ></input>
-              <input
+                className="input_field"
+                placeholder="Enter the email"
+              />
+              <br/>
+              <br/>
+              <label className="input_label">Password</label>
+              <Input
                 onChange={(e) => handlePasswordChange(e)}
                 type="password"
-                class="form-control"
-                placeholder="password"
-              ></input>
+                // class="form-control"
+                className="input_field"
+                placeholder="Enter your passwaord"
+              
+              />
 
               <button
                 type="submit"
@@ -58,16 +70,16 @@ export default function Login() {
                 Login
               </button>
               <div style={{ marginTop: "10px", marginLeft: "15px" }}>
-                <a
+                <Link
                   style={{ color: "#ed2d34", fontWeight: "bold" }}
-                  href="#Donate"
+                  to="/register"
                 >
                   Click to Register?
-                </a>
+                </Link>
               </div>
             </form>
           </div>
-          <div style={{width:'50%' ,marginTop:'10%',background:'white'}} className="wrapWidth">
+          <div style={{width:'50%',background:''}} className="wrapWidth">
             <ul class="address-item">
             <li class="w-100 mb-4">
                 <img src={tlogo}></img>
@@ -130,7 +142,7 @@ export default function Login() {
               </h1>
               <div>
                 <a
-                  onClick={() => (window.location.hash = "#donate")}
+                  onClick={() => navigate('/register')}
                   data-animation="61"
                   data-goto="11"
                   style={{ color: "white", width: "20%", marginLeft: "40%" }}

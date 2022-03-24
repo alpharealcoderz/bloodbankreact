@@ -1,28 +1,31 @@
+import { Carousel, Tag } from "antd";
 import React from "react";
 
 export default function Clients() {
   return (
     <section
       id="clients"
-      class="pt-page pt-page-5"
+      // class="pt-page pt-page-5"
+      className="my_section"
       data-id="clients"
-      style={{ paddingTop: "67px" }}
+      
     >
-      <div style={{marginTop:'-20%'}} class="container">
-        <div class="row d-flex align-content-lg-center min-height-100vh">
+      <div  class="container">
+        <div class="row d-flex "style={{height:"90vh"}}>
           <div class="col-lg-4 pr-lg-5 p-0">
             <div class="heading-area">
               <h6 class="sub-title main-color"></h6>
-              <h2 class="title">Our Volunteers</h2>
-              <p class="paragraph">
+              <h2 class="title"><Tag color="red" style={{fontSize:"36px",border:"none"}}>Our Volunteers</Tag></h2>
+              <p class="paragraph" style={{color:"#093764",fontSize:"16px"}}>
                 Our volunteers are always ready to help you.
               </p>
             </div>
             <div id="client-nav"></div>
           </div>
 
-          <div class="col-lg-8" style={{marginRight: '-87px'}}>
-            <div id="owl-client" class="owl-carousel owl-theme">
+          <div class="col-lg-8" style={{}}>
+            <div id="" class=" ">
+              <Carousel autoplay={true} pauseOnHover={false}>
               <div class="client-box">
                 <i class="lni-quotation q-icon"></i>
                 <p>
@@ -39,7 +42,6 @@ export default function Clients() {
                 <h5 class="client-name mb-0">Saurabh</h5>
                 <span class="client-designation">Delhi</span>
               </div>
-
               <div class="client-box">
                 <i class="lni-quotation q-icon"></i>
                 <p>
@@ -72,6 +74,8 @@ export default function Clients() {
                 <h5 class="client-name mb-0">Aditya</h5>
                 <span class="client-designation">Uttar Pradesh</span>
               </div>
+              </Carousel>
+
             </div>
           </div>
         </div>

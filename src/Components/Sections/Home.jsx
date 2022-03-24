@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import blood from "./bloodlogo.jpg";
 import { api_base_url } from "../../Constants";
@@ -25,8 +25,11 @@ import img12 from "./press/img12.jpeg";
 import img13 from "./press/img13.jpeg";
 import img14 from "./press/img15.jpeg";
 import img15 from "./press/img15.jpeg";
+import { useNavigate } from "react-router-dom";
 
-export const Home = ({ updateDonorsData, bloodType }) => {
+ const Home = ({ updateDonorsData, bloodType }) => {
+   const navigate=useNavigate();
+  console.log(getBloodType);
   const [searchParameters, setSearchParameters] = useState({
     blood_type: "All",
     state: "All",
@@ -75,7 +78,8 @@ export const Home = ({ updateDonorsData, bloodType }) => {
 
   const searchDonors = async () => {
     await updateDonorsData(searchParameters);
-    window.location.hash = "#donors";
+    // window.location = "/alldonors";
+    navigate("/alldonors")
   };
   useEffect(() => {
     axios.post(api_base_url + "/getAllStates").then((res) => {
@@ -101,7 +105,8 @@ export const Home = ({ updateDonorsData, bloodType }) => {
   return (
     <section
       id="home"
-      class="pt-page pt-page-1"
+      className="my_section"
+      // class="pt-page pt-page-1"
       data-id="home"
       style={{
         fontSize: "14px",
@@ -111,7 +116,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
       }}
     >
       <div
-        style={{ marginTop: "6%", alignItems: "center", marginLeft: "15%" }}
+        style={{ marginTop: "6%", alignItems: "center" }}
         className="container"
       >
         <div className="row">
@@ -140,6 +145,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
                   >
                     <option>All</option>;
                     {bloodType.map((st) => {
+                      console.log('vbn',st);
                       return <option>{st}</option>;
                     })}
                   </select>
@@ -288,7 +294,7 @@ export const Home = ({ updateDonorsData, bloodType }) => {
         </div>
 
         <div style={{ marginTop: "80px" }}>
-          <h2 style={{ marginLeft: "35%" }}>DONATION CAMPAIGNS</h2>
+          <h2 style={{ textAlign:"center" }}>DONATION CAMPAIGNS</h2>
           <div style={{ marginLeft: "42%", marginTop: "-2%" }}>
             <img
               src="https://wp.bwlthemes.com/wp_reddrop_buddies/wp-content/themes/reddrop-buddies/images/separator.png"

@@ -3,9 +3,10 @@ export default function Facts() {
   return (
     <section
       id="facts"
-      class="pt-page pt-page-6 pt-5"
+      // class="pt-page pt-page-6 pt-5"
+      className="my_section"
       data-id="facts"
-      style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
+      style={{ }}
     >
       <div class="container">
         <div class=" align-items-lg-center dot-box">
@@ -13,6 +14,7 @@ export default function Facts() {
           <iframe
             loading="lazy"
             style={{ height: "100vh" }}
+            // scrolling="hidden"
             src="https://bloodbankreal.herokuapp.com/htmls/facts.html"
           />
         </div>

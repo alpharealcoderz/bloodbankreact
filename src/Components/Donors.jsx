@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Modal, Progress, Steps  } from "antd";
+import { Table, Button, Modal, Progress, Steps, Tag  } from "antd";
 import "antd/dist/antd.css";
 import { api_base_url } from "../Constants";
 import axios from "axios";
@@ -352,21 +352,20 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
   return (
     <section
       id="donors"
-      class="pt-page pt-page-6 pt-5"
+      // class="pt-page pt-page-6 pt-5"
+      className="my_section"
       data-id="donors"
       style={{
-        overflow: "scroll",
-        paddingTop: "67px",
-        minHeight: "1500px",
-        display: "block",
+     
       }}
     >
       <div class="container mt-4" id="content">
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
-          <div class="heading-area">
-            <h2 class="title">Donor's Data</h2>
-            <h6 class="sub-title main-color">Omniscient BloodBank</h6>
+          <div class="heading-area" style={{paddingBottom:"12px"}}>
+            <p style={{paddingBottom:"12px"}}><Tag color="magenta" style={{border:"none",fontSize:"38px"}}> Donor's Data</Tag></p>
+            <p><Tag color="red" style={{fontSize:"15px"}}> Omniscient BloodBank</Tag></p>
+  
           </div>
           <div className="p-4 " style={{ display: "flex" ,backgroundColor: ' #b7243a',width:'105%',marginLeft:'-2%',borderRadius:'4px'}}>
             <div>
@@ -501,7 +500,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
               <Step title={localStorage.getItem("city")} />
             </Steps>
             <br></br> */}
-          <Table dataSource={data} columns={columns} scroll={{ x: 600 }} />;
+          <Table className="table-striped-rows" dataSource={data} columns={columns} style={{overflow:'scroll'}}  />;
         </div>
       </div>
       <Modal

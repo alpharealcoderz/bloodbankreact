@@ -8,13 +8,15 @@ import User from "./Components/Admin/Components/User";
 import { Feed } from "./Components/Admin/Components/Feed";
 import Notification from "./Components/Admin/Components/Notification";
 import Requests from "./Components/Admin/Components/Request";
+import Dashboard from "./Dashboard";
+import Home from "./Components/Sections/Home";
+import LandingPage from "./Components/Sections/LandingPage";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Theme />} />
+        <Route  path="*" element={<Dashboard/>} />
       </Routes>
-
       <Routes>
         <Route path="admin">
           <Route exact path="users" element={<User />} />

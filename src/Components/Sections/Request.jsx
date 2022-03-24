@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { message } from "antd";
+import { message, Tag } from "antd";
 import { addRequest } from "../../redux/actions/request";
 import { api_base_url } from "../../Constants";
 import axios from "axios";
@@ -141,12 +141,14 @@ export const Request = (props) => {
   }, []);
 
   return (
-    <section id="request" class="pt-page pt-page-6" data-id="request">
-      <div style={{ marginTop: "-30%",marginLeft:'15%' }} class="container">
+    <section id="request"  data-id="request" className="my_section">
+      <div style={{marginTop:"3%"}} class="container">
         <div class="row align-items-lg-center makeWrap">
           <div style={{width:'50%'}} className="wrapWidth">
             <div class="heading-area">
-              <h5 class="title">Post Blood Request!</h5>
+              {/* <h5 class="title">Post Blood Request!</h5> */}
+            <p style={{paddingBottom:"12px"}}><Tag color="magenta" style={{border:"none",fontSize:"38px"}}> Post Blood Request!</Tag></p>
+
               <p style={{marginTop:'-15px'}}class="sub-title main-color">
                 Make sure you are login before you fill this form.*
               </p>

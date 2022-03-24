@@ -33,7 +33,8 @@ export default function Presscoverage() {
   return (
     <section
       id="visionmission"
-      class="pt-page pt-page-6 pt-5"
+      // class="pt-page pt-page-6 pt-5"
+      className="my_section"
       data-id="visionmission"
       style={{ overflowY: "scroll", display: "block", paddingTop: "67px" }}
     >

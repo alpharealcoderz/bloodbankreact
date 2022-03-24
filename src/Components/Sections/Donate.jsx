@@ -1,4 +1,4 @@
-import { Form, Input, Steps, Modal, Button, message } from "antd";
+import { Form, Input, Steps, Modal, Button, message, Tag } from "antd";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -6,7 +6,7 @@ import tlogo from "./tname.jpg";
 import { api_base_url } from "../../Constants";
 import jsPDF from "jspdf";
 import blood from "./bloodgif.gif";
-
+import { Link, Navigate, useNavigate } from "react-router-dom";
 const { Step } = Steps;
 
 const steps = [
@@ -25,6 +25,8 @@ const steps = [
 ];
 
 const Donate = () => {
+const navigate = useNavigate();
+
   const bloodType = useSelector((state) => state.donors.bloodType);
   const [st, setSt] = useState([]);
   const [visible, setVisible] = useState(false);
@@ -139,7 +141,7 @@ const Donate = () => {
     axios
       .post(api_base_url + "/beuserregister", data)
       .then((res) => {
-        window.location.hash = "#login";
+        navigate("/login")
         message.success("Register successfully", 10);
         setResult(res.data.data.token);
         localStorage.setItem("registerToken", res.data.data.token);
@@ -237,28 +239,30 @@ const Donate = () => {
     console.log("Failed:", errorInfo);
   };
   return (
-    <section id="donate" class="pt-page pt-page-6" data-id="request">
+    <section id="donate"  data-id="request" className="my_section">
       <div
-        style={{ marginTop: "-25%", marginLeft: "15%" }}
+        style={{marginLeft: "3%",fontFamily:"lato" }}
         class="container"
         id="content"
       >
-        <div class="row align-items-lg-center makeWrap">
-          <div style={{ width: "60%" }} className="wrapWidth">
+        <div class="row  makeWrap">
+          <div style={{ width: "60%",marginTop:"6%",fontFamily:"lato",paddingRight:"12px" }} className="wrapWidth">
             <div class="heading-area">
-              <h2 class="title">Register</h2>
+              {/* <h2 class="title">Register</h2> */}
+            <p style={{paddingBottom:"12px"}}><Tag color="magenta" style={{border:"none",fontSize:"38px"}}>Register</Tag></p>
+
               <div class="mb-2" style={{ marginTop: "-2%" }}>
-                <a
+                
+                 <p style={{ color: "#ed2d34", fontWeight: "bold" }}> Alredy have an account ? <Link to="/login"
                   style={{ color: "#ed2d34", fontWeight: "bold" }}
-                  href="#login"
-                >
-                  Click to login ?
-                </a>
+                  
+                > Click to login 
+                </Link></p>
               </div>
               <h6 class="sub-title main-color">Please fill All Details.</h6>
             </div>
 
-            <Steps current={current}>
+            <Steps current={current} className="my_steps"> 
               {steps.map((item) => (
                 <Step key={item.title} title={item.title} />
               ))}
@@ -534,7 +538,7 @@ const Donate = () => {
                         defaultValue={details.address}
                         name="address"
                         class="form-control"
-                        placeholder="enter address"
+                        placeholder="Enter your address"
                       />
                     </Form.Item>
                   </div>
@@ -662,7 +666,7 @@ const Donate = () => {
                             defaultValue={details.password}
                             type="Password"
                             class="form-conrol"
-                            placeholder="enter password"
+                            placeholder="Enter password"
                           />
                         </Form.Item>
                       </div>
@@ -1276,8 +1280,8 @@ const Donate = () => {
             </div>
           </div>
           <div
-            style={{ width: "40%", height: "30%", backgroundColor: "white" }}
-            className="wrapWidth mt-4 "
+            style={{ width: "40%", height: "30%", backgroundColor: "",marginLeft:"0px" }}
+            className="wrapWidth mt-4"
           >
             <ul class="address-item">
               <li class="w-100 mb-4">
@@ -1345,8 +1349,8 @@ const Donate = () => {
                 JOIN WITH US AND SAVE LIFE
               </h1>
               <div>
-                <a
-                  onClick={() => (window.location.hash = "#login")}
+                <Link
+                to="/login"
                   data-animation="61"
                   data-goto="11"
                   style={{ color: "white", width: "20%", marginLeft: "40%" }}
@@ -1358,7 +1362,7 @@ const Donate = () => {
                     aria-hidden="true"
                   ></i>
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>

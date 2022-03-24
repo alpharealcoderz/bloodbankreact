@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { logout, updateUser } from "../../Service/AuthService";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { Input, Modal, Button, Table } from "antd";
+import { Input, Modal, Button, Table, Spin } from "antd";
 import { getAllRequestByUser } from "../../redux/actions/request";
 import axios from "axios";
 import Footer from "../Admin/layout/Footer";
 import { api_base_url } from "../../Constants";
+// import "../style.css";
+
+
 export default function Profile() {
   const dispatch = useDispatch();
-  const [columns, setColumns] = useState([
+  const [loading,setLoading]=useState(false)
+ const columns=[
     {
       title: "Name",
       dataIndex: "name",
@@ -54,7 +58,7 @@ export default function Profile() {
       dataIndex: "hospital_state",
       key: "hospital_state",
     },
-  ]);
+  ]
 
   const [data, setData] = useState([]);
   const [details, setDetails] = useState(
@@ -80,27 +84,31 @@ export default function Profile() {
     object[e.target.name] = e.target.value;
     setDetails({ ...details, ...object });
   };
-  const update = (e) => {
+  const update =async (e) => {
     e.preventDefault();
+    setLoading(true)
     console.log("saransh", details);
-    updateUser(details);
+   await updateUser(details);
+   setLoading(false)
+   setVisible(false)
   };
   if (localStorage.getItem("token") == null) return <></>;
   return (
     <>
     <section
       id="profile"
-      class="pt-page pt-page-6 pt-5"
+      // class="pt-page pt-page-6 pt-5"
       data-id="profile"
-      style={{ paddingTop: "67px", display: "block" }}
+      className="my_section"
+      style={{ }}
     >
+<Spin  spinning={loading} size="large">
+      <div style={{}} class="container">
 
-      <div style={{marginTop:'2%'}} class="container">
-
-      <div class="container mt-5">
+      <div class="container mt-5" >
         <div class="row d-flex justify-content-center">
           <div class="col-md-7">
-            <div class="card p-3 py-4">
+            <div class="card p-3 py-4" style={{background:"#f1f2f8",boxShadow:"10px 10px 10px lightgray",border:"1px solid rosybrown"}}>
               <div class="text-center">
                 {" "}
                 <img
@@ -152,7 +160,7 @@ export default function Profile() {
             visible={visible}
             onOk={(e) => update(e)}
             onCancel={() => setVisible(false)}
-          >
+          ><Spin  spinning={loading} size="large">
             <form
               class="contact-form"
               id="contact-form-data"
@@ -306,11 +314,13 @@ export default function Profile() {
                 />
               </div> */}
             </form>
+            </Spin>
           </Modal>
-          <Table dataSource={data} columns={columns} scroll={{ x: 400 }} />;
+          <Table className="table-striped-rows" dataSource={data} columns={columns} />;
         </div>
       </div>
      </div>
+     </Spin>
     </section>
 
 

@@ -1,6 +1,9 @@
 import axios from "axios";
 import { message } from "antd";
 import { api_base_url } from "../Constants";
+import { Navigate, useNavigate } from "react-router-dom";
+// const navigate=useNavigate();
+
 export const loginHandler = (email, password) => {
   axios
     .post(`${api_base_url}/login`, {
@@ -26,27 +29,31 @@ export const loginHandler = (email, password) => {
 export const logout = (email, password) => {
   axios.post(`${api_base_url}/logout`).then((res) => {
     if (res.data.status == "success") {
-      if ((window.location.pathname = "/")) {
-        window.location.hash = "home";
-      } else {
-        window.location.pathname = "/";
-      }
-      window.location.hash = "home";
-      window.location.reload();
-      message.success("Logged Out Successfully");
+      // if ((window.location.pathname = "/")) {
+      //   window.location.hash = "home";
+      // } else {
+      //   window.location.pathname = "/";
+      // }
+      message.info("Logged Out Successfully");
+      
+      window.location="/login"
+      // window.location.hash = "home";
+      // window.location.reload();
       localStorage.clear();
     } else if (res.data.status == "failure") {
       message.warning(res.data.error);
     }
   });
 };
-export const updateUser = (payload) => {
-  axios.post(`${api_base_url}/update`, payload).then((res) => {
+export const updateUser = async(payload) => {
+ await axios.post(`${api_base_url}/update`, payload).then((res) => {
     if (res.data.status == "success") {
       message.success("Profile Updated");
       localStorage.setItem("userDetails", JSON.stringify(res.data.updatedData));
+      return true
     } else if (res.data.status == "failure") {
       message.warning(res.data.error);
+      return false
     }
   });
 };
