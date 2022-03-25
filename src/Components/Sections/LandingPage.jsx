@@ -6,6 +6,7 @@ import { getBloodType, getAllStates } from "../../redux/actions/constants";
 
 const LandingPage=({ getBloodType, getAllStates })=>{
 
+  
   useEffect(() => {
     getBloodType();
     getAllStates();
