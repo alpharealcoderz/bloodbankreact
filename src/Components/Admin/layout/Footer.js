@@ -28,28 +28,37 @@ function Footer() {
     //     </div>
     //   </div>
     // </div>
-    <div className="main-footer">
-      <div className="container">
+    // <div className="main-footer">
+    <div className="" style={{background:"#161e21",padding:"12px"}}>
+
+      <div className="container"style={{background:"#161e21"}}>
        <div className="col-12 row p-3">
-         <div className="col-4">
-            <h6>information</h6><hr />
+       <div className="col-3">
+         <img src="https://www.omniscientitsolutions.com/images/footer30.png" />
+</div>
+         <div className="col-2" style={{color:"#74868c"}}>
+            <p style={{color:"#b7c2c6",fontSize:"18px"}}>Information</p><hr />
              <li>Login</li>
              <li>Career</li>
              <li>Request Quote</li>
              <li>Contact us</li>
          </div>
-         <div className="col-4">
-            <h6>About company</h6><hr />
+         <div className="col-2" style={{color:"#74868c"}}>
+            <p style={{color:"#b7c2c6",fontSize:"18px"}}>About company</p><hr />
              <li>Our Milestone</li>
              <li>Purpose</li>
              <li>Core Values</li>
              <li>Review us</li>
          </div>
-         <div className="col-4 ">
-            <h6>Download our app</h6><hr />
-            <img className="mt-1" style={{width:'55px',borderRadius:'5px', marginLeft:'25px',height:'17px'}} src={playstore}></img><br />
-            <img className="mt-1" style={{width:'55px',borderRadius:'5px', marginLeft:'25px',height:'17px'}} src={apple}></img>
+         <div className="col-2" style={{color:"#74868c"}}>
+            <p style={{color:"#b7c2c6",fontSize:"18px"}}>Download our app</p><hr />
+            <img className="mt-1" style={{width:'55%',borderRadius:'7px',border:"1px solid #b3bec2", marginLeft:'25px'}} src="https://www.omniscientitsolutions.com/images/app_android_oitspl.png"></img><br />
+            {/* <img className="mt-1" style={{width:'64px',borderRadius:'5px', marginLeft:'25px',height:'20px'}} src={apple}></img> */}
          </div>
+
+         <div className="col-3">
+         <img src="https://www.omniscientitsolutions.com/images/wanna.png" />
+</div>
        </div>
       </div>
     </div>

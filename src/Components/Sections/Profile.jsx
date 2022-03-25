@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { logout, updateUser } from "../../Service/AuthService";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { Input, Modal, Button, Table, Spin } from "antd";
+import { Input, Modal, Button, Table, Spin, Tag } from "antd";
 import { getAllRequestByUser } from "../../redux/actions/request";
 import axios from "axios";
 import Footer from "../Admin/layout/Footer";
@@ -66,7 +66,7 @@ export default function Profile() {
   );
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    if (localStorage.getItem("token") == null) window.location.hash = "home";
+    if (localStorage.getItem("token") == null) window.location = "/login";
     else {
       axios
         .post(`${api_base_url}/getAllRequest`, {
@@ -92,6 +92,13 @@ export default function Profile() {
    setLoading(false)
    setVisible(false)
   };
+
+  const userlogout=async()=>{
+    setLoading(true)
+   await logout()
+   setLoading(false)
+  }
+
   if (localStorage.getItem("token") == null) return <></>;
   return (
     <>
@@ -131,7 +138,7 @@ export default function Profile() {
                     Edit Profile
                   </button>
                   <button
-                    onClick={() => logout()}
+                    onClick={() => userlogout()}
                     class="btn btn-primary px-4 ms-3"
                     style={{ marginLeft: "15px" }}
                   >
@@ -150,10 +157,12 @@ export default function Profile() {
           {/* <div class="col-6"> */}
           <div class="heading-area">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h2 class="title">Your Request</h2>
+            <h5 className="mt-4" style={{paddingBottom:"12px"}}><Tag color="magenta" style={{border:"none",fontSize:"38px"}}> Your Request</Tag></h5>
+              
               <div></div>
             </div>
-            <h6 class="sub-title main-color">Omniscient BloodBank</h6>
+            <p><Tag color="red" style={{fontSize:"15px"}}> Omniscient BloodBank</Tag></p>
+<br/>
           </div>
           <Modal
             title="Edit Profile"

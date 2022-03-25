@@ -2,17 +2,23 @@ import React, { useState } from "react";
 import { loginHandler } from "../Service/AuthService";
 import tlogo from './Sections/tname.jpg';
 import blood from './Sections/./bloodgif.gif';
-import { Input, Tag } from "antd";
+import { Input, Spin, Tag } from "antd";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [loading,setLoading]=useState(false)
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    loginHandler(email, pass);
+    setLoading(true)
+    await loginHandler(email, pass)
+    setLoading(false)
+    navigate("/profile")
+    window.location.reload()
+   
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -22,6 +28,7 @@ export default function Login() {
   };
   return (
     <section  id="login"  data-id="login" className="my_section">
+      <Spin spinning={loading} size="large">
       <div style={{ marginLeft:'6%' }} class="container">
         <div class="row dot-box makeWrap">
           <div style={{width:'50%',marginTop:"10%",fontFamily:"lato"}} className="wrapWidth">
@@ -160,6 +167,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      </Spin>
     </section>
   );
 }

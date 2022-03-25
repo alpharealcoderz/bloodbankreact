@@ -32,6 +32,7 @@ import Request from "./Components/Sections/Request";
 import LandingPage from "./Components/Sections/LandingPage";
 import Profile from "./Components/Sections/Profile";
 import { connect } from "react-redux";
+import Footer from "./Components/Admin/layout/Footer";
 
 const { Header, Sider, Content } = Layout;
 
@@ -264,13 +265,15 @@ const { Header, Sider, Content } = Layout;
           <Route exact  path="/register" element={<Donate />} />
           <Route exact  path="/alldonors" element={<Donors />} />
           <Route exact  path="/requestblood" element={<Request />} />
-          <Route exact  path="/profile" element={localStorage.getItem("token") != null ?<Profile />:<Login/>} />
+          <Route exact  path="/profile" element={<Profile />}/>
 
 
 
 
           </Routes>
             {/* <AboutUs /> */}
+          <Footer/>
+
           </Content>
 
           <div

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Modal, Progress, Steps, Tag  } from "antd";
+import { Table, Button, Modal, Progress, Steps, Tag, Spin  } from "antd";
 import "antd/dist/antd.css";
 import { api_base_url } from "../Constants";
 import axios from "axios";
@@ -7,8 +7,11 @@ import "../style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import { updateDonorsData } from "../redux/actions/donors";
+import { Navigate, useNavigate } from "react-router-dom";
 const { Step } = Steps;
 export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
+  const navigate=useNavigate();
+  const [loading,setLoading]=useState(true)
   const [data, setData] = useState([]);
   const [permanent, setPermanent] = useState([]);
   const [st, setSt] = useState([]);
@@ -24,11 +27,17 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
   useEffect(() => {
     console.log(donorsData.length);
     if (canFetchDonors) {
+      setLoading(false)
       setData(donorsData);
       setPermanent(donorsData);
+    
+
     } else {
       updateDonorsData();
+    
+
     }
+
   }, [donorsData]);
   const [searchObj, setSearchObj] = useState({});
   const [columns, setColumns] = useState([
@@ -172,7 +181,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
           el.blood_type == searchObj.blood_type
         );
       });
-
+console.log("search");
       setData(temp1);
     } else if (
       searchObj.hasOwnProperty("state") &&
@@ -359,6 +368,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
      
       }}
     >
+      <Spin size="large" spinning={loading}>
       <div class="container mt-4" id="content">
         <div class=" align-items-lg-center dot-box">
           {/* <div class="col-6"> */}
@@ -485,7 +495,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
               <Button
                 style={{ marginTop: "20px", marginLeft: "20px" }}
                 type="danger"
-                onClick={()=>window.location.hash = "request"}
+                onClick={()=>navigate("/requestblood")}
               >
                 {" "}
                 Request donar
@@ -503,6 +513,7 @@ export const Donors = ({ donorsData, updateDonorsData, canFetchDonors }) => {
           <Table className="table-striped-rows" dataSource={data} columns={columns} style={{overflow:'scroll'}}  />;
         </div>
       </div>
+      </Spin>
       <Modal
         title="Distance"
         visible={distance != 0}

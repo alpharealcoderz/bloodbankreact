@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import blood from "./bloodlogo.jpg";
 import { api_base_url } from "../../Constants";
 import axios from "axios";
-import { Carousel } from "antd";
+import { Carousel, Spin } from "antd";
 import { updateDonorsData } from "../../redux/actions/donors";
 import {
   getBloodType,
@@ -30,6 +30,7 @@ import { useNavigate } from "react-router-dom";
  const Home = ({ updateDonorsData, bloodType }) => {
    const navigate=useNavigate();
   console.log(getBloodType);
+  const [loading,setLoading]=useState(false)
   const [searchParameters, setSearchParameters] = useState({
     blood_type: "All",
     state: "All",
@@ -77,7 +78,9 @@ import { useNavigate } from "react-router-dom";
   };
 
   const searchDonors = async () => {
+    setLoading(true)
     await updateDonorsData(searchParameters);
+    setLoading(false)
     // window.location = "/alldonors";
     navigate("/alldonors")
   };
@@ -97,9 +100,10 @@ import { useNavigate } from "react-router-dom";
     // marginLeft: "25%",
   };
   const headstyle = {
-    borderStyle: "solid",
-    borderColor: "rgb(237, 45, 52)",
-    marginTop: "0%",
+    // borderStyle: "solid",
+    // borderColor: "#ad2026",
+    // marginTop: "0%",
+    border:"1px solid #ad2026"
   };
 
   return (
@@ -115,6 +119,7 @@ import { useNavigate } from "react-router-dom";
         fontWeight: "300",
       }}
     >
+      <Spin size="large" spinning={loading}>
       <div
         style={{ marginTop: "6%", alignItems: "center" }}
         className="container"
@@ -475,6 +480,7 @@ import { useNavigate } from "react-router-dom";
           </div>
         </div>
       </div>
+      </Spin>
     </section>
   );
 };

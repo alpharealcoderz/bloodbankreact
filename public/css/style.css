@@ -364,7 +364,8 @@ blockquote > cite {
 
 /* text-color */
 .main-color {
-  color: #ed2d34;
+  /* color: #ed2d34; */
+  color:#ad2026;
 }
 
 /*Max Width*/

@@ -137,6 +137,21 @@
 }
 
 .my_crousel_img{
-  height: 80vh;
+  height: 90vh;
   width: 100%;
+}
+
+.my_cr_div{
+  position: relative;
+}
+
+.my_cr_btn{
+  background:none;
+  position: absolute;
+  top:10%;
+  left:40%;
+  color:#ad2026;
+  border-color: #ad2026;
+  font-size: 18px;
+  box-shadow: 10px 10px 10px;
 }
